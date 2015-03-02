@@ -35,6 +35,10 @@ public class ClientUI extends JPanel {
 		add(txtField1,BorderLayout.SOUTH);
 		txtField1.addActionListener(new EnterListener());
 	}
+
+    public void setText(String message){
+        txtArea1.setText(message);
+    }
 	
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {

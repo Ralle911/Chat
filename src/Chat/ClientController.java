@@ -22,6 +22,10 @@ public class ClientController {
 			}
 		});
 	}
+    public void newMessage(Message message) {
+        ui.setText(message.toString());
+
+    }
 	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
