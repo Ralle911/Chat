@@ -11,8 +11,10 @@ import javax.swing.SwingUtilities;
 public class ClientController {
 	private ClientUI ui = new ClientUI(this);
     private Client client;
+    private String name;
 
-	public ClientController() {
+	public ClientController(String name) {
+        this.name = name;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame frame = new JFrame();
@@ -29,7 +31,7 @@ public class ClientController {
     }
     
     public void sendMessage(String message) {
-    	Message msg = new Message(message);
+    	Message msg = new Message(name, message);
         client.sendMessage(msg);
     }
 }

@@ -1,6 +1,5 @@
 package Chat;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -9,10 +8,9 @@ import java.net.Socket;
 /**
  * @author Kalle Bornemark
  */
-public class Client implements Runnable {
+public class Client {
     private Socket socket;
     private ClientController controller;
-    private Thread client = new Thread(this);
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
 
@@ -22,7 +20,7 @@ public class Client implements Runnable {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
             oos = new ObjectOutputStream(socket.getOutputStream());
-            client.start();
+            new Listener().start();
         } catch (IOException e) {
             System.err.println(e);
         }
@@ -35,16 +33,18 @@ public class Client implements Runnable {
         } catch (IOException e) {}
     }
 
-    public void run() {
-        Object object;
-        Message message;
-        while(true) {
-            try {
-                object = ois.readObject();
-                message = (Message)object;
-                controller.newMessage(message);
-            } catch (Exception e) {
-                System.err.println(e);
+    private class Listener extends Thread {
+        public void run() {
+            Object object;
+            Message message;
+            while(true) {
+                try {
+                    object = ois.readObject();
+                    message = (Message)object;
+                    controller.newMessage(message);
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
             }
         }
     }

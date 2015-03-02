@@ -17,7 +17,7 @@ public class Server implements Runnable {
 
     public Server(int port) {
         System.out.println("Server started");
-        connectedClients = new ArrayList<ConnectedClient>();
+        connectedClients = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(port);
             server.start();
@@ -35,7 +35,8 @@ public class Server implements Runnable {
         while(true) {
             try {
                 Socket socket = serverSocket.accept();
-                connectedClients.add(new ConnectedClient(socket, this));
+                ConnectedClient client = new ConnectedClient(socket, this);
+                connectedClients.add(client);
             } catch (IOException e) {
                 System.err.println(e);
             }
@@ -50,11 +51,11 @@ public class Server implements Runnable {
 
         public ConnectedClient(Socket socket, Server server) {
             this.server = server;
-            client.start();
             try {
                 oos = new ObjectOutputStream(socket.getOutputStream());
                 ois = new ObjectInputStream(socket.getInputStream());
             } catch (IOException e) {}
+            client.start();
         }
 
         public void write(Message msg) {
