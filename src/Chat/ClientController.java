@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 
 public class ClientController {
 	private ClientUI ui = new ClientUI(this);
-	private Message message;
+    private Client client;
 
 	public ClientController() {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -22,20 +22,14 @@ public class ClientController {
 				frame.setVisible(true);
 			}
 		});
+        client = new Client("localhost", 3450, this);
 	}
     public void newMessage(Message message) {
         ui.appendText(message.toString());
     }
     
-    public void writeMessage(String message) {
-    	this.message = new Message(message);
+    public void sendMessage(String message) {
+    	Message msg = new Message(message);
+        client.sendMessage(msg);
     }
-	
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				ClientController controller = new ClientController();
-			}
-		});
-	}
 }

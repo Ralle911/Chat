@@ -16,6 +16,7 @@ public class Server implements Runnable {
     private ArrayList<ConnectedClient> connectedClients;
 
     public Server(int port) {
+        System.out.println("Server started");
         connectedClients = new ArrayList<ConnectedClient>();
         try {
             serverSocket = new ServerSocket(port);
@@ -80,6 +81,5 @@ public class Server implements Runnable {
             }
         }
     }
-
 
 }
