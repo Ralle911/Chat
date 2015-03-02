@@ -1,5 +1,10 @@
 package testPackage;
 
-public class test2 {
+import javax.swing.JOptionPane;
 
+public class test2 {
+	
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(null, "Brunk");
+	}
 }
