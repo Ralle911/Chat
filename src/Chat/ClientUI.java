@@ -29,16 +29,22 @@ public class ClientUI extends JPanel {
 		setPreferredSize(new Dimension(600,400));
 		taChatWindow.setFont(txtFont);
 		tfMessageWindow.setFont(txtFont);
+
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         DefaultCaret caret = (DefaultCaret)taChatWindow.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-        tfMessageWindow.requestFocusInWindow();
+        taChatWindow.setEditable(false);
 
         add(scroll, BorderLayout.CENTER);
 //		add(taChatWindow, BorderLayout.CENTER);
 		add(tfMessageWindow,BorderLayout.SOUTH);
 		tfMessageWindow.addActionListener(new EnterListener());
 	}
+
+    public void focusTextField() {
+        tfMessageWindow.requestFocusInWindow();
+    }
 
     public void appendText(String message){
         taChatWindow.append(message + "\n");

@@ -2,6 +2,7 @@ package Chat;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import java.awt.*;
 
 
 /**
@@ -22,6 +23,7 @@ public class ClientController {
 				frame.add(ui);
 				frame.pack();
 				frame.setVisible(true);
+                ui.focusTextField();
 			}
 		});
         client = new Client("localhost", 3450, this);
