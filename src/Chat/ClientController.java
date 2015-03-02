@@ -27,8 +27,13 @@ public class ClientController {
         client = new Client("localhost", 3450, this);
 //        client = new Client("10.2.10.38", 3450, this);
 	}
-    public void newMessage(Message message) {
-        ui.appendText(message.toString());
+    public void newMessage(Object object) {
+        if (object instanceof Message) {
+            Message message = (Message)object;
+            ui.appendText(message.toString());
+        } else {
+            ui.appendText(object.toString());
+        }
     }
     
     public void sendMessage(String message) {

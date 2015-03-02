@@ -40,8 +40,7 @@ public class Client {
             while(true) {
                 try {
                     object = ois.readObject();
-                    message = (Message)object;
-                    controller.newMessage(message);
+                    controller.newMessage(object);
                 } catch (Exception e) {
                     System.err.println(e);
                 }

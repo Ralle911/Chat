@@ -25,9 +25,9 @@ public class Server implements Runnable {
             System.err.println(e);
         }
     }
-    public void writeToAll(Message message) {
+    public void writeToAll(Object object) {
         for (ConnectedClient client : connectedClients) {
-            client.write(message);
+            client.write(object);
         }
     }
 
@@ -56,14 +56,13 @@ public class Server implements Runnable {
                 ois = new ObjectInputStream(socket.getInputStream());
             } catch (IOException e) {}
             client.start();
+            server.writeToAll("Client connected: " + socket.getInetAddress());
         }
 
-        public void write(Message msg) {
+        public void write(Object object) {
             try {
-                oos.writeObject(msg);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                oos.writeObject(object);
+            } catch (IOException e) {}
         }
 
         public void run() {

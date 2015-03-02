@@ -32,6 +32,7 @@ public class ClientUI extends JPanel {
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         DefaultCaret caret = (DefaultCaret)taChatWindow.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        tfMessageWindow.requestFocusInWindow();
 
         add(scroll, BorderLayout.CENTER);
 //		add(taChatWindow, BorderLayout.CENTER);
@@ -40,7 +41,7 @@ public class ClientUI extends JPanel {
 	}
 
     public void appendText(String message){
-        taChatWindow.append(message);
+        taChatWindow.append(message + "\n");
     }
 	
 	private class EnterListener implements ActionListener {
