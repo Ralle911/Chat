@@ -25,6 +25,7 @@ public class ClientController {
 			}
 		});
         client = new Client("localhost", 3450, this);
+//        client = new Client("10.2.10.38", 3450, this);
 	}
     public void newMessage(Message message) {
         ui.appendText(message.toString());
