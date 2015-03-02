@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 
 public class ClientController {
 	private ClientUI ui = new ClientUI(this);
+	private Message message;
 
 	public ClientController() {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -24,7 +25,10 @@ public class ClientController {
 	}
     public void newMessage(Message message) {
         ui.appendText(message.toString());
-
+    }
+    
+    public void writeMessage(String message) {
+    	this.message = new Message(message);
     }
 	
 	public static void main(String[] args) {

@@ -13,6 +13,10 @@ public class Message {
         this.from = from;
         this.message = message;
     }
+    
+    public Message(String message) {
+    	this.message = message;
+    }
 
     public String toString() {
         return from + ": " + message;

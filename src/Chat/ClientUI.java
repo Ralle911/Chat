@@ -41,7 +41,8 @@ public class ClientUI extends JPanel {
 	
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			taChatWindow.setText(tfMessageWindow.getText());
+			clientController.writeMessage(tfMessageWindow.getText());
+			tfMessageWindow.setText("");
 		}
 	}
 }
