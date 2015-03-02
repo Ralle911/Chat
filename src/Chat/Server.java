@@ -71,7 +71,6 @@ public class Server implements Runnable {
                 while(true) {
                     object = ois.readObject();
                     message = (Message)object;
-                    oos.writeTo
                 }
             } catch (IOException e) {
                 System.err.println(e);
