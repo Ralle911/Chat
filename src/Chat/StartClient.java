@@ -1,7 +1,5 @@
 package Chat;
 
-import com.sun.codemodel.internal.JOp;
-
 import javax.swing.*;
 
 /**

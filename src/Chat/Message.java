@@ -26,6 +26,6 @@ public class Message implements Serializable {
     }
 
     public String toString() {
-        return from + ": " + message;
+        return from + ": " + message + "\n";
     }
 }
