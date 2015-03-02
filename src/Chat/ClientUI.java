@@ -17,38 +17,28 @@ import javax.swing.JTextField;
  *
  */
 
-public class ClientUI extends JPanel{
+public class ClientUI extends JPanel {
 	private JTextArea txtArea1 = new JTextArea();
 	private JTextField txtField1 = new JTextField();
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 30 );
+	private ClientController cc;
 	
-	public ClientUI() {
+	public ClientUI(ClientController cc) {
+		this.cc = cc;
+		
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(600,400));
-		
 		txtArea1.setFont(txtFont);
 		txtField1.setFont(txtFont);
 		
 		add(txtArea1,BorderLayout.CENTER);
 		add(txtField1,BorderLayout.SOUTH);
-		
 		txtField1.addActionListener(new EnterListener());
-		
 	}
 	
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			txtArea1.setText(txtField1.getText());
 		}
-	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		ClientUI ui =new ClientUI();
-		frame.add(ui);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setResizable(true);
 	}
 }
