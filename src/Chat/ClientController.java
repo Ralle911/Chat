@@ -23,7 +23,7 @@ public class ClientController {
 		});
 	}
     public void newMessage(Message message) {
-        ui.setText(message.toString());
+        ui.appendText(message.toString());
 
     }
 	

@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -18,31 +17,31 @@ import javax.swing.JTextField;
  */
 
 public class ClientUI extends JPanel {
-	private JTextArea txtArea1 = new JTextArea();
-	private JTextField txtField1 = new JTextField();
+	private JTextArea taChatWindow = new JTextArea();
+	private JTextField tfMessageWindow = new JTextField();
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 30 );
-	private ClientController cc;
+	private ClientController clientController;
 	
-	public ClientUI(ClientController cc) {
-		this.cc = cc;
+	public ClientUI(ClientController clientController) {
+		this.clientController = clientController;
 		
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(600,400));
-		txtArea1.setFont(txtFont);
-		txtField1.setFont(txtFont);
+		taChatWindow.setFont(txtFont);
+		tfMessageWindow.setFont(txtFont);
 		
-		add(txtArea1,BorderLayout.CENTER);
-		add(txtField1,BorderLayout.SOUTH);
-		txtField1.addActionListener(new EnterListener());
+		add(taChatWindow,BorderLayout.CENTER);
+		add(tfMessageWindow,BorderLayout.SOUTH);
+		tfMessageWindow.addActionListener(new EnterListener());
 	}
 
-    public void setText(String message){
-        txtArea1.setText(message);
+    public void appendText(String message){
+        taChatWindow.append(message);
     }
 	
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			txtArea1.setText(txtField1.getText());
+			taChatWindow.setText(tfMessageWindow.getText());
 		}
 	}
 }
