@@ -1,7 +1,6 @@
 package Chat;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * Controller class to handle system logic.
@@ -12,12 +11,10 @@ import javax.swing.SwingUtilities;
 public class ClientController {
 	private ClientUI ui = new ClientUI(this);
     private Client client;
-    private String name;
 
 	public ClientController(Client client, String name) {
         this.client = client;
         this.client.setClientController(this);
-        this.name = name;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame frame = new JFrame();
@@ -39,8 +36,8 @@ public class ClientController {
         }
     }
     
-    public void sendMessage(String message) {
-    	Message msg = new Message(name, message);
+    public void sendMessage(Conversation to, User from, Object message) {
+        Message msg = new Message(to, from, message);
         client.sendMessage(msg);
     }
 }
