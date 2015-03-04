@@ -8,7 +8,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * @author Kalle Bornemark
+ * Model class for the server.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class Server implements Runnable {
     private ServerSocket serverSocket;

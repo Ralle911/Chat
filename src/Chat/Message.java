@@ -3,7 +3,9 @@ package Chat;
 import java.io.Serializable;
 
 /**
- * @author Kalle Bornemark
+ * Model class to handle messages
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class Message implements Serializable {
     private String to;
