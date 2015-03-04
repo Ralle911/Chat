@@ -1,9 +1,12 @@
 package Chat;
 
+import sun.util.resources.cldr.chr.CalendarData_chr_US;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Model class for the client.
@@ -16,8 +19,11 @@ public class Client {
     private ClientController controller;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
+    private ArrayList<User> userList;
+    private User user;
 
-    public Client(String ip, int port) {
+    public Client(String ip, int port, User user) {
+        this.user = user;
         try {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
@@ -42,13 +48,20 @@ public class Client {
     private class Listener extends Thread {
         public void run() {
             Object object;
-            while(true) {
-                try {
+            try {
+                // Skicka User
+                oos.writeObject(user);
+                // Få tillbaka User
+                object = ois.readObject();
+                if (object instanceof User) {
+                    user = (User)object;
+                }
+                while (true) {
                     object = ois.readObject();
                     controller.newMessage(object);
-                } catch (Exception e) {
-                    System.err.println(e);
                 }
+            } catch (Exception e) {
+                System.err.println(e);
             }
         }
     }

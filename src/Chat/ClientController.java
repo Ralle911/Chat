@@ -1,6 +1,7 @@
 package Chat;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Controller class to handle system logic.
@@ -12,7 +13,7 @@ public class ClientController {
 	private ClientUI ui = new ClientUI(this);
     private Client client;
 
-	public ClientController(Client client, String name) {
+	public ClientController(Client client) {
         this.client = client;
         this.client.setClientController(this);
 		SwingUtilities.invokeLater(new Runnable() {
@@ -39,5 +40,10 @@ public class ClientController {
     public void sendMessage(Conversation to, User from, Object message) {
         Message msg = new Message(to, from, message);
         client.sendMessage(msg);
+    }
+
+    public Conversation newConversation(String str) {
+        String[] split = str.split(",");
+        return new Conversation(participants);
     }
 }
