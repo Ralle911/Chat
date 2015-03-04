@@ -6,16 +6,18 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * @author Kalle Bornemark
+ * Model class for the client.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
+
 public class Client {
     private Socket socket;
     private ClientController controller;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
 
-    public Client(String ip, int port, ClientController controller) {
-        this.controller = controller;
+    public Client(String ip, int port) {
         try {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
@@ -24,6 +26,10 @@ public class Client {
         } catch (IOException e) {
             System.err.println(e);
         }
+    }
+
+    public void setClientController(ClientController clientController) {
+        this.controller = clientController;
     }
 
     public void sendMessage(Message message) {
@@ -36,7 +42,6 @@ public class Client {
     private class Listener extends Thread {
         public void run() {
             Object object;
-            Message message;
             while(true) {
                 try {
                     object = ois.readObject();

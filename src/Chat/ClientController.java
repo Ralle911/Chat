@@ -2,11 +2,11 @@ package Chat;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import java.awt.*;
-
 
 /**
- * @author Jimmy Maksymiw
+ * Controller class to handle system logic.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 
 public class ClientController {
@@ -14,7 +14,9 @@ public class ClientController {
     private Client client;
     private String name;
 
-	public ClientController(String name) {
+	public ClientController(Client client, String name) {
+        this.client = client;
+        this.client.setClientController(this);
         this.name = name;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -26,8 +28,7 @@ public class ClientController {
                 ui.focusTextField();
 			}
 		});
-        client = new Client("localhost", 3450, this);
-//        client = new Client("10.2.10.38", 3450, this);
+
 	}
     public void newMessage(Object object) {
         if (object instanceof Message) {

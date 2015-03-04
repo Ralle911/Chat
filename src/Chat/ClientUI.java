@@ -10,9 +10,9 @@ import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 
 /**
- * 
- * @author Emil Sandgren
+ * Viewer class to handle the GUI.
  *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 
 public class ClientUI extends JPanel {
@@ -24,11 +24,18 @@ public class ClientUI extends JPanel {
 	
 	public ClientUI(ClientController clientController) {
 		this.clientController = clientController;
-		
-		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(600,400));
-		taChatWindow.setFont(txtFont);
-		tfMessageWindow.setFont(txtFont);
+
+        initGraphics();
+
+		tfMessageWindow.addActionListener(new EnterListener());
+	}
+
+    public void initGraphics() {
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(600,400));
+
+        taChatWindow.setFont(txtFont);
+        tfMessageWindow.setFont(txtFont);
 
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -38,9 +45,8 @@ public class ClientUI extends JPanel {
 
         add(scroll, BorderLayout.CENTER);
 //		add(taChatWindow, BorderLayout.CENTER);
-		add(tfMessageWindow,BorderLayout.SOUTH);
-		tfMessageWindow.addActionListener(new EnterListener());
-	}
+        add(tfMessageWindow,BorderLayout.SOUTH);
+    }
 
     public void focusTextField() {
         tfMessageWindow.requestFocusInWindow();

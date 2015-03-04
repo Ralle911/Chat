@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Server implements Runnable {
     private ServerSocket serverSocket;
-    private Thread server = new Thread(this);
     private ArrayList<ConnectedClient> connectedClients;
 
     public Server(int port) {
@@ -20,7 +19,7 @@ public class Server implements Runnable {
         connectedClients = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(port);
-            server.start();
+            new Thread(this).start();
         } catch (IOException e) {
             System.err.println(e);
         }
