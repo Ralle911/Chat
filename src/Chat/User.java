@@ -1,9 +1,11 @@
 package Chat;
 
+import java.io.Serializable;
+
 /**
  * @author Kalle Bornemark
  */
-public class User {
+public class User implements Serializable {
     private String id;
 
     public User(String id) {

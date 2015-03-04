@@ -36,7 +36,7 @@ public class Server implements Runnable {
     }
 
     public void sendMessage(Message message) {
-        if (message.getTo() == null) {
+        if (message.getTo().isToAll()) {
             writeToAll(message);
         } else {
             Conversation conversation = message.getTo();
@@ -48,6 +48,14 @@ public class Server implements Runnable {
                 }
             }
         }
+    }
+
+    public void sendConnectedClients() {
+        ArrayList<User> temp = new ArrayList<>();
+        for (ConnectedClient client : connectedClients) {
+            temp.add(client.getUser());
+        }
+        writeToAll(temp);
     }
 
     public void run() {
@@ -107,7 +115,6 @@ public class Server implements Runnable {
                         return u;
                     }
                 }
-                userList.add(user);
             } else if (object instanceof Conversation) {
                 Conversation con = (Conversation)object;
                 for (Conversation c : conversationList) {
@@ -115,7 +122,6 @@ public class Server implements Runnable {
                         return c;
                     }
                 }
-                conversationList.add(con);
             }
             return object;
         }
@@ -130,7 +136,7 @@ public class Server implements Runnable {
                 if (object instanceof User) {
                     User user = (User)object;
                     oos.writeObject(user);
-                    writeToAll(userList);
+                    sendConnectedClients();
                 }
                 while(!Thread.interrupted()) {
                     object = ois.readObject();

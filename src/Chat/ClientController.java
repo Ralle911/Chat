@@ -15,7 +15,6 @@ public class ClientController {
 
 	public ClientController(Client client) {
         this.client = client;
-        this.client.setClientController(this);
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame frame = new JFrame();
@@ -31,7 +30,7 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
-            ui.appendText(message.toString());
+            ui.appendText(message.getFrom().getId() + ": " + (String)message.getContent());
         } else {
             ui.appendText(object.toString());
         }
@@ -42,8 +41,27 @@ public class ClientController {
         client.sendMessage(msg);
     }
 
-    public Conversation newConversation(String str) {
-        String[] split = str.split(",");
-        return new Conversation(participants);
+    public void sendMessage(String msg) {
+        Conversation con = new Conversation(null);
+        con.setToAll(true);
+        Message message = new Message(con, client.getUser(), msg);
+        client.sendMessage(message);
     }
+
+    public void setConnectedUsers(ArrayList<User> userList) {
+        ui.setConnectedUsers(userList);
+    }
+
+    public void appendText(String txt) {
+        ui.appendText(txt);
+    }
+
+//    public Conversation newConversation(String str) {
+//        String[] split = str.split(",");
+//        ArrayList<User> temp = new ArrayList<>();
+//        for (int i = 0; i < split.length; i++) {
+//            temp.add(split[i]);
+//        }
+//        return new Conversation()
+//    }
 }

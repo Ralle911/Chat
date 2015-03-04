@@ -24,6 +24,7 @@ public class Client {
 
     public Client(String ip, int port, User user) {
         this.user = user;
+        controller = new ClientController(this);
         try {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
@@ -45,18 +46,34 @@ public class Client {
         } catch (IOException e) {}
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
     private class Listener extends Thread {
         public void run() {
             Object object;
             try {
                 // Skicka User
                 oos.writeObject(user);
+                controller.appendText("User sent: " + user.getId());
                 // Få tillbaka User
                 object = ois.readObject();
                 if (object instanceof User) {
                     user = (User)object;
+                    controller.appendText("User set" + user.getId());
                 }
+                object = ois.readObject();
                 while (true) {
+                    if (object instanceof ArrayList) {
+                        userList = (ArrayList<User>)object;
+                        controller.setConnectedUsers(userList);
+                        controller.appendText("User List set");
+                    }
                     object = ois.readObject();
                     controller.newMessage(object);
                 }

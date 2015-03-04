@@ -115,15 +115,16 @@ public class ClientUI extends JPanel {
     	btnCreateGroup.addActionListener(groupListener);
     }
     /*
-     * När servern updaterar Users
+     * Nï¿½r servern updaterar Users
      */
     public void setConnectedUsers(ArrayList<User> connectedUsers) {
+        tpConnectedUsers.setText("");
     	for (User user: connectedUsers) {
-    		appendConnectedUsers(user.getName());
+    		appendConnectedUsers(user.getId());
     	}
     }
     /*
-     * Sätt sen till controller.setUser(); eller något
+     * Sï¿½tt sen till controller.setUser(); eller nï¿½got
      */
     public void setUserText(String user) {
     	lblUser.setText(user);
@@ -147,10 +148,10 @@ public class ClientUI extends JPanel {
 			groupFrame.setVisible(true);
 			groupFrame.setLocationRelativeTo(null);
 			/*
-			 * Under är en simulation av användare.
+			 * Under ï¿½r en simulation av anvï¿½ndare.
 			 */
 			for (int i = 0; i <= 10; i++) {
-				pnlNewGroup.add(new JCheckBox("användare " +i));
+				pnlNewGroup.add(new JCheckBox("anvï¿½ndare " +i));
 			}
 	    }
     }
@@ -220,8 +221,8 @@ public class ClientUI extends JPanel {
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			clientController.sendMessage(tfMessageWindow.getText());
-//			appendText(tfMessageWindow.getText()); //Temporär för att testa utan server
-//			appendConnectedUsers(tfMessageWindow.getText()); //Temporär för att testa utan server
+//			appendText(tfMessageWindow.getText()); //Temporï¿½r fï¿½r att testa utan server
+//			appendConnectedUsers(tfMessageWindow.getText()); //Temporï¿½r fï¿½r att testa utan server
 			tfMessageWindow.setText("");
 		}
 	}
@@ -233,7 +234,7 @@ public class ClientUI extends JPanel {
 				groupPanel.start();
 			}
 			if (btnCreateGroup == e.getSource()) {
-//				clientController.newConversation()
+//				clientController.newConversation();
 				groupPanel.getFrame().dispose();
 			}
 		}
