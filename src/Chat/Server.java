@@ -15,9 +15,11 @@ import java.util.ArrayList;
 public class Server implements Runnable {
     private ServerSocket serverSocket;
     private ArrayList<ConnectedClient> connectedClients;
+    private ArrayList<User> userList;
+    private ArrayList<Conversation> conversationList;
 
     public Server(int port) {
-        System.out.println("Server started");
+        userList = new ArrayList<>();
         connectedClients = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(port);
@@ -26,15 +28,32 @@ public class Server implements Runnable {
             System.err.println(e);
         }
     }
-    public void writeToAll(Object object) {
+
+    public void writeToAll(Object message) {
         for (ConnectedClient client : connectedClients) {
-            client.write(object);
+            client.write(message);
+        }
+    }
+
+    public void sendMessage(Message message) {
+        if (message.getTo() == null) {
+            writeToAll(message);
+        } else {
+            Conversation conversation = message.getTo();
+            for (User user : conversation.getUserList()) {
+                for (ConnectedClient client : connectedClients) {
+                    if (client.getUser() == user) {
+                        client.write(message);
+                    }
+                }
+            }
         }
     }
 
     public void run() {
         while(true) {
             try {
+                System.out.println("Server started");
                 Socket socket = serverSocket.accept();
                 ConnectedClient client = new ConnectedClient(socket, this);
                 connectedClients.add(client);
@@ -49,6 +68,7 @@ public class Server implements Runnable {
         private ObjectOutputStream oos;
         private ObjectInputStream ois;
         private Server server;
+        private User user;
 
         public ConnectedClient(Socket socket, Server server) {
             this.server = server;
@@ -60,20 +80,59 @@ public class Server implements Runnable {
             server.writeToAll("Client connected: " + socket.getInetAddress());
         }
 
+        public User getUser() {
+            return user;
+        }
+
         public void write(Object object) {
             try {
                 oos.writeObject(object);
             } catch (IOException e) {}
         }
 
+        public Object checkObject(Object object) {
+            if (object instanceof User) {
+                User user = (User)object;
+                for (User u : userList) {
+                    if (u.getId().equals(user.getId())) {
+                        this.user = user;
+                        return u;
+                    }
+                }
+                userList.add(user);
+            } else if (object instanceof Conversation) {
+                Conversation con = (Conversation)object;
+                for (Conversation c : conversationList) {
+                    if (c.getId() == con.getId()) {
+                        return c;
+                    }
+                }
+                conversationList.add(con);
+            }
+            return object;
+        }
+
+
         public void run() {
             Object object;
             Message message;
             try {
-                while(true) {
+                object = ois.readObject();
+                object = checkObject(object);
+                if (object instanceof User) {
+                    User user = (User)object;
+                    oos.writeObject(user);
+                    writeToAll(userList);
+                }
+                while(!Thread.interrupted()) {
                     object = ois.readObject();
-                    message = (Message)object;
-                    server.writeToAll(message);
+                    if (object instanceof Message) {
+                        message = (Message)object;
+                        server.sendMessage(message);
+                    } else if (object instanceof Conversation) {
+                        Conversation con = (Conversation)object;
+                        oos.writeObject(con);
+                    }
                 }
             } catch (IOException e) {
                 System.err.println(e);
