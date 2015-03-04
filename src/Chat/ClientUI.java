@@ -233,7 +233,7 @@ public class ClientUI extends JPanel {
 				groupPanel.start();
 			}
 			if (btnCreateGroup == e.getSource()) {
-				clientController.newConversation()
+//				clientController.newConversation()
 				groupPanel.getFrame().dispose();
 			}
 		}
