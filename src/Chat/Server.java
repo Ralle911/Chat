@@ -90,6 +90,14 @@ public class Server implements Runnable {
             } catch (IOException e) {}
         }
 
+        /**
+         * Checks if an object (User or Conversation) already exists in the server.
+         * If not, adds the object to servers list and returns the object.
+         * Else returns the given object.
+         *
+         * @param object User or Conversation object.
+         * @return The object that's already saved on the server, or the given object.
+         */
         public Object checkObject(Object object) {
             if (object instanceof User) {
                 User user = (User)object;
