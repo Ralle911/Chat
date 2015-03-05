@@ -96,6 +96,15 @@ public class Server implements Runnable {
 			return user;
 		}
 
+		public User getUser(String id) {
+		    for (User user : registeredUsers) {
+		        if (user.getId().equals(id)) {
+		            return user;
+		        }
+		    }
+		    return null;
+		}
+
 		public void write(Object object) {
 			try {
 				oos.writeObject(object);
@@ -139,36 +148,31 @@ public class Server implements Runnable {
             return false;
         }
 
-        public boolean isUserOnline(User user) {
+        public boolean isUserOnline(String id) {
             for (ConnectedClient client : connectedClients) {
-                if (client.getUser().getId().equals(user.getId())) {
+  
+                if (client.getUser().getId().equals(id)  && client != this) {
                     return true;
                 }
             }
             return false;
         }
 
-        public User getUser(String id) {
-            for (User user : registeredUsers) {
-                if (user.getId().equals(id)) {
-                    return user;
-                }
-            }
-            return null;
-        }
-
-		public void run() {
+        public void run() {
 			Object object = null;
 			Message message;
             User usr = null;
 			try {
                 object = ois.readObject();
                 usr = (User)object;
-                while(isUserOnline(usr)) {
+                user = usr;
+                
+                while(isUserOnline(usr.getId())) {
                     write("Client already connected - pick another name!");
                     object = ois.readObject();
                     usr = (User)object;
                 }
+                
                 user = usr;
                 if (!isUserInDatabase(usr)) {
                     registeredUsers.add(usr);
@@ -197,5 +201,4 @@ public class Server implements Runnable {
             } catch (ClassNotFoundException e2) {}
 		}
 	}
-
 }

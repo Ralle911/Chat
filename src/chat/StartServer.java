@@ -7,6 +7,6 @@ package chat;
  */
 public class StartServer {
     public static void main(String[] args) {
-        new Server(3450);
+        new Server(13337);
     }
 }

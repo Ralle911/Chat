@@ -9,7 +9,7 @@ import javax.swing.*;
  */
 public class StartClient {
     public static void main(String[] args) {
-        Client client = new Client("localhost", 3450);
+        Client client = new Client("localhost", 13337);
 //        new ClientController(client);
 //        Client client = new Client("10.2.10.38", 3450, this);
     }
