@@ -89,7 +89,6 @@ public class Server implements Runnable {
 			} catch (IOException e) {
 			}
 			client.start();
-			server.writeToAll("[Server: Client connected: " + user.getId() + "]");
 		}
 
 		public User getUser() {
@@ -180,6 +179,8 @@ public class Server implements Runnable {
                     usr = getUser(usr.getId());
                 }
                 user = usr;
+
+                server.writeToAll("[Server: Client connected: " + user.getId() + "]");
 
                 oos.writeObject(user);
                 sendConnectedClients();
