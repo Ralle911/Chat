@@ -20,6 +20,13 @@ public class Client {
     private ArrayList<User> userList;
     private User user;
 
+    /**
+     * Constructor to create a new client.
+     *
+     * @param ip IP-address
+     * @param port Port
+     * @param user User object that's created in StartClient class.
+     */
     public Client(String ip, int port, User user) {
         this.user = user;
         controller = new ClientController(this);
@@ -33,10 +40,11 @@ public class Client {
         }
     }
 
-    public void setClientController(ClientController clientController) {
-        this.controller = clientController;
-    }
-
+    /**
+     * Sends a Message object to the server.
+     *
+     * @param message The Message object that should be sent to the server.
+     */
     public void sendMessage(Message message) {
         try {
             oos.writeObject(message);
@@ -44,6 +52,11 @@ public class Client {
         } catch (IOException e) {}
     }
 
+    /**
+     * Returns the clients User object.
+     *
+     * @return The clients User object.
+     */
     public User getUser() {
         return user;
     }
@@ -52,37 +65,36 @@ public class Client {
         return userList;
     }
 
+    /**
+     * Closes the clients socket.
+     */
     public void disconnectClient() {
         try {
             socket.close();
         } catch (Exception e) {}
     }
 
+    /**
+     * Class to handle communication between client and server.
+     */
     private class Listener extends Thread {
 		public void run() {
             Object object;
             try {
-                // Skicka User
-                oos.writeObject(user);
-                controller.appendText("User sent: " + user.getId());
-                // Få tillbaka User
-                object = ois.readObject();
+                oos.writeObject(user);                  /* Send User object to server */
+                object = ois.readObject();              /* Recieve the correct User object from server */
                 if (object instanceof User) {
                     user = (User)object;
-                    controller.appendText("User set" + user.getId());
+                    controller.appendText("Logged in as " + user.getId());
                 }
-                System.out.println("test1");
                 object = ois.readObject();
-                while (!Thread.interrupted()) {
-                	System.out.println("test2");
-                    if (object instanceof ArrayList) {
+                while (!Thread.interrupted()) {         /* Client listens to new ArrayList<User> and Messages */
+                    if (object instanceof ArrayList) {  /* ArrayList with Users */
                         userList = (ArrayList<User>)object;
-                        System.out.println("test3");
-                        controller.setConnectedUsers(userList); //fel
+                        controller.setConnectedUsers(userList);
                         controller.appendText("User List set");
-                        
                     }
-                    object = ois.readObject();
+                    object = ois.readObject();          /* Message */
                     controller.newMessage(object);
                 }
             } catch (Exception e) {
