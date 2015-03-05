@@ -1,4 +1,4 @@
-package blabla;
+package chat;
 
 import java.util.Iterator;
 import java.util.LinkedList;
