@@ -1,4 +1,4 @@
-package Chat;
+package chat;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -39,35 +40,43 @@ public class ClientUI extends JPanel {
 	private JPanel eastPanelCenterNorth = new JPanel(new GridLayout(3,1));
 	private JPanel pnlGroupSend = new JPanel(new GridLayout(1,2,8,8));
 	
-	private JPanel pnlNewGroup = new JPanel();
-	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
+	private String userString = "";
+	private String userString2 = "";
+	
+//	private JPanel pnlNewGroup = new JPanel();
+//	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
 	
 	private JLabel lblUser = new JLabel("User");
 
 	private JButton btnSend = new JButton("Send");
 	private JButton btnNewGroupChat = new JButton("Gr");
 	private JButton btnNewPrivateMessage = new JButton("pr");
-	private JButton btnGroup = new JButton("Groups");
-	private JButton btnGroup2 = new JButton("Groups2");
+//	private JButton btnGroup = new JButton("Groups");
+//	private JButton btnGroup2 = new JButton("Groups2");
 	private JButton btnLobby = new JButton("Lobby");
-	private JButton btnCreateGroup = new JButton("Skapa grupp");
+	private JButton btnCreateGroup = new JButton("");
+	private JButton btnCreatePrivateMessage = new JButton("");
 	
 	private JTextPane tpChatWindow = new JTextPane();
 	private JTextPane tpConnectedUsers = new JTextPane();
 	
 	private JTextField tfMessageWindow = new JTextField();
 	
+	private JCheckBox cbUser1 = new JCheckBox("Kallexander");
+	private JCheckBox cbUser2 = new JCheckBox("Jimmo");
+	
 	private JScrollPane scrollConnectedUsers = new JScrollPane(tpConnectedUsers);
 	private JScrollPane scroll = new JScrollPane(tpChatWindow);
-	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
+//	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
     
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
 	private ClientController clientController;
 	private GroupPanel groupPanel;
+	private GroupPanel2 groupPanel2;
 	
-	public ClientUI(ClientController clientController) {
-		this.clientController = clientController;
+	public ClientUI() { //ClientController clientController
+//		this.clientController = clientController;
 		lookAndFeel(); 
         initGraphics();
 		initListeners();
@@ -92,9 +101,9 @@ public class ClientUI extends JPanel {
         caretConnected.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         tpConnectedUsers.setEditable(false);
         
-        scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
+//        scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//        
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
@@ -111,8 +120,14 @@ public class ClientUI extends JPanel {
     public void initListeners() { 
     	tfMessageWindow.addActionListener(new EnterListener());
     	GroupListener groupListener = new GroupListener();
+    	PrivateListener privateListener = new PrivateListener();
+    	CheckBoxListener checkBoxListener = new CheckBoxListener();
     	btnNewGroupChat.addActionListener(groupListener);
     	btnCreateGroup.addActionListener(groupListener);
+    	btnNewPrivateMessage.addActionListener(privateListener);
+    	btnCreatePrivateMessage.addActionListener(privateListener);
+    	cbUser1.addActionListener(checkBoxListener);
+    	cbUser2.addActionListener(checkBoxListener);
     }
     /*
      * N�r servern updaterar Users
@@ -129,17 +144,18 @@ public class ClientUI extends JPanel {
     public void setUserText(String user) {
     	lblUser.setText(user);
     }
+    
     private class GroupPanel extends Thread {
     	private JFrame groupFrame;
+    	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
+    	private JPanel pnlNewGroup = new JPanel();
+    	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
     	
     	public JFrame getFrame() {
     		return groupFrame;
     	}
 	    public void run() {
-	    	pnlOuterBorderLayout.add(btnCreateGroup,BorderLayout.SOUTH);
-	    	pnlOuterBorderLayout.add(scrollCheckConnectedUsers,BorderLayout.CENTER);
-	    	scrollCheckConnectedUsers.setPreferredSize(new Dimension(200,500));
-	    	pnlNewGroup.setLayout(new GridLayout(100,1,5,5));
+	    	panelBuilder();
 	    	groupFrame = new JFrame();
 	    	groupFrame = new JFrame();
 	    	groupFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -150,9 +166,64 @@ public class ClientUI extends JPanel {
 			/*
 			 * Under �r en simulation av anv�ndare.
 			 */
-			for (int i = 0; i <= 10; i++) {
-				pnlNewGroup.add(new JCheckBox("anv�ndare " +i));
-			}
+//			for (int i = 0; i <= 10; i++) {
+//				pnlNewGroup.add(new JCheckBox("anv�ndare " +i));
+//			}
+	    }
+	    
+	    public void panelBuilder() {
+	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	        pnlOuterBorderLayout.add(btnCreateGroup,BorderLayout.SOUTH);
+		    btnCreateGroup.setText("Create Group");
+		   	pnlOuterBorderLayout.add(scrollCheckConnectedUsers,BorderLayout.CENTER);
+		   	scrollCheckConnectedUsers.setPreferredSize(new Dimension(200,500));
+		   	pnlNewGroup.setLayout(new GridLayout(100,1,5,5));
+		   	pnlNewGroup.add(cbUser1);
+		   	pnlNewGroup.add(cbUser2);
+	         
+	    }
+    }
+    
+    private class GroupPanel2 extends Thread {
+    	private JFrame groupFrame;
+    	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
+    	private JPanel pnlNewGroup = new JPanel();
+    	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
+    	
+    	
+    	public JFrame getFrame() {
+    		return groupFrame;
+    	}
+	    public void run() {
+	    	panelBuilder();
+	    	groupFrame = new JFrame();
+	    	groupFrame = new JFrame();
+	    	groupFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			groupFrame.add(pnlOuterBorderLayout);
+			groupFrame.pack();
+			groupFrame.setVisible(true);
+			groupFrame.setLocationRelativeTo(null);
+			/*
+			 * Under �r en simulation av anv�ndare.
+			 */
+//			for (int i = 0; i <= 10; i++) {
+//				pnlNewGroup.add(new JCheckBox("anv�ndare " +i));
+//				
+//			}
+	    }
+	    
+	    public void panelBuilder() {
+	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	     	pnlOuterBorderLayout.add(btnCreatePrivateMessage,BorderLayout.SOUTH);
+	    	btnCreatePrivateMessage.setText("Private Message");
+	    	pnlOuterBorderLayout.add(scrollCheckConnectedUsers,BorderLayout.CENTER);
+	    	scrollCheckConnectedUsers.setPreferredSize(new Dimension(200,500));
+	    	pnlNewGroup.setLayout(new GridLayout(100,1,5,5));
+	    	pnlNewGroup.add(cbUser1);
+		   	pnlNewGroup.add(cbUser2);
+	         
 	    }
     }
     
@@ -161,7 +232,7 @@ public class ClientUI extends JPanel {
     	southPanel.add(tfMessageWindow,BorderLayout.CENTER);
     	southPanel.setPreferredSize(new Dimension(600,50));
     	
-    	btnSend.setPreferredSize(new Dimension(75,40));
+    	btnSend.setPreferredSize(new Dimension(101,40));
     	
     	southPanel.add(btnSend,BorderLayout.EAST);
     	add(southPanel,BorderLayout.SOUTH);
@@ -179,8 +250,8 @@ public class ClientUI extends JPanel {
     	pnlGroupSend.add(btnNewPrivateMessage);
     	
     	eastPanelCenterNorth.add(pnlGroupSend);
-    	eastPanelCenterNorth.add(btnGroup);
-    	eastPanelCenterNorth.add(btnGroup2);
+//    	eastPanelCenterNorth.add(btnGroup);
+//    	eastPanelCenterNorth.add(btnGroup2);
     	
     	eastPanel.add(btnLobby,BorderLayout.SOUTH);
     	add(eastPanel,BorderLayout.EAST);
@@ -202,6 +273,14 @@ public class ClientUI extends JPanel {
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
+    }
+    
+    public void setNewChatTab(String userString) {
+    	String[] users = userString.split(",");
+    	for (int i = 0; i <= users.length -1; i++) {
+    		System.out.println(users[i]);
+    		 eastPanelCenterNorth.add(new JButton(users[i]));
+    	}
     }
     
     public void lookAndFeel() {
@@ -238,5 +317,38 @@ public class ClientUI extends JPanel {
 				groupPanel.getFrame().dispose();
 			}
 		}
+	}
+	
+	private class PrivateListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (btnNewPrivateMessage == e.getSource()) {
+				groupPanel2 = new GroupPanel2();
+				groupPanel2.start();
+			}
+			if (btnCreatePrivateMessage == e.getSource()) {
+//				clientController.newConversation();
+				setNewChatTab(userString);
+				groupPanel2.getFrame().dispose();
+			}
+		}
+	}
+	
+	private class CheckBoxListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if (cbUser1.isSelected()==true) {
+				userString += cbUser1.getText() +",";
+			}
+			if (cbUser2.isSelected()==true) {
+				userString += cbUser2.getText() +",";
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		ClientUI ui = new ClientUI();
+		JFrame frame = new JFrame();
+		frame.add(ui);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }
