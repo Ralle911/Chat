@@ -59,6 +59,16 @@ public class Server implements Runnable {
 		writeToAll(connectedUsers);
 	}
 
+    public boolean checkUserStatus(User user) {
+        for (ConnectedClient client : connectedClients) {
+            if (client.getUser().getId().equals(user.getId())) {
+                client.write("Client already online - pick another name!");
+                return true;
+            }
+        }
+        return false;
+    }
+
 	public void run() {
 		System.out.println("Server started");
 		while (true) {
@@ -137,7 +147,7 @@ public class Server implements Runnable {
 				for (User u : registeredUsers) {
 					if (u.getId().equals(user.getId())) {
                         this.user = u;
-						return u;
+                        return u;
 					}
 				}
 				this.user = user;
@@ -154,16 +164,22 @@ public class Server implements Runnable {
 		}
 
 		public void run() {
-			Object object;
+			Object object = null;
 			Message message;
 			try {
-				object = ois.readObject();
-				object = checkObject(object);
-				if (object instanceof User) {
-					User user = (User) object;
-					oos.writeObject(user);
-					sendConnectedClients();
-				}
+            User usr = null;
+
+                do {
+                    object = ois.readObject();
+                    object = checkObject(object);
+                    if (object instanceof User) {
+                        usr = (User) object;
+                    }
+                } while (checkUserStatus(usr));
+
+                oos.writeObject(user);
+                sendConnectedClients();
+
 				while (!Thread.interrupted()) {
 					object = ois.readObject();
 					if (object instanceof Message) {

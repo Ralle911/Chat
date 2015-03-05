@@ -25,15 +25,13 @@ public class Client {
      *
      * @param ip IP-address
      * @param port Port
-     * @param user User object that's created in StartClient class.
      */
-    public Client(String ip, int port, User user) {
-        this.user = user;
-        controller = new ClientController(this);
+    public Client(String ip, int port) {
         try {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
             oos = new ObjectOutputStream(socket.getOutputStream());
+            controller = new ClientController(this);
             new Listener().start();
         } catch (IOException e) {
             System.err.println(e);
@@ -50,6 +48,10 @@ public class Client {
             oos.writeObject(message);
             oos.flush();
         } catch (IOException e) {}
+    }
+
+    public void setUser(String name) {
+        user = new User(name);
     }
 
     /**
@@ -79,14 +81,21 @@ public class Client {
      */
     private class Listener extends Thread {
 		public void run() {
-            Object object;
+            Object object = "";
             try {
-                oos.writeObject(user);                  /* Send User object to server */
-                object = ois.readObject();              /* Recieve the correct User object from server */
-                if (object instanceof User) {
-                    user = (User)object;
-                    controller.appendText("Logged in as " + user.getId());
+
+                while (!(object instanceof User)) {
+                    controller.setName();
+                    oos.writeObject(user);                  /* Send User object to server */
+                    object = ois.readObject();              /* Recieve the correct User object from server */
+                    if (object instanceof User) {
+                        user = (User)object;
+                        controller.appendText("Logged in as " + user.getId());
+                    } else {
+                        controller.appendText((String)object);
+                    }
                 }
+
                 object = ois.readObject();
                 while (!Thread.interrupted()) {         /* Client listens to new ArrayList<User> and Messages */
                     if (object instanceof ArrayList) {  /* ArrayList with Users */

@@ -9,7 +9,7 @@ import javax.swing.*;
  */
 public class StartClient {
     public static void main(String[] args) {
-        Client client = new Client("localhost", 3450, new User(JOptionPane.showInputDialog("What's your name, buddy?")));
+        Client client = new Client("localhost", 3450);
 //        new ClientController(client);
 //        Client client = new Client("10.2.10.38", 3450, this);
     }
