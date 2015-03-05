@@ -1,6 +1,4 @@
-package Chat;
-
-import sun.util.resources.cldr.chr.CalendarData_chr_US;
+package chat;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -55,7 +53,7 @@ public class Client {
     }
 
     private class Listener extends Thread {
-        public void run() {
+		public void run() {
             Object object;
             try {
                 // Skicka User
@@ -67,12 +65,16 @@ public class Client {
                     user = (User)object;
                     controller.appendText("User set" + user.getId());
                 }
+                System.out.println("test1");
                 object = ois.readObject();
                 while (true) {
+                	System.out.println("test2");
                     if (object instanceof ArrayList) {
                         userList = (ArrayList<User>)object;
-                        controller.setConnectedUsers(userList);
+                        controller.setConnectedUsers(userList); //fel
+                        System.out.println("test3");
                         controller.appendText("User List set");
+                        
                     }
                     object = ois.readObject();
                     controller.newMessage(object);

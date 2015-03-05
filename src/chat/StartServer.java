@@ -1,4 +1,4 @@
-package Chat;
+package chat;
 
 /**
  * Run class to start a server.
