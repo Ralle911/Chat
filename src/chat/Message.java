@@ -25,7 +25,7 @@ public class Message implements Serializable {
 
     private void newTime() {
         Date time = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat ft = new SimpleDateFormat("HH:mm:ss");
         this.timestamp = ft.format(time);
     }
 
