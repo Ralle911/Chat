@@ -160,14 +160,16 @@ public class Server implements Runnable {
 		public void run() {
 			Object object = null;
 			Message message;
-			try {
             User usr = null;
-
-                usr = (User)ois.readObject();
+			try {
+                object = ois.readObject();
+                usr = (User)object;
                 while(isUserOnline(usr)) {
                     write("Client already connected - pick another name!");
-                    usr = (User)ois.readObject();
+                    object = ois.readObject();
+                    usr = (User)object;
                 }
+                user = usr;
                 if (!isUserInDatabase(usr)) {
                     registeredUsers.add(usr);
                 } else {
