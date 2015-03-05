@@ -180,9 +180,9 @@ public class Server implements Runnable {
                 }
                 user = usr;
 
-                server.writeToAll("[Server: Client connected: " + user.getId() + "]");
 
                 oos.writeObject(user);
+                server.writeToAll("[Server: Client connected: " + user.getId() + "]");
                 sendConnectedClients();
 
 				while (!Thread.interrupted()) {

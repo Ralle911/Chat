@@ -47,8 +47,8 @@ public class ClientController {
         if (object instanceof Message) {
             Message message = (Message)object;
             ui.appendText(message.getTimestamp() + " " + message.getFrom().getId() + ": " + (String)message.getContent());
-        } else {
-            ui.appendText((String)object);
+        } else if (object instanceof String) {
+            ui.appendText(object.toString());
         }
     }
 
