@@ -73,12 +73,12 @@ public class Client {
                 }
                 System.out.println("test1");
                 object = ois.readObject();
-                while (true) {
+                while (!Thread.interrupted()) {
                 	System.out.println("test2");
                     if (object instanceof ArrayList) {
                         userList = (ArrayList<User>)object;
-                        controller.setConnectedUsers(userList); //fel
                         System.out.println("test3");
+                        controller.setConnectedUsers(userList); //fel
                         controller.appendText("User List set");
                         
                     }
@@ -86,7 +86,7 @@ public class Client {
                     controller.newMessage(object);
                 }
             } catch (Exception e) {
-                System.err.println(e);
+                e.printStackTrace();
             }
         }
     }

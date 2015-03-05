@@ -104,9 +104,10 @@ public class Server implements Runnable {
 		}
 
         public void removeConnectedClient() {
-            for (ConnectedClient client : connectedClients) {
-                if (client.getUser().getId().equals(this.getUser())) {
-                    connectedClients.remove(this.getUser());
+            for (int i = 0; i < connectedClients.size(); i++) {
+                if (connectedClients.get(i).getUser().getId().equals(this.getUser().getId())) {
+                    connectedClients.remove(i);
+                    System.out.println("Client removed from connectedClients");
                 }
             }
         }
@@ -114,6 +115,7 @@ public class Server implements Runnable {
         public void disconnectClient() {
             removeConnectedClient();
             sendConnectedClients();
+            writeToAll("Client disconnted: " + user.getId());
             try {
                 socket.close();
             } catch (Exception e) {}
@@ -134,6 +136,7 @@ public class Server implements Runnable {
 				User user = (User) object;
 				for (User u : registeredUsers) {
 					if (u.getId().equals(user.getId())) {
+                        this.user = u;
 						return u;
 					}
 				}
@@ -161,7 +164,7 @@ public class Server implements Runnable {
 					oos.writeObject(user);
 					sendConnectedClients();
 				}
-				while (!socket.isClosed()) {
+				while (!Thread.interrupted()) {
 					object = ois.readObject();
 					if (object instanceof Message) {
 						message = (Message) object;
@@ -171,9 +174,11 @@ public class Server implements Runnable {
 						oos.writeObject(con);
 					}
 				}
-                System.out.println("Client killed");
-//                disconnectClient();
-			} catch (Exception e) {}
+			} catch (IOException e) {
+//                System.out.println("Client killed");
+                disconnectClient();
+//                writeToAll("TJENA LOL");
+            } catch (ClassNotFoundException e2) {}
 		}
 	}
 
