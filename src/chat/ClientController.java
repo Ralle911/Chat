@@ -23,7 +23,7 @@ public class ClientController {
         this.client = client;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				JFrame frame = new JFrame();
+				JFrame frame = new JFrame("bIRC");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.add(ui);
 				frame.pack();
