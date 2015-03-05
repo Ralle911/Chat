@@ -52,7 +52,7 @@ public class ClientUI extends JPanel {
 	private JButton btnNewPrivateMessage = new JButton("pr");
 //	private JButton btnGroup = new JButton("Groups");
 //	private JButton btnGroup2 = new JButton("Groups2");
-	private JButton btnLobby = new JButton("Lobby");
+	private JButton btnLobby = new JButton("Disconnect");
 	private JButton btnCreateGroup = new JButton("");
 	private JButton btnCreatePrivateMessage = new JButton("");
 	
@@ -121,12 +121,14 @@ public class ClientUI extends JPanel {
     	GroupListener groupListener = new GroupListener();
     	PrivateListener privateListener = new PrivateListener();
     	CheckBoxListener checkBoxListener = new CheckBoxListener();
+    	DisconnectListener disconnectListener = new DisconnectListener();
     	btnNewGroupChat.addActionListener(groupListener);
     	btnCreateGroup.addActionListener(groupListener);
     	btnNewPrivateMessage.addActionListener(privateListener);
     	btnCreatePrivateMessage.addActionListener(privateListener);
     	cbUser1.addActionListener(checkBoxListener);
     	cbUser2.addActionListener(checkBoxListener);
+    	btnLobby.addActionListener(disconnectListener);
     }
     /*
      * N�r servern updaterar Users
@@ -345,6 +347,14 @@ public class ClientUI extends JPanel {
 			}
 			if (cbUser2.isSelected()==true) {
 				userString += cbUser2.getText() +",";
+			}
+		}
+	}
+	
+	private class DisconnectListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (btnLobby==e.getSource()) {
+				controller.disconnectClient();
 			}
 		}
 	}
