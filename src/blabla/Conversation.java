@@ -1,4 +1,4 @@
-package Chat;
+package blabla;
 
 import java.io.Serializable;
 import java.util.ArrayList;

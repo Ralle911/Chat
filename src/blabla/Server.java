@@ -1,4 +1,4 @@
-package Chat;
+package blabla;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

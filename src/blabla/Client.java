@@ -1,6 +1,4 @@
-package Chat;
-
-import sun.util.resources.cldr.chr.CalendarData_chr_US;
+package blabla;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,4 +1,4 @@
-package Chat;
+package blabla;
 
 import javax.swing.*;
 import java.util.ArrayList;
