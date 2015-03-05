@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class Server implements Runnable {
 	private ServerSocket serverSocket;
 	private ArrayList<ConnectedClient> connectedClients;
-	private ArrayList<User> userList;
+	private ArrayList<User> registeredUsers;
 	private ArrayList<Conversation> conversationList;
 
 	public Server(int port) {
-		userList = new ArrayList<>();
+		registeredUsers = new ArrayList<>();
 		connectedClients = new ArrayList<>();
 		try {
 			serverSocket = new ServerSocket(port);
@@ -52,18 +52,17 @@ public class Server implements Runnable {
 	}
 
 	public void sendConnectedClients() {
-		ArrayList<User> temp = new ArrayList<>();
+		ArrayList<User> connectedUsers = new ArrayList<>();
 		for (ConnectedClient client : connectedClients) {
-			temp.add(client.getUser());
+			connectedUsers.add(client.getUser());
 		}
-		writeToAll(temp);
+		writeToAll(connectedUsers);
 	}
 
 	public void run() {
 		System.out.println("Server started");
 		while (true) {
 			try {
-
 				Socket socket = serverSocket.accept();
 				ConnectedClient client = new ConnectedClient(socket, this);
 				connectedClients.add(client);
@@ -79,8 +78,10 @@ public class Server implements Runnable {
 		private ObjectInputStream ois;
 		private Server server;
 		private User user;
+        private Socket socket;
 
 		public ConnectedClient(Socket socket, Server server) {
+            this.socket = socket;
 			this.server = server;
 			try {
 				oos = new ObjectOutputStream(socket.getOutputStream());
@@ -102,6 +103,22 @@ public class Server implements Runnable {
 			}
 		}
 
+        public void removeConnectedClient() {
+            for (ConnectedClient client : connectedClients) {
+                if (client.getUser().getId().equals(this.getUser())) {
+                    connectedClients.remove(this.getUser());
+                }
+            }
+        }
+
+        public void disconnectClient() {
+            removeConnectedClient();
+            sendConnectedClients();
+            try {
+                socket.close();
+            } catch (Exception e) {}
+        }
+
 		/**
 		 * Checks if an object (User or Conversation) already exists in the
 		 * server. If not, adds the object to servers list and returns the
@@ -115,14 +132,13 @@ public class Server implements Runnable {
 		public Object checkObject(Object object) {
 			if (object instanceof User) {
 				User user = (User) object;
-				for (User u : userList) {
+				for (User u : registeredUsers) {
 					if (u.getId().equals(user.getId())) {
-//						this.user = user; // <------
 						return u;
 					}
 				}
-				this.user = user; //<----------
-				userList.add(user);
+				this.user = user;
+				registeredUsers.add(user);
 			} else if (object instanceof Conversation) {
 				Conversation con = (Conversation) object;
 				for (Conversation c : conversationList) {
@@ -145,7 +161,7 @@ public class Server implements Runnable {
 					oos.writeObject(user);
 					sendConnectedClients();
 				}
-				while (!Thread.interrupted()) {
+				while (!socket.isClosed()) {
 					object = ois.readObject();
 					if (object instanceof Message) {
 						message = (Message) object;
@@ -155,11 +171,9 @@ public class Server implements Runnable {
 						oos.writeObject(con);
 					}
 				}
-			} catch (IOException e) {
-				System.err.println(e);
-			} catch (ClassNotFoundException e2) {
-				System.err.println(e2);
-			}
+                System.out.println("Client killed");
+//                disconnectClient();
+			} catch (Exception e) {}
 		}
 	}
 

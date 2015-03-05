@@ -52,6 +52,12 @@ public class Client {
         return userList;
     }
 
+    public void disconnectClient() {
+        try {
+            socket.close();
+        } catch (Exception e) {}
+    }
+
     private class Listener extends Thread {
 		public void run() {
             Object object;

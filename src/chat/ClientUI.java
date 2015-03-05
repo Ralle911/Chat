@@ -354,7 +354,7 @@ public class ClientUI extends JPanel {
 	private class DisconnectListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLobby==e.getSource()) {
-				controller.disconnectClient();
+				clientController.disconnectClient();
 			}
 		}
 	}

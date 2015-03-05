@@ -56,6 +56,10 @@ public class ClientController {
         ui.appendText(txt);
     }
 
+    public void disconnectClient() {
+        client.disconnectClient();
+    }
+
 //    public Conversation newConversation(String str) {
 //        String[] split = str.split(",");
 //        ArrayList<User> temp = new ArrayList<>();
