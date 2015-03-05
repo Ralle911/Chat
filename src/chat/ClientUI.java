@@ -14,8 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -74,6 +74,7 @@ public class ClientUI extends JPanel {
 	private GroupPanel2 groupPanel2;
 	
 	private ArrayList<JCheckBox> arrayListCheckBox = new ArrayList<JCheckBox>();
+	private ArrayList<JRadioButton> radioButtons = new ArrayList<JRadioButton>();
 	
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
 	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 8);
@@ -142,12 +143,10 @@ public class ClientUI extends JPanel {
     public void setConnectedUsers(ArrayList<User> connectedUsers) {
         tpConnectedUsers.setText("");
         updateCheckBoxes(connectedUsers);
+        updateRadioButtons(connectedUsers);
     	for (User user: connectedUsers) {
     		appendConnectedUsers(user.getId());
     	}
-    	
-    	
-    	
     }
     /*
      * Sï¿½tt sen till controller.setUser(); eller nï¿½got
@@ -259,25 +258,30 @@ public class ClientUI extends JPanel {
 		}
     }
     
+    public void updateRadioButtons (ArrayList<User> radioButtonUsers) {
+    	radioButtons.clear();
+    	groupPanel2.pnlNewGroup.removeAll();
+    	for (User user: radioButtonUsers) {
+    		radioButtons.add(new JRadioButton(user.getId()));
+    	}
+    	for (JRadioButton radio: radioButtons) {
+    		groupPanel2.pnlNewGroup.add(radio);
+    		groupPanel2.pnlOuterBorderLayout.revalidate();
+    		validate();
+    	}
+    }
+    
     public void updateCheckBoxes(ArrayList<User> checkBoxUsers) {
     	arrayListCheckBox.clear();
-    	groupPanel2.pnlNewGroup.removeAll();
     	groupPanel.pnlNewGroup.removeAll();
     	for (User user: checkBoxUsers) {
     		arrayListCheckBox.add(new JCheckBox(user.getId()));
     	}
-    	ArrayList<JCheckBox> arrayListCheckBox2 = new ArrayList<JCheckBox>(arrayListCheckBox);
     	for (JCheckBox box: arrayListCheckBox) {
     		groupPanel.pnlNewGroup.add(box);
     		groupPanel.pnlOuterBorderLayout.revalidate();
 	    	validate();
     	}
-    	for (JCheckBox box2: arrayListCheckBox2) {
-    		groupPanel2.pnlNewGroup.add(box2);
-    		groupPanel2.pnlOuterBorderLayout.revalidate();
-	    	validate();
-    	}
-    	
     }
     
     public void appendConnectedUsers(String message){
