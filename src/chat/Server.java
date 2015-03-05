@@ -59,16 +59,6 @@ public class Server implements Runnable {
 		writeToAll(connectedUsers);
 	}
 
-    public boolean checkUserStatus(User user) {
-        for (ConnectedClient client : connectedClients) {
-            if (client.getUser().getId().equals(user.getId())) {
-                client.write("Client already online - pick another name!");
-                return true;
-            }
-        }
-        return false;
-    }
-
 	public void run() {
 		System.out.println("Server started");
 		while (true) {
@@ -136,32 +126,36 @@ public class Server implements Runnable {
 		 * server. If not, adds the object to servers list and returns the
 		 * object. Else returns the given object.
 		 *
-		 * @param object
-		 *            User or Conversation object.
+		 * @param user User or Conversation object.
 		 * @return The object that's already saved on the server, or the given
 		 *         object.
 		 */
-		public Object checkObject(Object object) {
-			if (object instanceof User) {
-				User user = (User) object;
-				for (User u : registeredUsers) {
-					if (u.getId().equals(user.getId())) {
-                        this.user = u;
-                        return u;
-					}
-				}
-				this.user = user;
-				registeredUsers.add(user);
-			} else if (object instanceof Conversation) {
-				Conversation con = (Conversation) object;
-				for (Conversation c : conversationList) {
-					if (c.getId() == con.getId()) {
-						return c;
-					}
-				}
-			}
-			return object;
-		}
+		public boolean isUserInDatabase(User user) {
+            for (User u : registeredUsers) {
+                if (u.getId().equals(user.getId())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public boolean isUserOnline(User user) {
+            for (ConnectedClient client : connectedClients) {
+                if (client.getUser().getId().equals(user.getId())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public User getUser(String id) {
+            for (User user : registeredUsers) {
+                if (user.getId().equals(id)) {
+                    return user;
+                }
+            }
+            return null;
+        }
 
 		public void run() {
 			Object object = null;
@@ -169,13 +163,17 @@ public class Server implements Runnable {
 			try {
             User usr = null;
 
-                do {
-                    object = ois.readObject();
-                    object = checkObject(object);
-                    if (object instanceof User) {
-                        usr = (User) object;
-                    }
-                } while (checkUserStatus(usr));
+                usr = (User)ois.readObject();
+                while(isUserOnline(usr)) {
+                    write("Client already connected - pick another name!");
+                    usr = (User)ois.readObject();
+                }
+                if (!isUserInDatabase(usr)) {
+                    registeredUsers.add(usr);
+                } else {
+                    usr = getUser(usr.getId());
+                }
+                user = usr;
 
                 oos.writeObject(user);
                 sendConnectedClients();
