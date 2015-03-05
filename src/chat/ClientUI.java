@@ -74,8 +74,8 @@ public class ClientUI extends JPanel {
 	private GroupPanel groupPanel;
 	private GroupPanel2 groupPanel2;
 	
-	public ClientUI() { //ClientController clientController
-//		this.clientController = clientController;
+	public ClientUI(ClientController clientController) { //ClientController clientController
+		this.clientController = clientController;
 		lookAndFeel(); 
         initGraphics();
 		initListeners();
@@ -276,10 +276,15 @@ public class ClientUI extends JPanel {
     
     public void setNewChatTab(String userString) {
     	String[] users = userString.split(",");
+    	JButton btn2 = new JButton("TEST");
     	for (int i = 0; i <= users.length -1; i++) {
+    		
+    		JButton btn1 = new JButton(users[i]);
+    		eastPanelCenterNorth.add(btn1);
     		System.out.println(users[i]);
-    		 eastPanelCenterNorth.add(new JButton(users[i]));
+    		eastPanelCenterNorth.add(btn2); 
     	}
+    	this.userString = "";
     }
     
     public void lookAndFeel() {
@@ -312,6 +317,7 @@ public class ClientUI extends JPanel {
 				groupPanel.start();
 			}
 			if (btnCreateGroup == e.getSource()) {
+				setNewChatTab(userString);
 //				clientController.newConversation();
 				groupPanel.getFrame().dispose();
 			}
@@ -342,12 +348,12 @@ public class ClientUI extends JPanel {
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		ClientUI ui = new ClientUI();
-		JFrame frame = new JFrame();
-		frame.add(ui);
-		frame.pack();
-		frame.setVisible(true);
-	}
+//	
+//	public static void main(String[] args) {
+//		ClientUI ui = new ClientUI();
+//		JFrame frame = new JFrame();
+//		frame.add(ui);
+//		frame.pack();
+//		frame.setVisible(true);
+//	}
 }
