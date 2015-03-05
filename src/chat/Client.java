@@ -101,7 +101,6 @@ public class Client {
                     if (object instanceof ArrayList) {  /* ArrayList with Users */
                         userList = (ArrayList<User>)object;
                         controller.setConnectedUsers(userList);
-                        controller.appendText("User List set");
                     }
                     object = ois.readObject();          /* Message */
                     controller.newMessage(object);
