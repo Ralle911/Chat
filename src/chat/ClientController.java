@@ -30,7 +30,7 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
-            ui.appendText(message.getFrom().getId() + ": " + (String)message.getContent());
+            ui.appendText(message.getTimestamp() + " " + message.getFrom().getId() + ": " + (String)message.getContent());
         } else {
             ui.appendText(object.toString());
         }
