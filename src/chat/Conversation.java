@@ -7,22 +7,22 @@ import java.util.HashSet;
  * @author Kalle Bornemark
  */
 public class Conversation implements Serializable {
-    private HashSet<String> involvedUsersID;
+    private HashSet<String> involvedUsers;
     private ChatLog conversationLog;
     private int id;
     private static int numberOfConversations = 0;
 
     public Conversation(HashSet<String> involvedUsersID) {
-        this.involvedUsersID = involvedUsersID;
+        this.involvedUsers = involvedUsersID;
         id = ++numberOfConversations;
     }
 
-    public HashSet<String> getInvolvedUsersID() {
-        return involvedUsersID;
+    public HashSet<String> getInvolvedUsers() {
+        return involvedUsers;
     }
 
     public void setInvolvedUsersID(HashSet<String> involvedUsersID) {
-        this.involvedUsersID = involvedUsersID;
+        this.involvedUsers = involvedUsersID;
     }
 
     public ChatLog getConversationLog() {
