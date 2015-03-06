@@ -303,7 +303,6 @@ public class ClientUI extends JPanel {
     		}
     	}
     	if(counter < 6) {
-    		System.out.println("TESTESTST");
     	//GroupChatList är en JButton Array
 	    	groupChatList[counter] = (new JButton(userString));
 	    	groupChatList[counter].setPreferredSize(new Dimension(120,30));
