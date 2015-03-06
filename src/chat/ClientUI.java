@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -44,7 +45,6 @@ public class ClientUI extends JPanel {
 	private JPanel pnlGroupSend = new JPanel(new GridLayout(1,2,8,8));
 	
 	private String userString = "";
-	private String userString2 = "";
 	
 	private JLabel lblUser = new JLabel("User");
 
@@ -59,9 +59,6 @@ public class ClientUI extends JPanel {
 	private JTextPane tpConnectedUsers = new JTextPane();
 	
 	private JTextField tfMessageWindow = new JTextField();
-	
-	private JCheckBox cbUser1 = new JCheckBox("Kallexander");
-	private JCheckBox cbUser2 = new JCheckBox("Jimmo");
 		
 	private JScrollPane scrollConnectedUsers = new JScrollPane(tpConnectedUsers);
 	private JScrollPane scroll = new JScrollPane(tpChatWindow);
@@ -73,12 +70,13 @@ public class ClientUI extends JPanel {
 	private GroupPanel2 groupPanel2;
 	
 	private ArrayList<JCheckBox> arrayListCheckBox = new ArrayList<JCheckBox>();
-	private ArrayList<JRadioButton> radioButtons = new ArrayList<JRadioButton>();
+	private ArrayList<JRadioButton> arrayListRadioButtons = new ArrayList<JRadioButton>();
 	
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
-	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 8);
-	
-	CheckBoxListener checkBoxListener = new CheckBoxListener();
+	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 10);
+//	
+//	private CheckBoxListener checkBoxListener = new CheckBoxListener();
+//	private RadioButtonListener radioButtonListener = new RadioButtonListener();
 	
 	public ClientUI(ClientController clientController) { //ClientController clientController
 		this.clientController = clientController;
@@ -150,7 +148,7 @@ public class ClientUI extends JPanel {
      * S�tt sen till controller.setUser(); eller n�got
      */
     public void setUserText(String user) {
-    	lblUser.setText(user);
+    	lblUser.setText(clientController.getUserID());  // <------
     	lblUser.setFont(txtFont);
     }
     
@@ -163,7 +161,6 @@ public class ClientUI extends JPanel {
     	public JFrame getFrame() {
     		return groupFrame;
     	}
-    	
     	
 	    public void run() {
 	    	panelBuilder();
@@ -191,7 +188,7 @@ public class ClientUI extends JPanel {
     	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
     	private JPanel pnlNewGroup = new JPanel();
     	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
-    	
+    	private ButtonGroup grpRadioButtons; 
     	
     	public JFrame getFrame() {
     		return groupFrame;
@@ -257,16 +254,20 @@ public class ClientUI extends JPanel {
     }
     
     public void updateRadioButtons (ArrayList<User> radioButtonUsers) {
-    	radioButtons.clear();
+    	arrayListRadioButtons.clear();
     	groupPanel2.pnlNewGroup.removeAll();
+    	groupPanel2.grpRadioButtons = null;
+    	groupPanel2.grpRadioButtons = new ButtonGroup();
     	for (User user: radioButtonUsers) {
-    		radioButtons.add(new JRadioButton(user.getId()));
+    		arrayListRadioButtons.add(new JRadioButton(user.getId()));
     	}
-    	for (JRadioButton radio: radioButtons) {
+    	for (JRadioButton radio: arrayListRadioButtons) {
+//    		radio.addActionListener(radioButtonListener);
+    		groupPanel2.grpRadioButtons.add(radio);
     		groupPanel2.pnlNewGroup.add(radio);
-    		groupPanel2.pnlOuterBorderLayout.revalidate();
-    		validate();
     	}
+    	groupPanel2.pnlOuterBorderLayout.revalidate();
+    	validate();
     }
     
     public void updateCheckBoxes(ArrayList<User> checkBoxUsers) {
@@ -276,11 +277,11 @@ public class ClientUI extends JPanel {
     		arrayListCheckBox.add(new JCheckBox(user.getId()));
     	}
     	for (JCheckBox box: arrayListCheckBox) {
-    		box.addActionListener(checkBoxListener);
+//    		box.addActionListener(checkBoxListener);
     		groupPanel.pnlNewGroup.add(box);
-    		groupPanel.pnlOuterBorderLayout.revalidate();
-	    	validate();
     	}
+    	groupPanel.pnlOuterBorderLayout.revalidate();
+	   	validate();
     }
     
     public void appendConnectedUsers(String message){
@@ -292,8 +293,7 @@ public class ClientUI extends JPanel {
 		}
     }
     
-    public void setNewChatTab(String userString) {
-    	String[] users = userString.split(",");
+    public void newConversation(String userString) {
     	if(counter < 6) {
 	    	groupChatList[counter] = (new JButton(userString));
 	    	groupChatList[counter].setPreferredSize(new Dimension(120,30));
@@ -332,54 +332,42 @@ public class ClientUI extends JPanel {
 	}
 	
 	private class GroupListener implements ActionListener {
+		private String[] participants;
 		public void actionPerformed(ActionEvent e) {
 			if (btnNewGroupChat == e.getSource()) {
 				groupPanel.getFrame().setVisible(true);
 			}
 			if (btnCreateGroup == e.getSource()) {
-				setNewChatTab(userString);
-//				clientController.newConversation();
-				groupPanel.getFrame().dispose();
+				participants = null;
+				participants = new String[arrayListCheckBox.size()];
+				for(int i = 0; i < arrayListCheckBox.size(); i++) {
+					if(arrayListCheckBox.get(i).isSelected()) {
+						participants[i] = arrayListCheckBox.get(i).getText();
+					}
+				}
+				clientController.sendParticipants(participants);
+				groupPanel.getFrame().dispose();	
 			}
 		}
 	}
 	
+	
 	private class PrivateListener implements ActionListener {
+		private String[] participants;
 		public void actionPerformed(ActionEvent e) {
 			if (btnNewPrivateMessage == e.getSource()) {
 				groupPanel2.getFrame().setVisible(true);
 			}
 			if (btnCreatePrivateMessage == e.getSource()) {
-//				clientController.newConversation();
-				setNewChatTab(userString);
+				participants = null;
+				participants = new String[arrayListRadioButtons.size()];
+				for(int i = 0; i < arrayListRadioButtons.size(); i++) {
+					if(arrayListRadioButtons.get(i).isSelected()) {
+						participants[i] = arrayListRadioButtons.get(i).getText();
+					}
+				}
+				clientController.sendParticipants(participants);
 				groupPanel2.getFrame().dispose();
-			}
-		}
-	}
-	
-	private class CheckBoxListener implements ActionListener {
-		private ArrayList<String> list = new ArrayList<String>();
-		public void actionPerformed(ActionEvent arg0) {
-			Boolean bol = true;
-			list.clear();
-			for(int i = 0; i < arrayListCheckBox.size(); i++) {
-				if(arrayListCheckBox.get(i).isSelected()) {
-					for(String str : list) {
-						if(arrayListCheckBox.get(i).getText()==str) {
-							bol = false;
-						}
-					}
-					if(bol == true) {
-						list.add(arrayListCheckBox.get(i).getText());
-					}
-				}
-			}
-			for(int i = 0; i < list.size(); i++) {
-				if(i == 0) {
-					userString = list.get(i) + " ";
-				}else{
-					userString += list.get(i) + " ";
-				}
 			}
 		}
 	}
@@ -391,7 +379,7 @@ public class ClientUI extends JPanel {
 			}
 		}
 	}
-//	
+	
 //	public static void main(String[] args) {
 //		ClientUI ui = new ClientUI();
 //		JFrame frame = new JFrame();
