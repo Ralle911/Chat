@@ -36,7 +36,6 @@ import javax.swing.text.StyledDocument;
 public class ClientUI extends JPanel {
 	private JButton[] groupChatList = new JButton[7];
 	private int counter = 0;
-	private String user1 = "",user2 = "";
 	
 	private JPanel southPanel = new JPanel();
 	private JPanel eastPanel = new JPanel();
@@ -78,6 +77,8 @@ public class ClientUI extends JPanel {
 	
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
 	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 8);
+	
+	CheckBoxListener checkBoxListener = new CheckBoxListener();
 	
 	public ClientUI(ClientController clientController) { //ClientController clientController
 		this.clientController = clientController;
@@ -127,18 +128,15 @@ public class ClientUI extends JPanel {
     	tfMessageWindow.addActionListener(new EnterListener());
     	GroupListener groupListener = new GroupListener();
     	PrivateListener privateListener = new PrivateListener();
-    	CheckBoxListener checkBoxListener = new CheckBoxListener();
     	DisconnectListener disconnectListener = new DisconnectListener();
     	btnNewGroupChat.addActionListener(groupListener);
     	btnCreateGroup.addActionListener(groupListener);
     	btnNewPrivateMessage.addActionListener(privateListener);
     	btnCreatePrivateMessage.addActionListener(privateListener);
-    	cbUser1.addActionListener(checkBoxListener);
-    	cbUser2.addActionListener(checkBoxListener);
     	btnLobby.addActionListener(disconnectListener);
     }
     /*
-     * Nï¿½r servern updaterar Users
+     * N�r servern updaterar Users
      */
     public void setConnectedUsers(ArrayList<User> connectedUsers) {
         tpConnectedUsers.setText("");
@@ -149,7 +147,7 @@ public class ClientUI extends JPanel {
     	}
     }
     /*
-     * Sï¿½tt sen till controller.setUser(); eller nï¿½got
+     * S�tt sen till controller.setUser(); eller n�got
      */
     public void setUserText(String user) {
     	lblUser.setText(user);
@@ -278,6 +276,7 @@ public class ClientUI extends JPanel {
     		arrayListCheckBox.add(new JCheckBox(user.getId()));
     	}
     	for (JCheckBox box: arrayListCheckBox) {
+    		box.addActionListener(checkBoxListener);
     		groupPanel.pnlNewGroup.add(box);
     		groupPanel.pnlOuterBorderLayout.revalidate();
 	    	validate();
@@ -326,8 +325,8 @@ public class ClientUI extends JPanel {
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			clientController.sendMessage(tfMessageWindow.getText());
-//			appendText(tfMessageWindow.getText()); //Temporï¿½r fï¿½r att testa utan server
-//			appendConnectedUsers(tfMessageWindow.getText()); //Temporï¿½r fï¿½r att testa utan server
+//			appendText(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
+//			appendConnectedUsers(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
 			tfMessageWindow.setText("");
 		}
 	}
@@ -338,7 +337,6 @@ public class ClientUI extends JPanel {
 				groupPanel.getFrame().setVisible(true);
 			}
 			if (btnCreateGroup == e.getSource()) {
-				userString = user1 + " " + user2;
 				setNewChatTab(userString);
 //				clientController.newConversation();
 				groupPanel.getFrame().dispose();
@@ -360,18 +358,28 @@ public class ClientUI extends JPanel {
 	}
 	
 	private class CheckBoxListener implements ActionListener {
+		private ArrayList<String> list = new ArrayList<String>();
 		public void actionPerformed(ActionEvent arg0) {
-			if (cbUser1.isSelected()==true) {
-				user1 = cbUser1.getText();
+			Boolean bol = true;
+			list.clear();
+			for(int i = 0; i < arrayListCheckBox.size(); i++) {
+				if(arrayListCheckBox.get(i).isSelected()) {
+					for(String str : list) {
+						if(arrayListCheckBox.get(i).getText()==str) {
+							bol = false;
+						}
+					}
+					if(bol == true) {
+						list.add(arrayListCheckBox.get(i).getText());
+					}
+				}
 			}
-			if (cbUser2.isSelected()==true) {
-				user2 = cbUser2.getText();
-			}
-			if (cbUser1.isSelected()==false) {
-				user1 = "";
-			}
-			if (cbUser2.isSelected()==false) {
-				user2 = "";
+			for(int i = 0; i < list.size(); i++) {
+				if(i == 0) {
+					userString = list.get(i) + " ";
+				}else{
+					userString += list.get(i) + " ";
+				}
 			}
 		}
 	}

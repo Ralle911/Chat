@@ -89,7 +89,6 @@ public class Server implements Runnable {
 			} catch (IOException e) {
 			}
 			client.start();
-			server.writeToAll("Client connected: " + socket.getInetAddress());
 		}
 
 		public User getUser() {
@@ -124,7 +123,7 @@ public class Server implements Runnable {
         public void disconnectClient() {
             removeConnectedClient();
             sendConnectedClients();
-            writeToAll("Client disconnted: " + user.getId());
+            writeToAll("[Server: Client disconnected: " + user.getId() + "]");
             try {
                 socket.close();
             } catch (Exception e) {}
@@ -168,7 +167,7 @@ public class Server implements Runnable {
                 user = usr;
                 
                 while(isUserOnline(usr.getId())) {
-                    write("Client already connected - pick another name!");
+                    write("[Server: Client named " + usr.getId() + " already connected - pick another one!]");
                     object = ois.readObject();
                     usr = (User)object;
                 }
@@ -181,7 +180,9 @@ public class Server implements Runnable {
                 }
                 user = usr;
 
+
                 oos.writeObject(user);
+                server.writeToAll("[Server: Client connected: " + user.getId() + "]");
                 sendConnectedClients();
 
 				while (!Thread.interrupted()) {

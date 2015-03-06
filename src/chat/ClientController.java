@@ -23,7 +23,7 @@ public class ClientController {
         this.client = client;
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				JFrame frame = new JFrame();
+				JFrame frame = new JFrame("bIRC");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.add(ui);
 				frame.pack();
@@ -47,7 +47,7 @@ public class ClientController {
         if (object instanceof Message) {
             Message message = (Message)object;
             ui.appendText(message.getTimestamp() + " " + message.getFrom().getId() + ": " + (String)message.getContent());
-        } else {
+        } else if (object instanceof String) {
             ui.appendText(object.toString());
         }
     }
