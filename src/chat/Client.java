@@ -108,6 +108,10 @@ public class Client {
                     if (object instanceof ArrayList) {  /* ArrayList with Users */
                         userList = (ArrayList<User>)object;
                         controller.setConnectedUsers(userList);
+                    } else if (object instanceof Conversation) {
+                        Conversation con = (Conversation)object;
+                        user.addConversations(con);
+                        controller.newConversation(con);
                     }
                     object = ois.readObject();          /* Message */
                     controller.newMessage(object);
