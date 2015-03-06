@@ -2,6 +2,7 @@ package chat;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Controller class to handle system logic.
@@ -77,8 +78,12 @@ public class ClientController {
         client.sendMessage(message);
     }
 
-    public void sendParticipant(String[] participants) {
-        client.sendObject(participants);
+    public void sendParticipants(String[] participants) {
+    	HashSet<String> setParticpants = new HashSet<>();
+    	for(String participant: participants) {
+    		setParticpants.add(participant);
+    	}
+        client.sendObject(setParticpants);
     }
 
     /**
