@@ -293,8 +293,17 @@ public class ClientUI extends JPanel {
 		}
     }
     
-    public void newConversation(String userString) {
+    public void createConversation(String[] participants, int ID) {
+    	for (int i = 0; i < participants.length; i++) {
+    		if (i == 0) {
+    			userString += ID + " " + participants[i];
+    		}else {
+    			userString += participants[i] + ", " ;
+    		}
+    	}
     	if(counter < 6) {
+    		
+    	//GroupChatList är en JButton Array
 	    	groupChatList[counter] = (new JButton(userString));
 	    	groupChatList[counter].setPreferredSize(new Dimension(120,30));
 	    	groupChatList[counter].setFont(fontGroupButton);
