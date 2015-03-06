@@ -97,7 +97,7 @@ public class Client {
                     object = ois.readObject();              /* Recieve the correct User object from server */
                     if (object instanceof User) {
                         user = (User)object;
-                        controller.appendText("Logged in as " + user.getId());
+                        controller.appendText("[Server: You logged in as " + user.getId() + "]");
                     } else {
                         controller.appendText((String)object);
                     }
