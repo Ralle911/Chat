@@ -23,6 +23,7 @@ public class Server implements Runnable {
 	public Server(int port) {
 		registeredUsers = new ArrayList<>();
 		connectedClients = new ArrayList<>();
+        allConversations = new ArrayList<>();
 		try {
 			serverSocket = new ServerSocket(port);
 			new Thread(this).start();
