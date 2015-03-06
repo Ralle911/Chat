@@ -3,7 +3,7 @@ package chat;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Log {
+public class ChatLog implements Iterable<Message> {
 	private LinkedList<Message> list = new LinkedList<Message>();
 	private static int MESSAGE_LIMIT = 30;
 	
@@ -12,9 +12,10 @@ public class Log {
 			list.removeLast();
 		}
 		list.add(message);
+		
 	}
 	
-	private Iterator iterator(){
+	private Iterator<Message> iterator(){
 		return list.iterator();
 	}
 }
