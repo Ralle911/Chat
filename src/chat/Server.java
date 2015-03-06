@@ -45,17 +45,26 @@ public class Server implements Runnable {
 		}
 	}
 
-	public void sendConverasations(Conversation con) {
+	public void sendConversation(Conversation con) {
 		HashSet<String> users = con.getInvolvedUsers();
-		Iterator<String> itr = users.iterator();
-		while (itr.hasNext()) {
-			String user = itr.next();
-			for (ConnectedClient client : connectedClients) {
-				if (client.getUser().getId() == user) {
-					client.write(con);
-				}
-			}
-		}
+        for (String s : users) {
+            for (ConnectedClient c : connectedClients) {
+                if (c.getUser().getId().equals(s)) {
+                    c.write(con);
+                }
+            }
+        }
+
+
+//		Iterator<String> itr = users.iterator();
+//		while (itr.hasNext()) {
+//			String user = itr.next();
+//			for (ConnectedClient client : connectedClients) {
+//				if (client.getUser().getId() == user) {
+//					client.write(con);
+//				}
+//			}
+//		}
 	}
 
 	public void sendConnectedClients() {
@@ -183,16 +192,16 @@ public class Server implements Runnable {
 			}
 			addConversation(conversation);
 			allConversations.add(conversation);
-			sendConverasations(conversation);
+			sendConversation(conversation);
 			System.out.println("2");
 
 		}
 
 		public void addConversation(Conversation con) {
 
-			for (String ID : con.getInvolvedUsers()) {
+            for (User user : registeredUsers) {
 
-				for (User user : registeredUsers) {
+			    for (String ID : con.getInvolvedUsers()) {
 
 					if (ID.equals(user.getId())) {
 						user.addConversations(con);

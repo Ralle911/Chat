@@ -116,9 +116,10 @@ public class ClientController {
     }
 
     public void newConversation(Conversation con) {
-        String[] users = (String[])con.getInvolvedUsers().toArray();
+        HashSet<String> users = con.getInvolvedUsers();
+        String[] usersHashToStringArray = users.toArray(new String[users.size()]);
         int conID = con.getId();
-        ui.createConversation(users, conID);
+        ui.createConversation(usersHashToStringArray, conID);
     }
 
 //    public Conversation newConversation(String str) {
