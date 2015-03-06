@@ -3,7 +3,7 @@ package chat;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Log {
+public class ChatLog {
 	private LinkedList<Message> list = new LinkedList<Message>();
 	private static int MESSAGE_LIMIT = 30;
 	
