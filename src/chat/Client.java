@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Model class for the client.
@@ -83,6 +84,24 @@ public class Client {
         } catch (Exception e) {}
     }
 
+    public void printLog() {
+        ArrayList<Conversation> conversations = user.getConversations();
+        for (Conversation con : conversations) {
+            if (con.getId() == 1) {
+                ChatLog log = con.getConversationLog();
+                while (log.iterator().hasNext()) {
+                    controller.appendText((String)log.iterator().next().getContent());
+                }
+            }
+        }
+    }
+
+    public void initConversations() {
+        for (Conversation con : user.getConversations()) {
+            controller.newConversation(con);
+        }
+    }
+
     /**
      * Class to handle communication between client and server.
      */
@@ -98,6 +117,7 @@ public class Client {
                     if (object instanceof User) {
                         user = (User)object;
                         controller.appendText("[Server: You logged in as " + user.getId() + "]");
+                        initConversations();
                     } else {
                         controller.appendText((String) object);
                     }
