@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * Model class for the server.
@@ -44,6 +43,10 @@ public class Server implements Runnable {
 			writeToAll(message);
 		}
 	}
+
+    public void sendObject(Object object) {
+        writeToAll(object);
+    }
 
 	public void sendConversation(Conversation con) {
 		HashSet<String> users = con.getInvolvedUsers();
@@ -204,7 +207,7 @@ public class Server implements Runnable {
 			    for (String ID : con.getInvolvedUsers()) {
 
 					if (ID.equals(user.getId())) {
-						user.addConversations(con);
+						user.addConversation(con);
 					}
 				}
 			}
@@ -253,7 +256,9 @@ public class Server implements Runnable {
 					} else if (object instanceof HashSet) {
 						HashSet<String> participants = (HashSet<String>) object;
 						updateConversation(participants);
-					}
+					} else {
+                        server.sendObject(object);
+                    }
 				}
 			} catch (IOException e) {
 				disconnectClient();

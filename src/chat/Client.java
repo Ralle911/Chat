@@ -99,22 +99,24 @@ public class Client {
                         user = (User)object;
                         controller.appendText("[Server: You logged in as " + user.getId() + "]");
                     } else {
-                        controller.appendText((String)object);
+                        controller.appendText((String) object);
                     }
                 }
 
-                object = ois.readObject();
                 while (!Thread.interrupted()) {         /* Client listens to new ArrayList<User> and Messages */
-                    if (object instanceof ArrayList) {  /* ArrayList with Users */
+                    object = ois.readObject();
+                    if (object instanceof Message) {
+                        controller.newMessage(object);
+                    } else if (object instanceof ArrayList) {  /* ArrayList with Users */
                         userList = (ArrayList<User>)object;
                         controller.setConnectedUsers(userList);
                     } else if (object instanceof Conversation) {
                         Conversation con = (Conversation)object;
-                        user.addConversations(con);
+                        user.addConversation(con);
                         controller.newConversation(con);
+                    } else {
+                        controller.newMessage(object);
                     }
-                    object = ois.readObject();          /* Message */
-                    controller.newMessage(object);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

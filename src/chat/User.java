@@ -20,7 +20,7 @@ public class User implements Serializable {
         return conversations;
     }
 
-    public void addConversations(Conversation conversation) {
+    public void addConversation(Conversation conversation) {
         conversations.add(conversation);
     }
 
