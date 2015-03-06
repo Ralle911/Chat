@@ -73,6 +73,10 @@ public class ClientController {
         client.sendMessage(message);
     }
 
+    public String getUserID () {
+        return client.getUser().getId();
+    }
+
     public void sendMessage(Object content) {
         Message message = new Message(client.getUser().getId(), content);
         client.sendMessage(message);
