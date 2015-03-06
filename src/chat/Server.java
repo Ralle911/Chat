@@ -39,9 +39,33 @@ public class Server implements Runnable {
 	}
 
 	public void sendMessage(Message message) {
-		if (message.getConversationID() == -1) {
-			writeToAll(message);
-		}
+        if (message.getConversationID() == -1) {
+            writeToAll(message);
+        } else {
+            User currentUser = null;
+            Conversation conversation = null;
+            // Hitta avsändare
+            for (ConnectedClient cClient : connectedClients) {
+                if (cClient.getUser().getId().equals(message.getFromUserID())) {
+                    currentUser = cClient.getUser();
+                    // Hitta rätt konversation
+                    for (Conversation con : currentUser.getConversations()) {
+                        if (con.getId() == message.getConversationID()) {
+                            conversation = con;
+                            // Hitta rätt mottagare
+                            for (String s : con.getInvolvedUsers()) {
+                                for (ConnectedClient conClient : connectedClients) {
+                                    if (conClient.getUser().getId().equals(s)) {
+                                        conClient.write(message);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            conversation.addMessage(message);
+        }
 	}
 
     public void sendObject(Object object) {
@@ -192,12 +216,11 @@ public class Server implements Runnable {
 			}
 			if (!exists) {
 				conversation = new Conversation(participants);
-			}
-			addConversation(conversation);
-			allConversations.add(conversation);
+			    addConversation(conversation);
+                allConversations.add(conversation);
+            }
 			sendConversation(conversation);
 			System.out.println("2");
-
 		}
 
 		public void addConversation(Conversation con) {
@@ -212,6 +235,15 @@ public class Server implements Runnable {
 				}
 			}
 		}
+
+        public Conversation isPartOfConversation(Message message) {
+            for (Conversation con : user.getConversations()) {
+                if (con.getId() == message.getConversationID()) {
+                    return con;
+                }
+            }
+            return null;
+        }
 
 		public void run() {
 			Object object = null;
@@ -242,11 +274,11 @@ public class Server implements Runnable {
 						+ "]");
 				sendConnectedClients();
 
-				while (!Thread.interrupted()) { /*
-												 * Loops and checks for incoming
+                while (!Thread.interrupted()) { /*
+                                                 * Loops and checks for incoming
 												 * Objects from User
 												 */
-					object = ois.readObject();
+                    object = ois.readObject();
 					if (object instanceof Message) {
 						message = (Message) object;
 						server.sendMessage(message);
