@@ -14,6 +14,7 @@ public class Conversation implements Serializable {
 
     public Conversation(HashSet<String> involvedUsersID) {
         this.involvedUsers = involvedUsersID;
+        this.conversationLog = new ChatLog();
         id = ++numberOfConversations;
     }
 
@@ -29,8 +30,9 @@ public class Conversation implements Serializable {
         return conversationLog;
     }
 
-    public void setConversationLog(ChatLog conversationLog) {
-        this.conversationLog = conversationLog;
+    public void addMessage(Message message) {
+        conversationLog.add(message);
+
     }
 
     public int getId() {
