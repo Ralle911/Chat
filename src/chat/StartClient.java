@@ -1,7 +1,5 @@
 package chat;
 
-import javax.swing.*;
-
 /**
  * Run class to start a client.
  *

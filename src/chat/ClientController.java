@@ -116,7 +116,7 @@ public class ClientController {
     }
 
     public void newConversation(Conversation con) {
-        String[] users = (String[])con.getInvolvedUsersID().toArray();
+        String[] users = (String[])con.getInvolvedUsers().toArray();
         int conID = con.getId();
         ui.createConversation(users, conID);
     }
