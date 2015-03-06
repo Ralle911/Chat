@@ -35,7 +35,7 @@ import javax.swing.text.StyledDocument;
  */
 
 public class ClientUI extends JPanel {
-	private JButton[] groupChatList = new JButton[7];
+    private JButton[] groupChatList = new JButton[20];
 	private int counter = 0;
 	
 	private JPanel southPanel = new JPanel();
@@ -275,7 +275,9 @@ public class ClientUI extends JPanel {
     	arrayListCheckBox.clear();
     	groupPanel.pnlNewGroup.removeAll();
     	for (User user: checkBoxUsers) {
-    		arrayListCheckBox.add(new JCheckBox(user.getId()));
+    		if (!user.getId().equals(clientController.getUserID())) {
+    			arrayListCheckBox.add(new JCheckBox(user.getId()));
+    		}
     	}
     	for (JCheckBox box: arrayListCheckBox) {
 //    		box.addActionListener(checkBoxListener);
@@ -295,26 +297,29 @@ public class ClientUI extends JPanel {
     }
     
     public void createConversation(String[] participants, int ID) {
+    	System.err.println(ID);
     	for (int i = 0; i < participants.length; i++) {
-    		if (i == 0) {
-    			userString += ID + " " + participants[i];
-    		}else {
+    		if (participants[i].equals(clientController.getUserID())==false) {
+    			if (i == participants.length - 1) { 
+    			userString += participants[i];
+    			}else {
     			userString += participants[i] + ", " ;
+    			}
     		}
     	}
-    	if(counter < 6) {
+    	if(ID < groupChatList.length && groupChatList[ID] == null) {
     	//GroupChatList är en JButton Array
-	    	groupChatList[counter] = (new JButton(userString));
-	    	groupChatList[counter].setPreferredSize(new Dimension(120,30));
-	    	groupChatList[counter].setFont(fontGroupButton);
+	    	groupChatList[ID] = (new JButton(userString));
+	    	groupChatList[ID].setPreferredSize(new Dimension(120,30));
+	    	groupChatList[ID].setFont(fontGroupButton);
 	    	
-    		eastPanelCenterNorth.add(groupChatList[counter]);
-    		counter++;
+    		eastPanelCenterNorth.add(groupChatList[ID]);
 	    	eastPanelCenterNorth.revalidate();
 	    	validate();
     	
-	    	this.userString = "";
+	    	
     	}
+    	this.userString = "";
     }
     
     public void lookAndFeel() {
@@ -355,9 +360,11 @@ public class ClientUI extends JPanel {
 						participants.add(arrayListCheckBox.get(i).getText());
 					}
 				}
-				temp = new String[participants.size()];
-				for (int i = 0; i < participants.size(); i++) {
-					temp[i] = participants.get(i);
+				temp = new String[participants.size() + 1];
+				
+				temp[0] = clientController.getUserID();
+				for (int i = 1; i <= participants.size(); i++) {
+					temp[i] = participants.get(i-1);
 				}
 				
 				clientController.sendParticipants(temp);
