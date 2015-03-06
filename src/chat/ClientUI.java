@@ -46,7 +46,7 @@ public class ClientUI extends JPanel {
 	
 	private String userString = "";
 	
-	private JLabel lblUser = new JLabel("User");
+	private JLabel lblUser = new JLabel();
 
 	private JButton btnSend = new JButton("Send");
 	private JButton btnNewGroupChat = new JButton("Gr");
@@ -137,6 +137,7 @@ public class ClientUI extends JPanel {
      * N�r servern updaterar Users
      */
     public void setConnectedUsers(ArrayList<User> connectedUsers) {
+    	setUserText();
         tpConnectedUsers.setText("");
         updateCheckBoxes(connectedUsers);
         updateRadioButtons(connectedUsers);
@@ -147,7 +148,7 @@ public class ClientUI extends JPanel {
     /*
      * S�tt sen till controller.setUser(); eller n�got
      */
-    public void setUserText(String user) {
+    public void setUserText() {
     	lblUser.setText(clientController.getUserID());  // <------
     	lblUser.setFont(txtFont);
     }
@@ -302,7 +303,7 @@ public class ClientUI extends JPanel {
     		}
     	}
     	if(counter < 6) {
-    		
+    		System.out.println("TESTESTST");
     	//GroupChatList är en JButton Array
 	    	groupChatList[counter] = (new JButton(userString));
 	    	groupChatList[counter].setPreferredSize(new Dimension(120,30));
@@ -341,20 +342,26 @@ public class ClientUI extends JPanel {
 	}
 	
 	private class GroupListener implements ActionListener {
-		private String[] participants;
+		private ArrayList<String> participants = new ArrayList<String>();
+		private String[] temp;
 		public void actionPerformed(ActionEvent e) {
 			if (btnNewGroupChat == e.getSource()) {
 				groupPanel.getFrame().setVisible(true);
 			}
 			if (btnCreateGroup == e.getSource()) {
-				participants = null;
-				participants = new String[arrayListCheckBox.size()];
+				participants.clear();
+				temp = null;
 				for(int i = 0; i < arrayListCheckBox.size(); i++) {
 					if(arrayListCheckBox.get(i).isSelected()) {
-						participants[i] = arrayListCheckBox.get(i).getText();
+						participants.add(arrayListCheckBox.get(i).getText());
 					}
 				}
-				clientController.sendParticipants(participants);
+				temp = new String[participants.size()];
+				for (int i = 0; i < participants.size(); i++) {
+					temp[i] = participants.get(i);
+				}
+				
+				clientController.sendParticipants(temp);
 				groupPanel.getFrame().dispose();	
 			}
 		}
@@ -362,21 +369,27 @@ public class ClientUI extends JPanel {
 	
 	
 	private class PrivateListener implements ActionListener {
-		private String[] participants;
+		private ArrayList<String> participants = new ArrayList<String>();
+		private String[] temp;
 		public void actionPerformed(ActionEvent e) {
 			if (btnNewPrivateMessage == e.getSource()) {
 				groupPanel2.getFrame().setVisible(true);
 			}
 			if (btnCreatePrivateMessage == e.getSource()) {
-				participants = null;
-				participants = new String[arrayListRadioButtons.size()];
+				participants.clear();
+				temp = null;
 				for(int i = 0; i < arrayListRadioButtons.size(); i++) {
 					if(arrayListRadioButtons.get(i).isSelected()) {
-						participants[i] = arrayListRadioButtons.get(i).getText();
+						participants.add(arrayListRadioButtons.get(i).getText());
 					}
 				}
-				clientController.sendParticipants(participants);
-				groupPanel2.getFrame().dispose();
+				temp = new String[participants.size()];
+				for (int i = 0; i < participants.size(); i++) {
+					temp[i] = participants.get(i);
+				}
+				
+				clientController.sendParticipants(temp);
+				groupPanel2.getFrame().dispose();	
 			}
 		}
 	}
@@ -388,12 +401,4 @@ public class ClientUI extends JPanel {
 			}
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		ClientUI ui = new ClientUI();
-//		JFrame frame = new JFrame();
-//		frame.add(ui);
-//		frame.pack();
-//		frame.setVisible(true);
-//	}
 }
