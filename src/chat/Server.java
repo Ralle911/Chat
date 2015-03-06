@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Model class for the server.
@@ -42,16 +43,19 @@ public class Server implements Runnable {
         if (message.getConversationID() == -1) {
             writeToAll(message);
         }
-//        else {
-//            Conversation conversation = message.getTo();
-//            for (User user : conversation.getUserList()) {
-//                for (ConnectedClient client : connectedClients) {
-//                    if (client.getUser() == user) {
-//                        client.write(message);
-//                    }
-//                }
-//            }
-//        }
+    }
+
+    public void sendConverasations (Conversation con) {
+        HashSet<String> users = con.getInvolvedUsersID();
+        Iterator<String> itr = users.iterator();
+        while (itr.hasNext()) {
+            String user = itr.next();
+            for (ConnectedClient client : connectedClients) {
+                if (client.getUser().getId() == user) {
+                    client.write(con);
+                }
+            }
+        }
     }
 
     public void sendConnectedClients() {
@@ -161,25 +165,23 @@ public class Server implements Runnable {
             return false;
         }
 
-        public void sendBackConversation(HashSet<String> participants) {
+        public void updateConversation(HashSet<String> participants) {
             boolean exists = false;
+            Conversation conversation = null;
             for (Conversation con : user.getConversations()) {
                 for (int i = 0; i < participants.size() && exists == false; i++) {
                     if (con.getInvolvedUsersID().equals(participants)) {
-                        try {
-                            oos.writeObject(con);
-                        } catch (IOException e) {
-                        }
+                        conversation = con;
+                        exists = true;
                     }
                 }
             }
-            Conversation con = new Conversation(participants);
-            addConversation(con);
-            allConversations.add(con);
-            try {
-                oos.writeObject(con);
-            } catch (IOException e) {
+            if (!exists) {
+                conversation = new Conversation(participants);
             }
+            addConversation(conversation);
+            allConversations.add(conversation);
+            sendConverasations(conversation);
         }
 
         public void addConversation(Conversation con) {
@@ -230,7 +232,7 @@ public class Server implements Runnable {
                         oos.writeObject(con);
                     } else if (object instanceof HashSet) {
                         HashSet<String> participants = (HashSet<String>) object;
-                        sendBackConversation(participants);
+                        updateConversation(participants);
                     }
                 }
             } catch (IOException e) {
