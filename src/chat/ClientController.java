@@ -46,36 +46,38 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
-            ui.appendText(message.getTimestamp() + " " + message.getFrom().getId() + ": " + (String)message.getContent());
+            ui.appendText(message.getTimestamp() + " " + message.getFromUserID() + ": " + (String)message.getContent());
         } else if (object instanceof String) {
             ui.appendText(object.toString());
         }
     }
 
-    /**
-     * Recieves a Conversation object including information of message destination,
-     * a User object including information of sender,
-     * and a String including the comment to be sent.
-     *
-     * @param to Conversation object including destination.
-     * @param from The User that sent it.
-     * @param comment The comment to be sent.
-     */
-    public void sendMessage(Conversation to, User from, String comment) {
-        Message msg = new Message(to, from, comment);
-        client.sendMessage(msg);
+//    /**
+//     * Recieves a Conversation object including information of message destination,
+//     * a User object including information of sender,
+//     * and a String including the comment to be sent.
+//     *
+//     * @param to Conversation object including destination.
+//     * @param from The User that sent it.
+//     * @param comment The comment to be sent.
+//     */
+//    public void sendMessage(Conversation to, User from, String comment) {
+//        Message msg = new Message(to, from, comment);
+//        client.sendMessage(msg);
+//    }
+
+    public void sendMessage(int conID, Object content) {
+        Message message = new Message(conID, client.getUser().getId(), content);
+        client.sendMessage(message);
     }
 
-    /**
-     * Sends a Message object to client with given String.
-     *
-     * @param msg The comment to be sent.
-     */
-    public void sendMessage(String msg) {
-        Conversation con = new Conversation(null);
-        con.setToAll(true);
-        Message message = new Message(con, client.getUser(), msg);
+    public void sendMessage(Object content) {
+        Message message = new Message(client.getUser().getId(), content);
         client.sendMessage(message);
+    }
+
+    public void sendParticipant(String[] participants) {
+        client.sendObject(participants);
     }
 
     /**

@@ -50,6 +50,13 @@ public class Client {
         } catch (IOException e) {}
     }
 
+    public void sendObject(Object object) {
+        try {
+            oos.writeObject(object);
+            oos.flush();
+        } catch (IOException e) {}
+    }
+
     public void setUser(String name) {
         user = new User(name);
     }

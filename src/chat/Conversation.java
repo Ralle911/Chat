@@ -1,27 +1,27 @@
 package chat;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * @author Kalle Bornemark
  */
 public class Conversation implements Serializable {
-    private String[] involvedUsersID;
+    private HashSet<String> involvedUsersID;
     private ChatLog conversationLog;
     private int id;
     private static int numberOfConversations = 0;
 
-    public Conversation(String[] involvedUsersID) {
+    public Conversation(HashSet<String> involvedUsersID) {
         this.involvedUsersID = involvedUsersID;
         id = ++numberOfConversations;
     }
 
-    public String[] getInvolvedUsersID() {
+    public HashSet<String> getInvolvedUsersID() {
         return involvedUsersID;
     }
 
-    public void setInvolvedUsersID(String[] involvedUsersID) {
+    public void setInvolvedUsersID(HashSet<String> involvedUsersID) {
         this.involvedUsersID = involvedUsersID;
     }
 

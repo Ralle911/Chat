@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Model class for the server.
@@ -17,7 +18,7 @@ public class Server implements Runnable {
 	private ServerSocket serverSocket;
 	private ArrayList<ConnectedClient> connectedClients;
 	private ArrayList<User> registeredUsers;
-	private ArrayList<Conversation> conversationList;
+	private ArrayList<Conversation> allConversations;
 
 	public Server(int port) {
 		registeredUsers = new ArrayList<>();
@@ -37,18 +38,19 @@ public class Server implements Runnable {
 	}
 
 	public void sendMessage(Message message) {
-		if (message.getTo().isToAll()) {
+		if (message.getConversationID() == -1) {
 			writeToAll(message);
-		} else {
-			Conversation conversation = message.getTo();
-			for (User user : conversation.getUserList()) {
-				for (ConnectedClient client : connectedClients) {
-					if (client.getUser() == user) {
-						client.write(message);
-					}
-				}
-			}
 		}
+//        else {
+//			Conversation conversation = message.getTo();
+//			for (User user : conversation.getUserList()) {
+//				for (ConnectedClient client : connectedClients) {
+//					if (client.getUser() == user) {
+//						client.write(message);
+//					}
+//				}
+//			}
+//		}
 	}
 
 	public void sendConnectedClients() {
@@ -157,6 +159,35 @@ public class Server implements Runnable {
             return false;
         }
 
+        public void sendBackConversation(HashSet<String> participants) {
+            boolean exists = false;
+            for (Conversation con : user.getConversations()) {
+                for (int i = 0; i < participants.size() && exists == false; i++) {
+                    if (con.getInvolvedUsersID().equals(participants)) {
+                        try {
+                            oos.writeObject(con);
+                        } catch (IOException e) {}
+                    }
+                }
+            }
+            Conversation con = new Conversation(participants);
+            addConversation(con);
+            allConversations.add(con);
+            try {
+                oos.writeObject(con);
+            } catch (IOException e) {}
+        }
+
+        public void addConversation(Conversation con) {
+            for (String ID : con.getInvolvedUsersID()) {
+                for (User user : registeredUsers) {
+                    if (ID.equals(user.getId())) {
+                        user.addConversations(con);
+                    }
+                }
+            }
+        }
+
         public void run() {
 			Object object = null;
 			Message message;
@@ -185,7 +216,7 @@ public class Server implements Runnable {
                 server.writeToAll("[Server: Client connected: " + user.getId() + "]");
                 sendConnectedClients();
 
-				while (!Thread.interrupted()) {
+				while (!Thread.interrupted()) {         /* Loops and checks for incoming Objects from User */
 					object = ois.readObject();
 					if (object instanceof Message) {
 						message = (Message) object;
@@ -193,7 +224,10 @@ public class Server implements Runnable {
 					} else if (object instanceof Conversation) {
 						Conversation con = (Conversation) object;
 						oos.writeObject(con);
-					}
+					} else if (object instanceof HashSet) {
+                        HashSet<String> participants = (HashSet<String>)object;
+                        sendBackConversation(participants);
+                    }
 				}
 			} catch (IOException e) {
 //                System.out.println("Client killed");
