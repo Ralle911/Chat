@@ -59,10 +59,13 @@ public class ClientUI extends JPanel {
 	private JTextPane tpChatWindow = new JTextPane();
 	private JTextPane tpConnectedUsers = new JTextPane();
 	
+	private ChatWindow test = new ChatWindow(-1);
+	
 	private JTextField tfMessageWindow = new JTextField();
 		
 	private JScrollPane scrollConnectedUsers = new JScrollPane(tpConnectedUsers);
-	private JScrollPane scroll = new JScrollPane(tpChatWindow);
+//	private JScrollPane scroll = new JScrollPane(tpChatWindow); // <-----
+	private JScrollPane scroll = new JScrollPane(test);
 	private JScrollPane scrollGroupRooms = new JScrollPane(eastPanelCenterNorth);
 	
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
@@ -247,12 +250,13 @@ public class ClientUI extends JPanel {
     }
     
     public void appendText(String message){
-    	StyledDocument doc = tpChatWindow.getStyledDocument();
-    	try {
-			doc.insertString(doc.getLength(), message + "\n", chatFont);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
-		}
+//    	StyledDocument doc = tpChatWindow.getStyledDocument();
+//    	try {
+//			doc.insertString(doc.getLength(), message + "\n", chatFont);
+//		} catch (BadLocationException e) {
+//			e.printStackTrace();
+//		}
+    	test.append(message);
     }
     
     public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
