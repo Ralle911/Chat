@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 
 /**
- * @author Kalle Bornemark
+ * Class to hold information of a conversation.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class Conversation implements Serializable {
     private HashSet<String> involvedUsers;

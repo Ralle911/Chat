@@ -10,7 +10,8 @@ import java.util.HashSet;
 /**
  * Model class for the client.
  *
- * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 
 public class Client {
@@ -18,7 +19,7 @@ public class Client {
     private ClientController controller;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
-    private ArrayList<User> userList;
+    private ArrayList<String> userList;
     private User user;
 
     /**
@@ -69,10 +70,6 @@ public class Client {
      */
     public User getUser() {
         return user;
-    }
-
-    public ArrayList<User> getUserList() {
-        return userList;
     }
 
     /**
@@ -128,7 +125,7 @@ public class Client {
                     if (object instanceof Message) {
                         controller.newMessage(object);
                     } else if (object instanceof ArrayList) {  /* ArrayList with Users */
-                        userList = (ArrayList<User>)object;
+                        userList = (ArrayList<String>)object;
                         controller.setConnectedUsers(userList);
                     } else if (object instanceof Conversation) {
                         Conversation con = (Conversation)object;

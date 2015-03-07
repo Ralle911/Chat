@@ -3,6 +3,13 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * Class to hold logged messages.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ */
+
 public class ChatLog implements Iterable<Message>, Serializable {
 	private LinkedList<Message> list = new LinkedList<Message>();
 	private static int MESSAGE_LIMIT = 30;

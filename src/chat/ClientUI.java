@@ -31,7 +31,8 @@ import javax.swing.text.StyledDocument;
 /**
  * Viewer class to handle the GUI.
  *
- * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 
 public class ClientUI extends JPanel {
@@ -136,13 +137,13 @@ public class ClientUI extends JPanel {
     /*
      * N�r servern updaterar Users
      */
-    public void setConnectedUsers(ArrayList<User> connectedUsers) {
+    public void setConnectedUsers(ArrayList<String> connectedUsers) {
     	setUserText();
         tpConnectedUsers.setText("");
         updateCheckBoxes(connectedUsers);
         updateRadioButtons(connectedUsers);
-    	for (User user: connectedUsers) {
-    		appendConnectedUsers(user.getId());
+    	for (String ID : connectedUsers) {
+    		appendConnectedUsers(ID);
     	}
     }
     /*
@@ -254,13 +255,13 @@ public class ClientUI extends JPanel {
 		}
     }
     
-    public void updateRadioButtons (ArrayList<User> radioButtonUsers) {
+    public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
     	arrayListRadioButtons.clear();
     	groupPanel2.pnlNewGroup.removeAll();
     	groupPanel2.grpRadioButtons = null;
     	groupPanel2.grpRadioButtons = new ButtonGroup();
-    	for (User user: radioButtonUsers) {
-    		arrayListRadioButtons.add(new JRadioButton(user.getId()));
+    	for (String ID : radioButtonUsersIDs) {
+    		arrayListRadioButtons.add(new JRadioButton(ID));
     	}
     	for (JRadioButton radio: arrayListRadioButtons) {
 //    		radio.addActionListener(radioButtonListener);
@@ -271,12 +272,12 @@ public class ClientUI extends JPanel {
     	validate();
     }
     
-    public void updateCheckBoxes(ArrayList<User> checkBoxUsers) {
+    public void updateCheckBoxes(ArrayList<String> checkBoxUserIDs) {
     	arrayListCheckBox.clear();
     	groupPanel.pnlNewGroup.removeAll();
-    	for (User user: checkBoxUsers) {
-    		if (!user.getId().equals(clientController.getUserID())) {
-    			arrayListCheckBox.add(new JCheckBox(user.getId()));
+    	for (String ID : checkBoxUserIDs) {
+    		if (!ID.equals(clientController.getUserID())) {
+    			arrayListCheckBox.add(new JCheckBox(ID));
     		}
     	}
     	for (JCheckBox box: arrayListCheckBox) {

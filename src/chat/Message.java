@@ -7,13 +7,14 @@ import java.util.Date;
 /**
  * Model class to handle messages
  *
- * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class Message implements Serializable {
     private String fromUserID;
     private Object content;
     private String timestamp;
-    private int conversationID = -1;            /* -1 means it's a lobby message */
+    private int conversationID = -1;    /* -1 means it's a lobby message */
     private static final long serialVersionUID = 133713371337L;
 
     public Message(int conversationID, String fromUserID, Object content) {

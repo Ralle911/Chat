@@ -7,9 +7,9 @@ import java.util.HashSet;
 /**
  * Controller class to handle system logic.
  *
- * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
-
 public class ClientController {
 	private ClientUI ui = new ClientUI(this);
     private Client client;
@@ -95,7 +95,7 @@ public class ClientController {
      *
      * @param userList The ArrayList with connected users.
      */
-    public void setConnectedUsers(ArrayList<User> userList) {
+    public void setConnectedUsers(ArrayList<String> userList) {
         ui.setConnectedUsers(userList);
     }
 

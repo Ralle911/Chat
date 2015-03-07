@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren, Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ * Class to hold information of a user.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class User implements Serializable {
     private static final long serialVersionUID = 1273274782824L;
