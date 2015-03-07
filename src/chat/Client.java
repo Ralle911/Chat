@@ -5,7 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * Model class for the client.
@@ -22,12 +21,6 @@ public class Client {
     private ArrayList<String> userList;
     private User user;
 
-    /**
-     * Constructor to create a new client.
-     *
-     * @param ip IP-address
-     * @param port Port
-     */
     public Client(String ip, int port) {
         try {
             socket = new Socket(ip, port);
@@ -41,17 +34,10 @@ public class Client {
     }
 
     /**
-     * Sends a Message object to the server.
+     * Sends an object object to the server.
      *
-     * @param message The Message object that should be sent to the server.
+     * @param object The object that should be sent to the server.
      */
-    public void sendMessage(Message message) {
-        try {
-            oos.writeObject(message);
-            oos.flush();
-        } catch (IOException e) {}
-    }
-
     public void sendObject(Object object) {
         try {
             oos.writeObject(object);
@@ -59,6 +45,11 @@ public class Client {
         } catch (IOException e) {}
     }
 
+    /**
+     * Sets the client user by creating a new User object with given name.
+     *
+     * @param name The name of the user to be created.
+     */
     public void setUser(String name) {
         user = new User(name);
     }
@@ -93,9 +84,69 @@ public class Client {
         }
     }
 
+    /**
+     * Sends the users conversations to the controller to be displayed in the UI.
+     */
     public void initConversations() {
         for (Conversation con : user.getConversations()) {
             controller.newConversation(con);
+        }
+    }
+
+    /**
+     * Asks for a username, creates a User object with given name and sends it to the server.
+     * The server then either accepts or denies the User object.
+     * If successful, sets the received User object as current user and announces login in chat.
+     * If not, notifies in chat and requests a new name.
+     */
+    public void setUser() {
+        Object object = null;
+        while (!(object instanceof User)) {
+            try {
+                controller.setName();
+                sendObject(user);
+                object = ois.readObject();
+                if (object instanceof User) {
+                    user = (User)object;
+                    controller.appendText("[Server: You logged in as " + user.getId() + "]");
+                    initConversations();
+                } else {
+                    controller.appendText((String) object);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e2) {
+                e2.printStackTrace();
+            }
+
+        }
+    }
+
+    /**
+     * Listens to incoming Messages, user lists, Conversations or server messages.
+     */
+    public void startCommunication() {
+        Object object;
+        try {
+            while (!Thread.interrupted()) {
+                object = ois.readObject();
+                if (object instanceof Message) {
+                    controller.newMessage(object);
+                } else if (object instanceof ArrayList) {
+                    userList = (ArrayList<String>)object;
+                    controller.setConnectedUsers(userList);
+                } else if (object instanceof Conversation) {
+                    Conversation con = (Conversation)object;
+                    user.addConversation(con);
+                    controller.newConversation(con);
+                } else {
+                    controller.newMessage(object);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e2) {
+            e2.printStackTrace();
         }
     }
 
@@ -104,40 +155,8 @@ public class Client {
      */
     private class Listener extends Thread {
 		public void run() {
-            Object object = "";
-            try {
-
-                while (!(object instanceof User)) {
-                    controller.setName();
-                    oos.writeObject(user);                  /* Send User object to server */
-                    object = ois.readObject();              /* Recieve the correct User object from server */
-                    if (object instanceof User) {
-                        user = (User)object;
-                        controller.appendText("[Server: You logged in as " + user.getId() + "]");
-                        initConversations();
-                    } else {
-                        controller.appendText((String) object);
-                    }
-                }
-
-                while (!Thread.interrupted()) {         /* Client listens to new ArrayList<User> and Messages */
-                    object = ois.readObject();
-                    if (object instanceof Message) {
-                        controller.newMessage(object);
-                    } else if (object instanceof ArrayList) {  /* ArrayList with Users */
-                        userList = (ArrayList<String>)object;
-                        controller.setConnectedUsers(userList);
-                    } else if (object instanceof Conversation) {
-                        Conversation con = (Conversation)object;
-                        user.addConversation(con);
-                        controller.newConversation(con);
-                    } else {
-                        controller.newMessage(object);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setUser();
+            startCommunication();
         }
     }
 }

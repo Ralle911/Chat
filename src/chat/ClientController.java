@@ -68,18 +68,18 @@ public class ClientController {
 //        client.sendMessage(msg);
 //    }
 
-    public void sendMessage(int conID, Object content) {
-        Message message = new Message(conID, client.getUser().getId(), content);
-        client.sendMessage(message);
-    }
-
     public String getUserID () {
         return client.getUser().getId();
     }
 
+    public void sendMessage(int conID, Object content) {
+        Message message = new Message(conID, client.getUser().getId(), content);
+        client.sendObject(message);
+    }
+
     public void sendMessage(Object content) {
         Message message = new Message(client.getUser().getId(), content);
-        client.sendMessage(message);
+        client.sendObject(message);
     }
 
     public void sendParticipants(String[] participants) {
