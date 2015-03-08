@@ -6,15 +6,12 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+import javax.swing.text.*;
 
 public class ChatWindow extends JPanel {
 	private int ID;
 	private JTextPane textPane;
-	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
+	private Font txtFont = new Font("Sans-Serif", Font.PLAIN , 14);
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
 	
 	public ChatWindow(int ID) {
@@ -28,6 +25,8 @@ public class ChatWindow extends JPanel {
         textPane.setFont(txtFont);
         
         add(textPane, BorderLayout.CENTER);
+        DefaultCaret caret = (DefaultCaret)textPane.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 	}
 	
 	public void append(String str) {

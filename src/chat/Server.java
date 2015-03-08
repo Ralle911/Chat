@@ -18,12 +18,10 @@ public class Server implements Runnable {
     private ServerSocket serverSocket;
     private ArrayList<ConnectedClient> connectedClients;
     private ArrayList<User> registeredUsers;
-    private ArrayList<Conversation> allConversations;
 
     public Server(int port) {
         registeredUsers = new ArrayList<>();
         connectedClients = new ArrayList<>();
-        allConversations = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(port);
             new Thread(this).start();
@@ -269,10 +267,8 @@ public class Server implements Runnable {
             if (!exists) {
                 conversation = new Conversation(participants);
                 addConversation(conversation);
-                allConversations.add(conversation);
             }
             sendConversation(conversation);
-            System.out.println("2");
         }
 
         /**
