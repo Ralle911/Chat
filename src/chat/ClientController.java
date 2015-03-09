@@ -50,8 +50,6 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
-            System.out.println(message.getContent().toString());
-
             ui.appendContent(message);
         } else {
             ui.appendServerMessage((String)object);
@@ -115,6 +113,9 @@ public class ClientController {
         String[] usersHashToStringArray = users.toArray(new String[users.size()]);
         int conID = con.getId();
         ui.createConversation(usersHashToStringArray, conID);
+//        while (con.getConversationLog().iterator().hasNext()) {
+//            ui.appendContent(con.getConversationLog().iterator().next());
+//        }
     }
 
 //    public Conversation newConversation(String str) {

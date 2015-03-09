@@ -268,7 +268,6 @@ public class ClientUI extends JPanel {
 
     public void appendServerMessage(String content) {
         cwLobby.append(content.toString());
-
     }
     
     public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
@@ -441,7 +440,7 @@ public class ClientUI extends JPanel {
 	public ChatWindow getChatWindow(int ID) {
 		for(ChatWindow cw : arrayListChatWindows) {
 			if(cw.getID() == ID) {
-				System.out.println("Returning ChatWindow with " + ID);
+//				System.out.println("Returning ChatWindow with " + ID);
 				return cw;
 			}
 		}
