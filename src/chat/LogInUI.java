@@ -104,6 +104,7 @@ public class LogInUI extends Thread{
 		
 		btnCreateServer.addActionListener(log);
 		btnLogIn.addActionListener(log);
+		txtUserName.addActionListener(new EnterListener());
 		serverPanel.btnServerCreateServer.addActionListener(new CreateServerListener());
 	}
 	
@@ -141,6 +142,14 @@ public class LogInUI extends Thread{
 				frame.setVisible(false);
 			}
 		}
+	}
+	
+	private class EnterListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+			frame.setVisible(false);
+		}
+		
 	}
 	
 	private class CreateServerPanel extends Thread {
