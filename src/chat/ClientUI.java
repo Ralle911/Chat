@@ -131,7 +131,7 @@ public class ClientUI extends JPanel {
         btnFileChooser.setIcon(new ImageIcon("src/resources/newImage.png"));
         
         btnLobby.setFont(fontButtons);
-    	btnLobby.setForeground(new Color(1,48,69));
+        btnLobby.setBorder(null);
     	btnLobby.setBackground(Color.LIGHT_GRAY);
     	
     	btnCreateGroup.setFont(fontButtons);
