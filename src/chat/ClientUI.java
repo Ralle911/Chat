@@ -137,9 +137,7 @@ public class ClientUI extends JPanel {
         
         btnLobby.setFont(fontButtons);
     	btnLobby.setForeground(new Color(1,48,69));
-    	btnLobby.setBackground(null);
-        btnLobby.setOpaque(true);
-        btnLobby.setBorderPainted(false);
+    	btnLobby.setBackground(Color.LIGHT_GRAY);
     	
     	btnCreateGroup.setFont(fontButtons);
     	btnCreateGroup.setForeground(new Color(1,48,69));
@@ -298,10 +296,8 @@ public class ClientUI extends JPanel {
 	    	groupChatList[ID] = (new JButton(userString));
 	    	groupChatList[ID].setPreferredSize(new Dimension(120,30));
 	    	groupChatList[ID].setOpaque(true);
-	    	groupChatList[ID].setBorderPainted(false);
 	    	groupChatList[ID].setFont(fontGroupButton);
-	    	groupChatList[ID].setForeground(new Color(93, 0, 0));
-	    	groupChatList[ID].setBackground(null);
+	    	groupChatList[ID].setForeground(new Color(93,0,0));
 	    	groupChatList[ID].addActionListener(gbListener);
 	    	
     		eastPanelCenterNorth.add(groupChatList[ID]);
@@ -317,9 +313,9 @@ public class ClientUI extends JPanel {
 					btnLobby.setBackground(null);
 				}
 				else {
-					groupChatList[activeChatWindow].setBackground(null);
+					groupChatList[activeChatWindow].setBackground(Color.WHITE);
 				}
-				groupChatList[ID].setBackground(null);
+				groupChatList[ID].setBackground(Color.DARK_GRAY);
 				remove(bL.getLayoutComponent(BorderLayout.CENTER));
 				add(getChatWindow(ID), BorderLayout.CENTER);
 				activeChatWindow = ID;
@@ -419,9 +415,9 @@ public class ClientUI extends JPanel {
 						btnLobby.setBackground(null);
 					}
 					else {
-						groupChatList[activeChatWindow].setBackground(null);
+						groupChatList[activeChatWindow].setBackground(Color.WHITE);
 					}
-					groupChatList[i].setBackground(new Color(209,209,209));
+					groupChatList[i].setBackground(Color.DARK_GRAY);
 					remove(bL.getLayoutComponent(BorderLayout.CENTER));
 					add(getChatWindow(i), BorderLayout.CENTER);
 					activeChatWindow = i;
@@ -435,9 +431,9 @@ public class ClientUI extends JPanel {
 	private class LobbyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLobby==e.getSource()) { 
-				btnLobby.setBackground(new Color(209,209,209));
+				btnLobby.setBackground(Color.LIGHT_GRAY);
 				if(activeChatWindow != -1)
-					groupChatList[activeChatWindow].setBackground(null);
+					groupChatList[activeChatWindow].setBackground(Color.WHITE);
 				remove(bL.getLayoutComponent(BorderLayout.CENTER));
 				add(getChatWindow(-1), BorderLayout.CENTER);
 				activeChatWindow = -1;
