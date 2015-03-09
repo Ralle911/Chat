@@ -1,6 +1,8 @@
 package chat;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -63,10 +65,14 @@ public class ClientController {
         client.sendObject(message);
     }
 
-    public void sendMessage(Object content) {
-        Message message = new Message(client.getUser().getId(), content);
-        client.sendObject(message);
+    public void sendImage(int conID, String url) {
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage();
+        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 100);
+        icon = new ImageIcon(scaledImage);
+        sendMessage(conID, icon);
     }
+
 
     public void sendParticipants(String[] participants) {
     	HashSet<String> setParticpants = new HashSet<>();

@@ -38,7 +38,7 @@ public class LogInUI extends Thread{
 	private JButton btnCancel = new JButton("Cancel");
 	private JButton btnCreateServer = new JButton("Create Server");
 	/*
-	 * Create Server ska öppna ett nytt fönster, gör privat klass för den! 
+	 * Create Server ska ï¿½ppna ett nytt fï¿½nster, gï¿½r privat klass fï¿½r den! 
 	 */
 	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
 	private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
@@ -186,7 +186,7 @@ public class LogInUI extends Thread{
 				String realmessage[] = message.split("/");
 				lblServerShowServerIp.setText("Server ip is: " + realmessage[1]);
 			} catch (UnknownHostException e) {
-				JOptionPane.showMessageDialog(null, "Något fel inträffade, försök igen.");
+				JOptionPane.showMessageDialog(null, "An error occurred.");
 			}
 		}
 		
