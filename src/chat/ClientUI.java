@@ -58,11 +58,11 @@ public class ClientUI extends JPanel {
 	private JLabel lblUser = new JLabel();
 
 	private JButton btnSend = new JButton("Send");
-	private JButton btnNewGroupChat = new JButton("Gr");
+	private JButton btnNewGroupChat = new JButton();
 	private JButton btnLobby = new JButton("Lobby");
 	private JButton btnCreateGroup = new JButton("");
 	private JButton btnCreatePrivateMessage = new JButton("");
-	private JButton btnFileChooser = new JButton("gem");
+	private JButton btnFileChooser = new JButton();
 	
 	private JTextPane tpChatWindow = new JTextPane();
 	private JTextPane tpConnectedUsers = new JTextPane();
@@ -86,7 +86,10 @@ public class ClientUI extends JPanel {
 	private ArrayList<ChatWindow> arrayListChatWindows = new ArrayList<ChatWindow>();
 	
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
-	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 10);
+	private Font fontGroupButton = new Font("Sans-Serif",Font.PLAIN, 12);
+	private Font fontButtons = new Font("Sans-Serif", Font.BOLD,15);
+	
+	private BorderLayout bL = new BorderLayout();
 //	
 //	private CheckBoxListener checkBoxListener = new CheckBoxListener();
 //	private RadioButtonListener radioButtonListener = new RadioButtonListener();
@@ -104,7 +107,7 @@ public class ClientUI extends JPanel {
 	}
 	
     public void initGraphics() {
-        setLayout(new BorderLayout());
+        setLayout(bL);
         setPreferredSize(new Dimension(900,600));
         eastPanelCenterNorth.setPreferredSize(new Dimension(130,260));
 
@@ -126,11 +129,26 @@ public class ClientUI extends JPanel {
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
-        ImageIcon image = new ImageIcon("src/resources/message.png");
+        ImageIcon image = new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/message.png");
         Image img = image.getImage();
-        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 10);
+        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 50);
 		ImageIcon icon = new ImageIcon(scaledImage);
-        btnCreateGroup.setIcon(icon); 
+        btnNewGroupChat.setIcon(icon); 
+        btnNewGroupChat.setBorder(null);
+        btnNewGroupChat.setPreferredSize(new Dimension(50,37));
+        
+        ImageIcon image2 = new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/paper-clipart-office_paper_clip_pattern_1 (1).png");
+        Image img2 = image2.getImage();
+        BufferedImage scaledImage2 = ImageScaleHandler.createScaledImage(img2, 30);
+		ImageIcon icon2 = new ImageIcon(scaledImage2);
+        btnFileChooser.setIcon(icon2); 
+        
+        btnLobby.setFont(fontButtons);
+    	btnLobby.setForeground(new Color(1,48,69));
+    	
+    	btnCreateGroup.setFont(fontButtons);
+    	btnCreateGroup.setForeground(new Color(1,48,69));
+    	
         
         add(scrollChatWindow, BorderLayout.CENTER);
         
@@ -161,7 +179,6 @@ public class ClientUI extends JPanel {
     	setUserText();
         tpConnectedUsers.setText("");
         updateCheckBoxes(connectedUsers);
-        updateRadioButtons(connectedUsers);
     	for (String ID : connectedUsers) {
     		appendConnectedUsers(ID);
     	}
@@ -197,7 +214,7 @@ public class ClientUI extends JPanel {
 	    public void panelBuilder() {
 	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-	        btnCreateGroup.setText("Create Group");
+	        btnCreateGroup.setText("New Conversation");
 	        pnlOuterBorderLayout.add(btnCreateGroup, BorderLayout.SOUTH);
 		   	pnlOuterBorderLayout.add(scrollCheckConnectedUsers,BorderLayout.CENTER);
 		   	scrollCheckConnectedUsers.setPreferredSize(new Dimension(200,500));
@@ -242,6 +259,8 @@ public class ClientUI extends JPanel {
     	southPanel.setPreferredSize(new Dimension(600, 50));
     	
     	btnSend.setPreferredSize(new Dimension(134, 40));
+    	btnSend.setFont(fontButtons);
+    	btnSend.setForeground(new Color(1,48,69));
     	btnFileChooser.setPreferredSize(new Dimension(30,40));
     	southPanel.add(pnlFileSend,BorderLayout.EAST);
     	
@@ -260,11 +279,6 @@ public class ClientUI extends JPanel {
     	eastPanelCenter.add(scrollConnectedUsers,BorderLayout.CENTER);
     	
     	pnlGroupSend.add(btnNewGroupChat);
-//    	pnlGroupSend.add(btnNewPrivateMessage);
-    	
-    	
-//    	eastPanelCenterNorth.add(btnGroup);
-//    	eastPanelCenterNorth.add(btnGroup2);
     	
     	eastPanel.add(btnLobby,BorderLayout.SOUTH);
     	add(eastPanel, BorderLayout.EAST);
@@ -278,22 +292,6 @@ public class ClientUI extends JPanel {
         cwLobby.append(content.toString());
     }
     
-    public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
-    	arrayListRadioButtons.clear();
-    	groupPanel2.pnlNewGroup.removeAll();
-    	groupPanel2.grpRadioButtons = null;
-    	groupPanel2.grpRadioButtons = new ButtonGroup();
-    	for (String ID : radioButtonUsersIDs) {
-    		arrayListRadioButtons.add(new JRadioButton(ID));
-    	}
-    	for (JRadioButton radio: arrayListRadioButtons) {
-//    		radio.addActionListener(radioButtonListener);
-    		groupPanel2.grpRadioButtons.add(radio);
-    		groupPanel2.pnlNewGroup.add(radio);
-    	}
-    	groupPanel2.pnlOuterBorderLayout.revalidate();
-    	validate();
-    }
     
     public void updateCheckBoxes(ArrayList<String> checkBoxUserIDs) {
     	arrayListCheckBox.clear();
@@ -308,7 +306,7 @@ public class ClientUI extends JPanel {
     		groupPanel.pnlNewGroup.add(box);
     	}
     	groupPanel.pnlOuterBorderLayout.revalidate();
-	   	validate();
+//	   	validate();
     }
     
     public void appendConnectedUsers(String message){
@@ -337,15 +335,17 @@ public class ClientUI extends JPanel {
 	    	groupChatList[ID] = (new JButton(userString));
 	    	groupChatList[ID].setPreferredSize(new Dimension(120,30));
 	    	groupChatList[ID].setFont(fontGroupButton);
+	    	groupChatList[ID].setForeground(new Color(93,0,0));
 	    	groupChatList[ID].addActionListener(gbListener);
 	    	
     		eastPanelCenterNorth.add(groupChatList[ID]);
     		
-    		arrayListChatWindows.add(new ChatWindow(ID));  //<-------
-    		
+    		if(getChatWindow(ID)==null) {
+    			arrayListChatWindows.add(new ChatWindow(ID));  //<-------
+    		}
     		
 	    	eastPanelCenterNorth.revalidate();
-	    	validate();
+//	    	validate();
     	
 	    	
     	}
@@ -437,20 +437,24 @@ public class ClientUI extends JPanel {
 			for(int i = 0; i < groupChatList.length; i++) {
 				if(groupChatList[i]==e.getSource()) {
 					System.out.println("Knapp " + i + " tryckt");
+					remove(bL.getLayoutComponent(BorderLayout.CENTER));
 					add(getChatWindow(i), BorderLayout.CENTER);
 					activeChatWindow = i;
-					revalidate();
 					validate();
+					repaint();
 				}
 			}
 		}
-		
 	}
 	
 	private class LobbyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLobby==e.getSource()) { 
-				clientController.disconnectClient();
+				remove(bL.getLayoutComponent(BorderLayout.CENTER));
+				add(getChatWindow(-1), BorderLayout.CENTER);
+				activeChatWindow = -1;
+				invalidate();
+				repaint();
 			}
 		}
 	}
