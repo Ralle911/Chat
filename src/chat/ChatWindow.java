@@ -4,8 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JPanel;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.text.*;
 
 public class ChatWindow extends JPanel {
@@ -30,16 +29,32 @@ public class ChatWindow extends JPanel {
         textPane.setEditable(false);
 	}
 	
-	public void append(String str) {
-		StyledDocument doc = textPane.getStyledDocument();
-		
-    	try {
-			doc.insertString(doc.getLength(), str + "\n", chatFont);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
-		}
+	public void append(Message message) {
+        StyledDocument doc = textPane.getStyledDocument();
+        Style style = doc.addStyle("Stylename", null);
+
+        try {
+            doc.insertString(doc.getLength(), message.getTimestamp() + " - " + message.getFromUserID() + ": ", chatFont);
+            if (message.getContent() instanceof String) {
+                doc.insertString(doc.getLength(), message.getContent() + "\n", chatFont);
+            } else {
+                Icon icon = (Icon)message.getContent();
+                StyleConstants.setIcon(style, icon);
+            }
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
 	}
-	
+
+    public void append(String message) {
+        StyledDocument doc = textPane.getStyledDocument();
+        try {
+            doc.insertString(doc.getLength(), "[Server: + " + message + "]", chatFont);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
+    }
+
 	public int getID() {
 		return ID;
 	}

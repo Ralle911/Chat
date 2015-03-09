@@ -208,7 +208,7 @@ public class Server implements Runnable {
         public void disconnectClient() {
             removeConnectedClient();
             sendConnectedClients();
-            sendObjectToAll("[Server: Client disconnected: " + user.getId() + "]");
+            sendObjectToAll("Client disconnected: " + user.getId());
             try {
                 socket.close();
             } catch (Exception e) {
