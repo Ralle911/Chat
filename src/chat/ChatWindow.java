@@ -27,6 +27,7 @@ public class ChatWindow extends JPanel {
         add(textPane, BorderLayout.CENTER);
         DefaultCaret caret = (DefaultCaret)textPane.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        textPane.setEditable(false);
 	}
 	
 	public void append(String str) {
