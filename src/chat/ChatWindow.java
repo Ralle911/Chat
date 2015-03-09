@@ -11,8 +11,10 @@ public class ChatWindow extends JPanel {
 	private int ID;
 	private JScrollPane scrollPane;
 	private JTextPane textPane;
-	private Font txtFont = new Font("Sans-Serif", Font.PLAIN , 14);
+//	private Font txtFont = new Font("Sans-Serif", Font.PLAIN , 15);
+	
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
+	private SimpleAttributeSet nameFont = new SimpleAttributeSet();
 	
 	public ChatWindow(int ID) {
 		setLayout(new BorderLayout());
@@ -24,9 +26,11 @@ public class ChatWindow extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		StyleConstants.setForeground(chatFont, Color.BLACK);
-        StyleConstants.setBold(chatFont, true);
+        StyleConstants.setFontSize(chatFont, 20);
         
-        textPane.setFont(txtFont);
+        StyleConstants.setForeground(nameFont, Color.BLACK);
+        StyleConstants.setFontSize(nameFont, 20);
+        StyleConstants.setBold(nameFont, true);
         
         add(scrollPane, BorderLayout.CENTER);
         DefaultCaret caret = (DefaultCaret)textPane.getCaret();
@@ -38,7 +42,8 @@ public class ChatWindow extends JPanel {
         StyledDocument doc = textPane.getStyledDocument();
 
         try {
-            doc.insertString(doc.getLength(), message.getTimestamp() + " - " + message.getFromUserID() + ": ", chatFont);
+        	doc.insertString(doc.getLength(), message.getTimestamp() + " - ", chatFont);
+            doc.insertString(doc.getLength(), message.getFromUserID() + ": ", nameFont);
             if (message.getContent() instanceof String) {
                 doc.insertString(doc.getLength(), message.getContent() + "\n", chatFont);
             } else {

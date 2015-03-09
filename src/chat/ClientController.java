@@ -69,7 +69,7 @@ public class ClientController {
         System.out.println(url);
         ImageIcon icon = new ImageIcon(url);
         Image img = icon.getImage();
-        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 100);
+        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 250);
         icon = new ImageIcon(scaledImage);
         sendMessage(conID, icon);
     }
