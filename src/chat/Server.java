@@ -191,8 +191,7 @@ public class Server implements Runnable {
          */
         public void removeConnectedClient() {
             for (int i = 0; i < connectedClients.size(); i++) {
-                if (connectedClients.get(i).getUser().getId()
-                        .equals(this.getUser().getId())) {
+                if (connectedClients.get(i).getUser().getId().equals(this.getUser().getId())) {
                     connectedClients.remove(i);
                     System.out.println("Client removed from connectedClients");
                 }
