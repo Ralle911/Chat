@@ -50,6 +50,8 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
+            System.out.println(message.getContent().toString());
+
             ui.appendContent(message);
         } else {
             ui.appendServerMessage((String)object);
@@ -66,6 +68,7 @@ public class ClientController {
     }
 
     public void sendImage(int conID, String url) {
+        System.out.println(url);
         ImageIcon icon = new ImageIcon(url);
         Image img = icon.getImage();
         BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 100);

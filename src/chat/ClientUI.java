@@ -144,6 +144,7 @@ public class ClientUI extends JPanel {
 //    	btnNewPrivateMessage.addActionListener(privateListener);
 //    	btnCreatePrivateMessage.addActionListener(privateListener);
     	btnLobby.addActionListener(disconnectListener);
+        btnFileChooser.addActionListener(new FileChooserListener());
     }
     /*
      * N�r servern updaterar Users
@@ -477,10 +478,13 @@ public class ClientUI extends JPanel {
 	private class FileChooserListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnFileChooser==e.getSource()) {
-				JFileChooser fileChooser = new JFileChooser();
-				File file = fileChooser.getSelectedFile();
-				String fullPath = file.getAbsolutePath();
-				clientController.sendImage(activeChatWindow, fullPath);
+                JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    String fullPath = selectedFile.getAbsolutePath();
+                    clientController.sendImage(activeChatWindow, fullPath);
+                }
 			}
 		}
 	}

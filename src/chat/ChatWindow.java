@@ -36,15 +36,15 @@ public class ChatWindow extends JPanel {
 	
 	public void append(Message message) {
         StyledDocument doc = textPane.getStyledDocument();
-        Style style = doc.addStyle("Stylename", null);
 
         try {
             doc.insertString(doc.getLength(), message.getTimestamp() + " - " + message.getFromUserID() + ": ", chatFont);
             if (message.getContent() instanceof String) {
                 doc.insertString(doc.getLength(), message.getContent() + "\n", chatFont);
             } else {
-                Icon icon = (Icon)message.getContent();
-                StyleConstants.setIcon(style, icon);
+                ImageIcon icon = (ImageIcon)message.getContent();
+                textPane.insertIcon(icon);
+                doc.insertString(doc.getLength(), "\n", chatFont);
             }
         } catch (BadLocationException e) {
             e.printStackTrace();
