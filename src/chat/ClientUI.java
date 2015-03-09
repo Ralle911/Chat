@@ -324,8 +324,9 @@ public class ClientUI extends JPanel {
     	GroupButtonListener gbListener = new GroupButtonListener();
     	System.err.println(ID);
     	for (int i = 0; i < participants.length; i++) {
-    		if (participants[i].equals(clientController.getUserID())==false) {
-    			if (i == participants.length - 1) { 
+            userString += ID + " ";
+    		if (!participants[i].equals(clientController.getUserID())) {
+    			if (i == participants.length - 1) {
     			userString += participants[i];
     			}else {
     			userString += participants[i] + " " ;
@@ -439,7 +440,7 @@ public class ClientUI extends JPanel {
 					System.out.println("Knapp " + i + " tryckt");
 					add(getChatWindow(i), BorderLayout.CENTER);
 					activeChatWindow = i;
-					revalidate();
+//					revalidate();
 					validate();
 				}
 			}
