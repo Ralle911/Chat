@@ -48,25 +48,11 @@ public class ClientController {
     public void newMessage(Object object) {
         if (object instanceof Message) {
             Message message = (Message)object;
-            ui.appendText(message.getTimestamp() + " " + message.getFromUserID() + ": " + (String)message.getContent());
-        } else if (object instanceof String) {
-            ui.appendText(object.toString());
+            ui.appendContent(message);
+        } else {
+            ui.appendServerMessage((String)object);
         }
     }
-
-//    /**
-//     * Recieves a Conversation object including information of message destination,
-//     * a User object including information of sender,
-//     * and a String including the comment to be sent.
-//     *
-//     * @param to Conversation object including destination.
-//     * @param from The User that sent it.
-//     * @param comment The comment to be sent.
-//     */
-//    public void sendMessage(Conversation to, User from, String comment) {
-//        Message msg = new Message(to, from, comment);
-//        client.sendMessage(msg);
-//    }
 
     public String getUserID () {
         return client.getUser().getId();
@@ -104,9 +90,9 @@ public class ClientController {
      *
      * @param txt The text to append.
      */
-    public void appendText(String txt) {
-        ui.appendText(txt);
-    }
+//    public void appendText(String txt) {
+//        ui.appendContent(txt);
+//    }
 
     /**
      * Closes the clients socket.

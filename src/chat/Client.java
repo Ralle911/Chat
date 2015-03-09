@@ -78,7 +78,7 @@ public class Client {
             if (con.getId() == 1) {
                 ChatLog log = con.getConversationLog();
                 while (log.iterator().hasNext()) {
-                    controller.appendText((String)log.iterator().next().getContent());
+                    controller.newMessage(log.iterator().next().getContent());
                 }
             }
         }
@@ -108,10 +108,10 @@ public class Client {
                 object = ois.readObject();
                 if (object instanceof User) {
                     user = (User)object;
-                    controller.appendText("[Server: You logged in as " + user.getId() + "]");
+                    controller.newMessage("You logged in as " + user.getId());
                     initConversations();
                 } else {
-                    controller.appendText((String) object);
+                    controller.newMessage(object);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

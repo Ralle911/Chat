@@ -10,18 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
@@ -182,7 +171,7 @@ public class ClientUI extends JPanel {
 	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	        btnCreateGroup.setText("Create Group");
-	        pnlOuterBorderLayout.add(btnCreateGroup,BorderLayout.SOUTH);
+	        pnlOuterBorderLayout.add(btnCreateGroup, BorderLayout.SOUTH);
 		   	pnlOuterBorderLayout.add(scrollCheckConnectedUsers,BorderLayout.CENTER);
 		   	scrollCheckConnectedUsers.setPreferredSize(new Dimension(200,500));
 		   	pnlNewGroup.setLayout(new GridLayout(100,1,5,5));
@@ -223,9 +212,9 @@ public class ClientUI extends JPanel {
     public void southPanel() {
     	southPanel.setLayout(new BorderLayout());
     	southPanel.add(tfMessageWindow,BorderLayout.CENTER);
-    	southPanel.setPreferredSize(new Dimension(600,50));
+    	southPanel.setPreferredSize(new Dimension(600, 50));
     	
-    	btnSend.setPreferredSize(new Dimension(134,40));
+    	btnSend.setPreferredSize(new Dimension(134, 40));
     	
     	southPanel.add(btnSend,BorderLayout.EAST);
     	add(southPanel,BorderLayout.SOUTH);
@@ -247,17 +236,16 @@ public class ClientUI extends JPanel {
 //    	eastPanelCenterNorth.add(btnGroup2);
     	
     	eastPanel.add(btnLobby,BorderLayout.SOUTH);
-    	add(eastPanel,BorderLayout.EAST);
+    	add(eastPanel, BorderLayout.EAST);
     }
     
-    public void appendText(String message){
-//    	StyledDocument doc = tpChatWindow.getStyledDocument();
-//    	try {
-//			doc.insertString(doc.getLength(), message + "\n", chatFont);
-//		} catch (BadLocationException e) {
-//			e.printStackTrace();
-//		}
-    	cwLobby.append(message);
+    public void appendContent(Message message){
+        getChatWindow(message.getConversationID()).append(message);
+    }
+
+    public void appendServerMessage(String content) {
+        cwLobby.append(content.toString());
+
     }
     
     public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
@@ -351,7 +339,7 @@ public class ClientUI extends JPanel {
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			clientController.sendMessage(tfMessageWindow.getText());
-//			appendText(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
+//			appendContent(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
 //			appendConnectedUsers(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
 			tfMessageWindow.setText("");
 		}
