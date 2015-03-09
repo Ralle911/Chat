@@ -31,8 +31,8 @@ public class LogInUI extends Thread{
 	private JLabel lblPort = new JLabel("Port:"); 
 	private JLabel lblWelcomeText = new JLabel("Log in to bIRC or create a server");
 	private JLabel lblUserName = new JLabel("Username:");
-	private JTextField txtIp = new JTextField();
-	private JTextField txtPort = new JTextField();
+	private JTextField txtIp = new JTextField("localhost");
+	private JTextField txtPort = new JTextField("3450");
 	private JTextField txtUserName = new JTextField();
 	private JButton btnLogIn = new JButton("Login");
 	private JButton btnCancel = new JButton("Cancel");
@@ -52,6 +52,8 @@ public class LogInUI extends Thread{
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
 	
 	private CreateServerPanel serverPanel;
+	
+	private JFrame frame;
 	
 	public LogInUI() {
 		
@@ -98,7 +100,11 @@ public class LogInUI extends Thread{
 		pnlCenterGrid.add(btnLogIn);
 		pnlCenterGrid.add(btnCancel);
 		
-		btnCreateServer.addActionListener(new CreatServerListener());
+		LogInMenuListener log = new LogInMenuListener();
+		
+		btnCreateServer.addActionListener(log);
+		btnLogIn.addActionListener(log);
+		serverPanel.btnServerCreateServer.addActionListener(new CreateServerListener());
 	}
 	
 	public void lookAndFeel() {
@@ -116,7 +122,7 @@ public class LogInUI extends Thread{
    }
 	
 	public void run() {
-		JFrame frame = new JFrame("bIRC Login");
+		this.frame = new JFrame("bIRC Login");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(pnlOuterBorderLayout);
 		frame.pack();
@@ -125,10 +131,14 @@ public class LogInUI extends Thread{
 		frame.setResizable(false);
 	}
 	
-	private class CreatServerListener implements ActionListener {
+	private class LogInMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnCreateServer==e.getSource()) {
 				serverPanel.frame.setVisible(true);
+			}
+			if (btnLogIn==e.getSource()) {
+				new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+				frame.setVisible(false);
 			}
 		}
 	}
@@ -138,7 +148,7 @@ public class LogInUI extends Thread{
 		private JPanel pnlServerCenterFlow = new JPanel(new FlowLayout());
 		private JPanel pnlServerCenterGrid = new JPanel(new GridLayout(2,2,5,5));
 		
-		private JTextField txtServerPort = new JTextField();
+		private JTextField txtServerPort = new JTextField("3450");
 		
 		private JLabel lblServerWelcomeMessage = new JLabel("Create Server");
 		private JLabel lblServerPort = new JLabel("Port:");
@@ -198,6 +208,21 @@ public class LogInUI extends Thread{
 			frame.setLocationRelativeTo(null);
 			frame.setResizable(false);
 		}
+		
+		public int getPort() {
+			return Integer.parseInt(this.txtServerPort.getText());
+		}
+		
+	}
+	
+	private class CreateServerListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (serverPanel.btnServerCreateServer==e.getSource()) {
+				new Server(serverPanel.getPort());
+				serverPanel.frame.dispose();
+			}
+		}
+		
 	}
 	
 	public static void main(String[] args) { //Ta bort main sen och implementera den med controllern

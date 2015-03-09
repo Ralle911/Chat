@@ -124,7 +124,7 @@ public class ClientUI extends JPanel {
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
-        ImageIcon image = new ImageIcon("src/resources/message.png");
+        ImageIcon image = new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/message.png");
         Image img = image.getImage();
         BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 50);
 		ImageIcon icon = new ImageIcon(scaledImage);
@@ -132,7 +132,7 @@ public class ClientUI extends JPanel {
         btnNewGroupChat.setBorder(null);
         btnNewGroupChat.setPreferredSize(new Dimension(50,37));
         
-        ImageIcon image2 = new ImageIcon("src/resources/paper-clipart-office_paper_clip_pattern_1 (1).png");
+        ImageIcon image2 = new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/paper-clipart-office_paper_clip_pattern_1 (1).png");
         Image img2 = image2.getImage();
         BufferedImage scaledImage2 = ImageScaleHandler.createScaledImage(img2, 30);
 		ImageIcon icon2 = new ImageIcon(scaledImage2);

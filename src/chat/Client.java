@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  * Model class for the client.
  *
@@ -20,8 +22,10 @@ public class Client {
     private ObjectOutputStream oos;
     private ArrayList<String> userList;
     private User user;
+    private String name;
 
-    public Client(String ip, int port) {
+    public Client(String ip, int port, String name) {
+    	this.name = name;
         try {
             socket = new Socket(ip, port);
             ois = new ObjectInputStream(socket.getInputStream());
@@ -50,7 +54,7 @@ public class Client {
      *
      * @param name The name of the user to be created.
      */
-    public void setUser(String name) {
+    public void setName(String name) {
         user = new User(name);
     }
 
@@ -103,7 +107,7 @@ public class Client {
         Object object = null;
         while (!(object instanceof User)) {
             try {
-                controller.setName();
+                setName(this.name);
                 sendObject(user);
                 object = ois.readObject();
                 if (object instanceof User) {
@@ -112,6 +116,7 @@ public class Client {
                     initConversations();
                 } else {
                     controller.newMessage(object);
+                    this.name = JOptionPane.showInputDialog("Pick a name: ");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

@@ -37,9 +37,9 @@ public class ClientController {
 		});
 	}
 
-    public void setName() {
-        client.setUser(JOptionPane.showInputDialog("What's your name, buddy?"));
-    }
+//    public void setName() {
+//        client.setUser(JOptionPane.showInputDialog("What's your name, buddy?"));
+//    }
 
     /**
      * Receives an object that's either a Message object or a String
