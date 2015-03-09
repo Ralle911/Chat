@@ -37,7 +37,7 @@ public class ImageScaleHandler {
 
 	 // Exempel
 	public static void main(String[] args) {
-		ImageIcon icon = new ImageIcon("src/filer/new10.jpg");
+		ImageIcon icon = new ImageIcon("src/filer/new1.jpg");
 		Image img = icon.getImage();
 
 		// Använd denna rad för att skala om bilder.
