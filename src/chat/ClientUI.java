@@ -365,7 +365,7 @@ public class ClientUI extends JPanel {
 		private ArrayList<String> participants = new ArrayList<String>();
 		private String[] temp;
 		public void actionPerformed(ActionEvent e) {
-			if (btnNewGroupChat == e.getSource()) {
+			if (btnNewGroupChat == e.getSource() && arrayListCheckBox.size() > 0) {
 				groupPanel.getFrame().setVisible(true);
 			}
 			if (btnCreateGroup == e.getSource()) {
