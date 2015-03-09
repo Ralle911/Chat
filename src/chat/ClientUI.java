@@ -123,17 +123,12 @@ public class ClientUI extends JPanel {
         
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
-        
-        ImageIcon image = new ImageIcon("src/resources/message.png");
-        Image img = image.getImage();
-        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 50);
-		ImageIcon icon = new ImageIcon(scaledImage);
-        btnNewGroupChat.setIcon(icon); 
-        btnNewGroupChat.setBorder(null);
-        btnNewGroupChat.setPreferredSize(new Dimension(50,37));
 
-        ImageIcon image2 = new ImageIcon("src/resources/newImage.png");
-        btnFileChooser.setIcon(image2);
+        btnNewGroupChat.setIcon(new ImageIcon("src/resources/newGroup.png"));
+        btnNewGroupChat.setBorder(null);
+        btnNewGroupChat.setPreferredSize(new Dimension(64,64));
+
+        btnFileChooser.setIcon(new ImageIcon("src/resources/newImage.png"));
         
         btnLobby.setFont(fontButtons);
     	btnLobby.setForeground(new Color(1,48,69));
