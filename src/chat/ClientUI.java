@@ -103,7 +103,7 @@ public class ClientUI extends JPanel {
 	
     public void initGraphics() {
         setLayout(bL);
-        setPreferredSize(new Dimension(900,600));
+        setPreferredSize(new Dimension(1200,800));
         eastPanelCenterNorth.setPreferredSize(new Dimension(130,260));
 
         tpChatWindow.setFont(txtFont);
