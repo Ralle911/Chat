@@ -123,18 +123,14 @@ public class ClientUI extends JPanel {
         
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
-        
-        ImageIcon image = new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/message.png");
-        Image img = image.getImage();
-        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 50);
-		ImageIcon icon = new ImageIcon(scaledImage);
-        btnNewGroupChat.setIcon(icon); 
+
+        btnNewGroupChat.setIcon(new ImageIcon("src/resources/newGroup.png"));
         btnNewGroupChat.setBorder(null);
-        btnNewGroupChat.setPreferredSize(new Dimension(50,37));
+        btnNewGroupChat.setPreferredSize(new Dimension(64,64));
 
-
-        ImageIcon image2 = new ImageIcon("src/resources/newImage.png");
-        btnFileChooser.setIcon(image2);
+        btnFileChooser.setIcon(new ImageIcon("src/resources/newImage.png"));
+        btnFileChooser.setBorder(null);
+        btnFileChooser.setPreferredSize(new Dimension(64, 64));
         
         btnLobby.setFont(fontButtons);
     	btnLobby.setForeground(new Color(1,48,69));
@@ -225,8 +221,7 @@ public class ClientUI extends JPanel {
     	
     	btnSend.setPreferredSize(new Dimension(134, 40));
     	btnSend.setFont(fontButtons);
-    	btnSend.setForeground(new Color(1,48,69));
-    	btnFileChooser.setPreferredSize(new Dimension(30,40));
+    	btnSend.setForeground(new Color(1, 48, 69));
     	southPanel.add(pnlFileSend,BorderLayout.EAST);
     	
     	pnlFileSend.add(btnFileChooser,BorderLayout.WEST);
