@@ -6,14 +6,17 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -56,7 +59,6 @@ public class ClientUI extends JPanel {
 
 	private JButton btnSend = new JButton("Send");
 	private JButton btnNewGroupChat = new JButton("Gr");
-	private JButton btnNewPrivateMessage = new JButton("pr");
 	private JButton btnLobby = new JButton("Lobby");
 	private JButton btnCreateGroup = new JButton("");
 	private JButton btnCreatePrivateMessage = new JButton("");
@@ -123,6 +125,12 @@ public class ClientUI extends JPanel {
         
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
+        
+        ImageIcon image = new ImageIcon("resources/message.png");
+        Image img = image.getImage();
+        BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 10);
+		ImageIcon icon = new ImageIcon(scaledImage);
+        btnCreateGroup.setIcon(icon); 
         
         add(scrollChatWindow, BorderLayout.CENTER);
         
@@ -410,33 +418,6 @@ public class ClientUI extends JPanel {
 			}
 		}
 	}
-	
-	
-//	private class PrivateListener implements ActionListener {
-//		private ArrayList<String> participants = new ArrayList<String>();
-//		private String[] temp;
-//		public void actionPerformed(ActionEvent e) {
-//			if (btnNewPrivateMessage == e.getSource()) {
-//				groupPanel2.getFrame().setVisible(true);
-//			}
-//			if (btnCreatePrivateMessage == e.getSource()) {
-//				participants.clear();
-//				temp = null;
-//				for(int i = 0; i < arrayListRadioButtons.size(); i++) {
-//					if(arrayListRadioButtons.get(i).isSelected()) {
-//						participants.add(arrayListRadioButtons.get(i).getText());
-//					}
-//				}
-//				temp = new String[participants.size()];
-//				for (int i = 0; i < participants.size(); i++) {
-//					temp[i] = participants.get(i);
-//				}
-//				
-//				clientController.sendParticipants(temp);
-//				groupPanel2.getFrame().dispose();	
-//			}
-//		}
-//	}
 	
 	public ChatWindow getChatWindow(int ID) {
 		for(ChatWindow cw : arrayListChatWindows) {
