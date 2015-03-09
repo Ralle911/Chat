@@ -314,8 +314,8 @@ public class Server implements Runnable {
                 tempUser = (User) object;
                 user = tempUser;
                 while (isUserOnline(tempUser.getId())) {
-                    sendObject("[Server: Client named " + tempUser.getId()
-                            + " already connected - pick another one!]");
+                    sendObject("Client named " + tempUser.getId()
+                            + " already connected, try again!");
                     object = ois.readObject();
                     tempUser = (User) object;
                 }
