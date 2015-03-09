@@ -9,6 +9,7 @@ import javax.swing.text.*;
 
 public class ChatWindow extends JPanel {
 	private int ID;
+	private JScrollPane scrollPane;
 	private JTextPane textPane;
 	private Font txtFont = new Font("Sans-Serif", Font.PLAIN , 14);
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
@@ -17,13 +18,17 @@ public class ChatWindow extends JPanel {
 		setLayout(new BorderLayout());
 		this.ID = ID;
 		textPane = new JTextPane();
+		scrollPane = new JScrollPane(textPane);
+		
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
         textPane.setFont(txtFont);
         
-        add(textPane, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
         DefaultCaret caret = (DefaultCaret)textPane.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         textPane.setEditable(false);

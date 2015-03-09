@@ -26,7 +26,7 @@ import javax.swing.text.StyledDocument;
 
 public class ClientUI extends JPanel {
     private JButton[] groupChatList = new JButton[20];
-	private int counter = 0;
+    private int activeChatWindow = -1;
 	
 	private JPanel southPanel = new JPanel();
 	private JPanel eastPanel = new JPanel();
@@ -74,6 +74,7 @@ public class ClientUI extends JPanel {
 	
 	public ClientUI(ClientController clientController) { //ClientController clientController
 		this.clientController = clientController;
+		arrayListChatWindows.add(cwLobby);
 		groupPanel2 = new GroupPanel2();
 		groupPanel = new GroupPanel();
 		groupPanel.start();
@@ -292,7 +293,6 @@ public class ClientUI extends JPanel {
     
     public void createConversation(String[] participants, int ID) {
     	GroupButtonListener gbListener = new GroupButtonListener();
-    	ChatWindow tempWindow;
     	System.err.println(ID);
     	for (int i = 0; i < participants.length; i++) {
     		if (participants[i].equals(clientController.getUserID())==false) {
@@ -312,7 +312,7 @@ public class ClientUI extends JPanel {
 	    	
     		eastPanelCenterNorth.add(groupChatList[ID]);
     		
-    		arrayListChatWindows.add(new ChatWindow(ID));
+    		arrayListChatWindows.add(new ChatWindow(ID));  //<-------
     		
     		
 	    	eastPanelCenterNorth.revalidate();
@@ -339,7 +339,7 @@ public class ClientUI extends JPanel {
     
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			clientController.sendMessage(tfMessageWindow.getText());
+			clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
 //			appendContent(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
 //			appendConnectedUsers(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
 			tfMessageWindow.setText("");
@@ -422,7 +422,9 @@ public class ClientUI extends JPanel {
 			for(int i = 0; i < groupChatList.length; i++) {
 				if(groupChatList[i]==e.getSource()) {
 					System.out.println("Knapp " + i + " tryckt");
-//					tempScroll.revalidate();
+					add(getChatWindow(i), BorderLayout.CENTER);
+					activeChatWindow = i;
+					revalidate();
 					validate();
 				}
 			}
