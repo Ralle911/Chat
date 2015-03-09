@@ -326,8 +326,7 @@ public class Server implements Runnable {
                 }
                 user = tempUser;
                 oos.writeObject(user);
-                server.sendObjectToAll("[Server: Client connected: " + user.getId()
-                        + "]");
+                server.sendObjectToAll("Client connected: " + user.getId());
                 sendConnectedClients();
             } catch (Exception e) {
                 e.printStackTrace();

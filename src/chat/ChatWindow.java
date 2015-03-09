@@ -49,7 +49,7 @@ public class ChatWindow extends JPanel {
     public void append(String message) {
         StyledDocument doc = textPane.getStyledDocument();
         try {
-            doc.insertString(doc.getLength(), "[Server: + " + message + "]", chatFont);
+            doc.insertString(doc.getLength(), "[Server: " + message + "]\n", chatFont);
         } catch (BadLocationException e) {
             e.printStackTrace();
         }
