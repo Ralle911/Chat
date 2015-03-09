@@ -220,10 +220,10 @@ public class ClientUI extends JPanel {
     	southPanel.add(tfMessageWindow,BorderLayout.CENTER);
     	southPanel.setPreferredSize(new Dimension(600, 50));
     	
-    	btnSend.setPreferredSize(new Dimension(134, 40));
+    	btnSend.setPreferredSize(new Dimension(134, 50));
     	btnSend.setFont(fontButtons);
     	btnSend.setForeground(new Color(1,48,69));
-    	btnFileChooser.setPreferredSize(new Dimension(30,40));
+    	btnFileChooser.setPreferredSize(new Dimension(64,64));
     	southPanel.add(pnlFileSend,BorderLayout.EAST);
     	
     	pnlFileSend.add(btnFileChooser,BorderLayout.WEST);
