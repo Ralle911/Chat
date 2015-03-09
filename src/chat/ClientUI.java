@@ -131,12 +131,9 @@ public class ClientUI extends JPanel {
         btnNewGroupChat.setIcon(icon); 
         btnNewGroupChat.setBorder(null);
         btnNewGroupChat.setPreferredSize(new Dimension(50,37));
-        
-        ImageIcon image2 = new ImageIcon("src/resources/paper-clipart-office_paper_clip_pattern_1 (1).png");
-        Image img2 = image2.getImage();
-        BufferedImage scaledImage2 = ImageScaleHandler.createScaledImage(img2, 30);
-		ImageIcon icon2 = new ImageIcon(scaledImage2);
-        btnFileChooser.setIcon(icon2); 
+
+        ImageIcon image2 = new ImageIcon("src/resources/newImage.png");
+        btnFileChooser.setIcon(image2);
         
         btnLobby.setFont(fontButtons);
     	btnLobby.setForeground(new Color(1,48,69));
@@ -232,7 +229,7 @@ public class ClientUI extends JPanel {
     	pnlFileSend.add(btnFileChooser,BorderLayout.WEST);
     	pnlFileSend.add(btnSend,BorderLayout.CENTER);
     	
-    	add(southPanel,BorderLayout.SOUTH);
+    	add(southPanel, BorderLayout.SOUTH);
     }
     
     public void eastPanel() {
