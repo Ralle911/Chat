@@ -126,7 +126,7 @@ public class ClientUI extends JPanel {
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
-        ImageIcon image = new ImageIcon("resources/message.png");
+        ImageIcon image = new ImageIcon("src/resources/message.png");
         Image img = image.getImage();
         BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 10);
 		ImageIcon icon = new ImageIcon(scaledImage);
