@@ -20,9 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
- * 
- * @author Emil Sandgren
  *
+ *
+ * @author Emil Sandgren
  */
 public class LogInUI extends Thread{
 	private BorderLayout borderLayout = new BorderLayout();

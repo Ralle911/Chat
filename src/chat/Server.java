@@ -1,7 +1,5 @@
 package chat;
 
-import com.sun.glass.ui.Window;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,6 +33,9 @@ public class Server implements Runnable {
         }
     }
 
+    /**
+     * Initiates the Logger
+     */
     private void initLogger() {
         Handler fh;
         try {
@@ -165,6 +166,9 @@ public class Server implements Runnable {
         }
     }
 
+    /**
+     * Class to handle the communication between server and connected clients.
+     */
     private class ConnectedClient implements Runnable {
         private Thread client = new Thread(this);
         private ObjectOutputStream oos;

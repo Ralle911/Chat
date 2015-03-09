@@ -24,6 +24,13 @@ public class Client {
     private User user;
     private String name;
 
+    /**
+     * Constructor that creates a new Client with given ip, port and user name.
+     *
+     * @param ip The IP address to connect to.
+     * @param port Port used in the connection.
+     * @param name The user name to connect with.
+     */
     public Client(String ip, int port, String name) {
     	this.name = name;
         try {
@@ -76,18 +83,6 @@ public class Client {
         } catch (Exception e) {}
     }
 
-    public void printLog() {
-        ArrayList<Conversation> conversations = user.getConversations();
-        for (Conversation con : conversations) {
-            if (con.getId() == 1) {
-                ChatLog log = con.getConversationLog();
-                while (log.iterator().hasNext()) {
-                    controller.newMessage(log.iterator().next().getContent());
-                }
-            }
-        }
-    }
-
     /**
      * Sends the users conversations to the controller to be displayed in the UI.
      */
@@ -128,7 +123,7 @@ public class Client {
     }
 
     /**
-     * Listens to incoming Messages, user lists, Conversations or server messages.
+     * Listens to incoming Messages, user lists, Conversations or server messages, and deal with them accordingly.
      */
     public void startCommunication() {
         Object object;

@@ -16,6 +16,11 @@ public class ChatLog implements Iterable<Message>, Serializable {
     private static final long serialVersionUID = 13371337133732526L;
 
 
+    /**
+     * Adds a new message to the chat log.
+     *
+     * @param message The message to be added.
+     */
     public void add(Message message) {
 		if(list.size() >= MESSAGE_LIMIT) {
 			list.removeLast();
@@ -24,7 +29,6 @@ public class ChatLog implements Iterable<Message>, Serializable {
 	}
 	
 	public Iterator<Message> iterator(){
-
 		return list.iterator();
 	}
 }

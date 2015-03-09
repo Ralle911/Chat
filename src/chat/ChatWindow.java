@@ -2,20 +2,29 @@ package chat;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.*;
 import javax.swing.text.*;
 
+/**
+ * Class used to present content in the main window.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ */
 public class ChatWindow extends JPanel {
 	private int ID;
 	private JScrollPane scrollPane;
 	private JTextPane textPane;
-//	private Font txtFont = new Font("Sans-Serif", Font.PLAIN , 15);
-	
+
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
 	private SimpleAttributeSet nameFont = new SimpleAttributeSet();
-	
+
+    /**
+     * Constructor that takes an ID from a Conversation, and creates a window to display it.
+     *
+     * @param ID The Conversation object's ID.
+     */
 	public ChatWindow(int ID) {
 		setLayout(new BorderLayout());
 		this.ID = ID;
@@ -37,10 +46,15 @@ public class ChatWindow extends JPanel {
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         textPane.setEditable(false);
 	}
-	
+
+    /**
+     * Appends a new message into the panel window.
+     * The message can either contain a String or an ImageIcon.
+     *
+     * @param message The message object which content will be displayed.
+     */
 	public void append(Message message) {
         StyledDocument doc = textPane.getStyledDocument();
-
         try {
         	doc.insertString(doc.getLength(), message.getTimestamp() + " - ", chatFont);
             doc.insertString(doc.getLength(), message.getFromUserID() + ": ", nameFont);
@@ -56,15 +70,25 @@ public class ChatWindow extends JPanel {
         }
 	}
 
-    public void append(String message) {
+    /**
+     * Appends a string into the panel window.
+     *
+     * @param stringMessage The string to be appended.
+     */
+    public void append(String stringMessage) {
         StyledDocument doc = textPane.getStyledDocument();
         try {
-            doc.insertString(doc.getLength(), "[Server: " + message + "]\n", chatFont);
+            doc.insertString(doc.getLength(), "[Server: " + stringMessage + "]\n", chatFont);
         } catch (BadLocationException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Returns the ChatWindow's ID.
+     *
+     * @return The ChatWindow's ID.
+     */
 	public int getID() {
 		return ID;
 	}

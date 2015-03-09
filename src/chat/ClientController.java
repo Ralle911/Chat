@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
- * Controller class to handle system logic.
+ * Controller class to handle system logic between client and GUI.
  *
  * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
  * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
@@ -37,10 +37,6 @@ public class ClientController {
 		});
 	}
 
-//    public void setName() {
-//        client.setUser(JOptionPane.showInputDialog("What's your name, buddy?"));
-//    }
-
     /**
      * Receives an object that's either a Message object or a String
      * and sends it to the UI.
@@ -56,15 +52,32 @@ public class ClientController {
         }
     }
 
+    /**
+     * Returns the current user's ID.
+     *
+     * @return A string containing the current user's ID.
+     */
     public String getUserID () {
         return client.getUser().getId();
     }
 
+    /**
+     * Creates a new message containing given ID and content, then sends it to the client.
+     *
+     * @param conID Conversation-ID of the message.
+     * @param content The message's content.
+     */
     public void sendMessage(int conID, Object content) {
         Message message = new Message(conID, client.getUser().getId(), content);
         client.sendObject(message);
     }
 
+    /**
+     * Takes a conversation ID and String with URL to image, scales the image and sends it to the client.
+     *
+     * @param conID Conversation-ID of the image.
+     * @param url A string containing the URl to the image to be sent.
+     */
     public void sendImage(int conID, String url) {
         System.out.println(url);
         ImageIcon icon = new ImageIcon(url);
@@ -75,9 +88,14 @@ public class ClientController {
     }
 
 
-    public void sendParticipants(String[] participants) {
+    /**
+     * Creates a HashSet of given String array with participants, and sends it to the client.
+     *
+     * @param conversationParticipants A string array with conversaion participants.
+     */
+    public void sendParticipants(String[] conversationParticipants) {
     	HashSet<String> setParticpants = new HashSet<>();
-    	for(String participant: participants) {
+    	for(String participant: conversationParticipants) {
     		setParticpants.add(participant);
     	}
         client.sendObject(setParticpants);
@@ -93,21 +111,10 @@ public class ClientController {
     }
 
     /**
-     * Appends new text to the main UI window.
+     * Presents a Conversation in the UI.
      *
-     * @param txt The text to append.
+     * @param con The Conversation object to be presented in the UI.
      */
-//    public void appendText(String txt) {
-//        ui.appendContent(txt);
-//    }
-
-    /**
-     * Closes the clients socket.
-     */
-    public void disconnectClient() {
-        client.disconnectClient();
-    }
-
     public void newConversation(Conversation con) {
         HashSet<String> users = con.getInvolvedUsers();
         String[] usersHashToStringArray = users.toArray(new String[users.size()]);

@@ -12,7 +12,12 @@ import javax.swing.JPanel;
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Method;
 
-//test
+/**
+ * Scales down images to preferred size.
+ *
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
+ */
 public class ImageScaleHandler {
 
 	private static BufferedImage toBufferedImage(Image img) {
@@ -31,16 +36,15 @@ public class ImageScaleHandler {
 		BufferedImage bimage = toBufferedImage(img);
 		bimage = Scalr.resize(bimage, Method.ULTRA_QUALITY,
 				Scalr.Mode.FIT_TO_HEIGHT, 0, height);
-
 		return bimage;
 	}
 
-	 // Exempel
+    // Example
 	public static void main(String[] args) {
 		ImageIcon icon = new ImageIcon("src/filer/new1.jpg");
 		Image img = icon.getImage();
 
-		// Använd denna rad för att skala om bilder.
+		// Use this to scale images
 		BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 75);
 		icon = new ImageIcon(scaledImage);
 
