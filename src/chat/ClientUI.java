@@ -10,11 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,6 +48,7 @@ public class ClientUI extends JPanel {
 	private JPanel eastPanelCenter = new JPanel(new BorderLayout());
 	private JPanel eastPanelCenterNorth = new JPanel(new FlowLayout());
 	private JPanel pnlGroupSend = new JPanel(new GridLayout(1,2,8,8));
+	private JPanel pnlFileSend = new JPanel(new BorderLayout(5,5));
 	
 	private String userString = "";
 	
@@ -54,9 +57,10 @@ public class ClientUI extends JPanel {
 	private JButton btnSend = new JButton("Send");
 	private JButton btnNewGroupChat = new JButton("Gr");
 	private JButton btnNewPrivateMessage = new JButton("pr");
-	private JButton btnLobby = new JButton("Disconnect");
+	private JButton btnLobby = new JButton("Lobby");
 	private JButton btnCreateGroup = new JButton("");
 	private JButton btnCreatePrivateMessage = new JButton("");
+	private JButton btnFileChooser = new JButton("gem");
 	
 	private JTextPane tpChatWindow = new JTextPane();
 	private JTextPane tpConnectedUsers = new JTextPane();
@@ -133,12 +137,12 @@ public class ClientUI extends JPanel {
     public void initListeners() { 
     	tfMessageWindow.addKeyListener(new EnterListener());
     	GroupListener groupListener = new GroupListener();
-    	PrivateListener privateListener = new PrivateListener();
-    	DisconnectListener disconnectListener = new DisconnectListener();
+//    	PrivateListener privateListener = new PrivateListener();
+    	LobbyListener disconnectListener = new LobbyListener();
     	btnNewGroupChat.addActionListener(groupListener);
     	btnCreateGroup.addActionListener(groupListener);
-    	btnNewPrivateMessage.addActionListener(privateListener);
-    	btnCreatePrivateMessage.addActionListener(privateListener);
+//    	btnNewPrivateMessage.addActionListener(privateListener);
+//    	btnCreatePrivateMessage.addActionListener(privateListener);
     	btnLobby.addActionListener(disconnectListener);
     }
     /*
@@ -229,8 +233,12 @@ public class ClientUI extends JPanel {
     	southPanel.setPreferredSize(new Dimension(600, 50));
     	
     	btnSend.setPreferredSize(new Dimension(134, 40));
+    	btnFileChooser.setPreferredSize(new Dimension(30,40));
+    	southPanel.add(pnlFileSend,BorderLayout.EAST);
     	
-    	southPanel.add(btnSend,BorderLayout.EAST);
+    	pnlFileSend.add(btnFileChooser,BorderLayout.WEST);
+    	pnlFileSend.add(btnSend,BorderLayout.CENTER);
+    	
     	add(southPanel,BorderLayout.SOUTH);
     }
     
@@ -243,7 +251,7 @@ public class ClientUI extends JPanel {
     	eastPanelCenter.add(scrollConnectedUsers,BorderLayout.CENTER);
     	
     	pnlGroupSend.add(btnNewGroupChat);
-    	pnlGroupSend.add(btnNewPrivateMessage);
+//    	pnlGroupSend.add(btnNewPrivateMessage);
     	
     	
 //    	eastPanelCenterNorth.add(btnGroup);
@@ -403,31 +411,31 @@ public class ClientUI extends JPanel {
 	}
 	
 	
-	private class PrivateListener implements ActionListener {
-		private ArrayList<String> participants = new ArrayList<String>();
-		private String[] temp;
-		public void actionPerformed(ActionEvent e) {
-			if (btnNewPrivateMessage == e.getSource()) {
-				groupPanel2.getFrame().setVisible(true);
-			}
-			if (btnCreatePrivateMessage == e.getSource()) {
-				participants.clear();
-				temp = null;
-				for(int i = 0; i < arrayListRadioButtons.size(); i++) {
-					if(arrayListRadioButtons.get(i).isSelected()) {
-						participants.add(arrayListRadioButtons.get(i).getText());
-					}
-				}
-				temp = new String[participants.size()];
-				for (int i = 0; i < participants.size(); i++) {
-					temp[i] = participants.get(i);
-				}
-				
-				clientController.sendParticipants(temp);
-				groupPanel2.getFrame().dispose();	
-			}
-		}
-	}
+//	private class PrivateListener implements ActionListener {
+//		private ArrayList<String> participants = new ArrayList<String>();
+//		private String[] temp;
+//		public void actionPerformed(ActionEvent e) {
+//			if (btnNewPrivateMessage == e.getSource()) {
+//				groupPanel2.getFrame().setVisible(true);
+//			}
+//			if (btnCreatePrivateMessage == e.getSource()) {
+//				participants.clear();
+//				temp = null;
+//				for(int i = 0; i < arrayListRadioButtons.size(); i++) {
+//					if(arrayListRadioButtons.get(i).isSelected()) {
+//						participants.add(arrayListRadioButtons.get(i).getText());
+//					}
+//				}
+//				temp = new String[participants.size()];
+//				for (int i = 0; i < participants.size(); i++) {
+//					temp[i] = participants.get(i);
+//				}
+//				
+//				clientController.sendParticipants(temp);
+//				groupPanel2.getFrame().dispose();	
+//			}
+//		}
+//	}
 	
 	public ChatWindow getChatWindow(int ID) {
 		for(ChatWindow cw : arrayListChatWindows) {
@@ -458,10 +466,21 @@ public class ClientUI extends JPanel {
 		
 	}
 	
-	private class DisconnectListener implements ActionListener {
+	private class LobbyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLobby==e.getSource()) { 
 				clientController.disconnectClient();
+			}
+		}
+	}
+	
+	private class FileChooserListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (btnFileChooser==e.getSource()) {
+				JFileChooser fileChooser = new JFileChooser();
+				File file = fileChooser.getSelectedFile();
+				String fullPath = file.getAbsolutePath();
+				clientController.sendImage(activeChatWindow, fullPath);
 			}
 		}
 	}
