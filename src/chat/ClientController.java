@@ -113,9 +113,9 @@ public class ClientController {
         String[] usersHashToStringArray = users.toArray(new String[users.size()]);
         int conID = con.getId();
         ui.createConversation(usersHashToStringArray, conID);
-//        while (con.getConversationLog().iterator().hasNext()) {
-//            ui.appendContent(con.getConversationLog().iterator().next());
-//        }
+        for (Message message : con.getConversationLog()) {
+            ui.appendContent(message);
+        }
     }
 
 //    public Conversation newConversation(String str) {
