@@ -59,13 +59,13 @@ public class ClientUI extends JPanel {
 	private JTextPane tpChatWindow = new JTextPane();
 	private JTextPane tpConnectedUsers = new JTextPane();
 	
-	private ChatWindow test = new ChatWindow(-1);
+	//Lobby chat 
+	private ChatWindow cwLobby = new ChatWindow(-1);
 	
 	private JTextField tfMessageWindow = new JTextField();
 		
 	private JScrollPane scrollConnectedUsers = new JScrollPane(tpConnectedUsers);
-//	private JScrollPane scroll = new JScrollPane(tpChatWindow); // <-----
-	private JScrollPane scroll = new JScrollPane(test);
+	private JScrollPane scrollChatWindow = new JScrollPane(cwLobby);
 	private JScrollPane scrollGroupRooms = new JScrollPane(eastPanelCenterNorth);
 	
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
@@ -75,6 +75,7 @@ public class ClientUI extends JPanel {
 	
 	private ArrayList<JCheckBox> arrayListCheckBox = new ArrayList<JCheckBox>();
 	private ArrayList<JRadioButton> arrayListRadioButtons = new ArrayList<JRadioButton>();
+	private ArrayList<ChatWindow> arrayListChatWindows = new ArrayList<ChatWindow>();
 	
 	private Font txtFont = new Font("Sans-Serif", Font.BOLD , 20);
 	private Font fontGroupButton = new Font("Sans-Serif",Font.ITALIC, 10);
@@ -101,8 +102,8 @@ public class ClientUI extends JPanel {
         tpChatWindow.setFont(txtFont);
         tfMessageWindow.setFont(txtFont);
 
-        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollChatWindow.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollChatWindow.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         DefaultCaret caret = (DefaultCaret)tpChatWindow.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         tpChatWindow.setEditable(false);
@@ -116,7 +117,7 @@ public class ClientUI extends JPanel {
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
         
-        add(scroll, BorderLayout.CENTER);
+        add(scrollChatWindow, BorderLayout.CENTER);
         
         southPanel();
         eastPanel();
@@ -256,7 +257,7 @@ public class ClientUI extends JPanel {
 //		} catch (BadLocationException e) {
 //			e.printStackTrace();
 //		}
-    	test.append(message);
+    	cwLobby.append(message);
     }
     
     public void updateRadioButtons (ArrayList<String> radioButtonUsersIDs) {
@@ -302,13 +303,14 @@ public class ClientUI extends JPanel {
     }
     
     public void createConversation(String[] participants, int ID) {
+    	GroupButtonListener gbListener = new GroupButtonListener();
     	System.err.println(ID);
     	for (int i = 0; i < participants.length; i++) {
     		if (participants[i].equals(clientController.getUserID())==false) {
     			if (i == participants.length - 1) { 
     			userString += participants[i];
     			}else {
-    			userString += participants[i] + ", " ;
+    			userString += participants[i] + " " ;
     			}
     		}
     	}
@@ -317,8 +319,13 @@ public class ClientUI extends JPanel {
 	    	groupChatList[ID] = (new JButton(userString));
 	    	groupChatList[ID].setPreferredSize(new Dimension(120,30));
 	    	groupChatList[ID].setFont(fontGroupButton);
+	    	groupChatList[ID].addActionListener(gbListener);
 	    	
     		eastPanelCenterNorth.add(groupChatList[ID]);
+    		
+    		arrayListChatWindows.add(new ChatWindow(ID));
+    		
+    		
 	    	eastPanelCenterNorth.revalidate();
 	    	validate();
     	
@@ -373,7 +380,9 @@ public class ClientUI extends JPanel {
 				}
 				
 				clientController.sendParticipants(temp);
-				groupPanel.getFrame().dispose();	
+				groupPanel.getFrame().dispose();
+				
+				
 			}
 		}
 	}
@@ -403,6 +412,30 @@ public class ClientUI extends JPanel {
 				groupPanel2.getFrame().dispose();	
 			}
 		}
+	}
+	
+	public ChatWindow getChatWindow(int ID) {
+		for(ChatWindow cw : arrayListChatWindows) {
+			if(cw.getID() == ID) {
+				return cw;
+			}
+		}
+		return null;
+	}
+	
+	private class GroupButtonListener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i < groupChatList.length; i++) {
+				if(groupChatList[i].isSelected()) {
+					scrollChatWindow.add(getChatWindow(i));
+					eastPanelCenterNorth.revalidate();
+					validate();
+				}
+			}
+			
+		}
+		
 	}
 	
 	private class DisconnectListener implements ActionListener {
