@@ -441,10 +441,6 @@ public class ClientUI extends JPanel {
 					remove(bL.getLayoutComponent(BorderLayout.CENTER));
 					add(getChatWindow(i), BorderLayout.CENTER);
 					activeChatWindow = i;
-<<<<<<< HEAD
-=======
-//					revalidate();
->>>>>>> e0d4f048b433e39a061c593449acc6a454f66737
 					validate();
 					repaint();
 				}
