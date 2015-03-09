@@ -1,5 +1,7 @@
 package chat;
 
+import com.sun.glass.ui.Window;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -7,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.logging.*;
 
 /**
  * Model class for the server.
@@ -18,8 +21,10 @@ public class Server implements Runnable {
     private ServerSocket serverSocket;
     private ArrayList<ConnectedClient> connectedClients;
     private ArrayList<User> registeredUsers;
+    private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
 
     public Server(int port) {
+        initLogger();
         registeredUsers = new ArrayList<>();
         connectedClients = new ArrayList<>();
         try {
@@ -28,6 +33,17 @@ public class Server implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initLogger() {
+        Handler fh;
+        try {
+            fh = new FileHandler("./src/log/Server.log");
+            LOGGER.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+            LOGGER.setLevel(Level.FINE);
+        } catch (IOException e) {}
     }
 
     /**
@@ -63,13 +79,15 @@ public class Server implements Runnable {
      * @param message The message to be sent.
      */
     public void sendMessage(Message message) {
+        Conversation conversation = null;
+        String to = "";
 
         // Lobby message
         if (message.getConversationID() == -1) {
             sendObjectToAll(message);
+            to += "lobby";
         } else {
             User senderUser = null;
-            Conversation conversation = null;
 
             // Finds the sender user
             for (ConnectedClient cClient : connectedClients) {
@@ -80,6 +98,7 @@ public class Server implements Runnable {
                     for (Conversation con : senderUser.getConversations()) {
                         if (con.getId() == message.getConversationID()) {
                             conversation = con;
+                            to += conversation.getInvolvedUsers().toString();
 
                             // Finds the message's recipient users, then sends the message
                             for (String s : con.getInvolvedUsers()) {
@@ -89,14 +108,16 @@ public class Server implements Runnable {
                                     }
                                 }
                             }
-
-                            // Adds the message to the conversation
                             conversation.addMessage(message);
                         }
                     }
                 }
             }
         }
+        LOGGER.info("-- NEW MESSAGE SENT --\n" +
+                "From: " + message.getFromUserID() + "\n" +
+                "To: " + to + "\n" +
+                "Message: " + message.getContent().toString());
     }
 
     /**
@@ -132,7 +153,7 @@ public class Server implements Runnable {
      * Adds client to list of connected clients.
      */
     public void run() {
-        System.out.println("Server started");
+        LOGGER.info("Server started.");
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
@@ -153,6 +174,7 @@ public class Server implements Runnable {
         private Socket socket;
 
         public ConnectedClient(Socket socket, Server server) {
+            LOGGER.info("Client connected: " + socket.getInetAddress());
             this.socket = socket;
             this.server = server;
             try {
@@ -208,6 +230,7 @@ public class Server implements Runnable {
             removeConnectedClient();
             sendConnectedClients();
             sendObjectToAll("Client disconnected: " + user.getId());
+            LOGGER.info("Client disconnected: " + user.getId());
             try {
                 socket.close();
             } catch (Exception e) {
@@ -313,10 +336,14 @@ public class Server implements Runnable {
                 tempUser = (User) object;
                 user = tempUser;
                 while (isUserOnline(tempUser.getId())) {
+                    LOGGER.info("Trying to connect user " + tempUser.getId());
                     sendObject("Client named " + tempUser.getId()
                             + " already connected, try again!");
                     object = ois.readObject();
                     tempUser = (User) object;
+                    if (isUserOnline(tempUser.getId())) {
+                        LOGGER.info("User " + tempUser.getId() + " already connected. Asking for new name.");
+                    }
                 }
                 if (!isUserInDatabase(tempUser)) {
                     registeredUsers.add(tempUser);
@@ -326,6 +353,7 @@ public class Server implements Runnable {
                 user = tempUser;
                 oos.writeObject(user);
                 server.sendObjectToAll("Client connected: " + user.getId());
+                LOGGER.info("Client connected: " + user.getId());
                 sendConnectedClients();
             } catch (Exception e) {
                 e.printStackTrace();
