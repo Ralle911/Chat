@@ -93,7 +93,7 @@ public class ClientUI extends JPanel {
         initGraphics();
 		initListeners();
 	}
-
+	
     public void initGraphics() {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(900,600));
@@ -304,6 +304,7 @@ public class ClientUI extends JPanel {
     
     public void createConversation(String[] participants, int ID) {
     	GroupButtonListener gbListener = new GroupButtonListener();
+    	ChatWindow tempWindow;
     	System.err.println(ID);
     	for (int i = 0; i < participants.length; i++) {
     		if (participants[i].equals(clientController.getUserID())==false) {
@@ -417,23 +418,26 @@ public class ClientUI extends JPanel {
 	public ChatWindow getChatWindow(int ID) {
 		for(ChatWindow cw : arrayListChatWindows) {
 			if(cw.getID() == ID) {
+				System.out.println("Returning ChatWindow with " + ID);
 				return cw;
 			}
 		}
 		return null;
 	}
 	
+	
+	/*
+	 * Kanske gör för många objekt? Gör objekt i createScroll
+	 */
 	private class GroupButtonListener implements ActionListener {
-
 		public void actionPerformed(ActionEvent e) {
 			for(int i = 0; i < groupChatList.length; i++) {
-				if(groupChatList[i].isSelected()) {
-					scrollChatWindow.add(getChatWindow(i));
-					eastPanelCenterNorth.revalidate();
+				if(groupChatList[i]==e.getSource()) {
+					System.out.println("Knapp " + i + " tryckt");
+//					tempScroll.revalidate();
 					validate();
 				}
 			}
-			
 		}
 		
 	}
