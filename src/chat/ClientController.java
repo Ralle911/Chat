@@ -117,13 +117,4 @@ public class ClientController {
             ui.appendContent(message);
         }
     }
-
-//    public Conversation newConversation(String str) {
-//        String[] split = str.split(",");
-//        ArrayList<User> temp = new ArrayList<>();
-//        for (int i = 0; i < split.length; i++) {
-//            temp.add(split[i]);
-//        }
-//        return new Conversation()
-//    }
 }
