@@ -8,9 +8,22 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
@@ -118,7 +131,7 @@ public class ClientUI extends JPanel {
     }
     
     public void initListeners() { 
-    	tfMessageWindow.addActionListener(new EnterListener());
+    	tfMessageWindow.addKeyListener(new EnterListener());
     	GroupListener groupListener = new GroupListener();
     	PrivateListener privateListener = new PrivateListener();
     	DisconnectListener disconnectListener = new DisconnectListener();
@@ -337,14 +350,27 @@ public class ClientUI extends JPanel {
     	    }
     }
     
-	private class EnterListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-//			appendContent(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
-//			appendConnectedUsers(tfMessageWindow.getText()); //Tempor�r f�r att testa utan server
-			tfMessageWindow.setText("");
+	private class EnterListener implements KeyListener {
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+				tfMessageWindow.setText("");
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
+		
 	
 	private class GroupListener implements ActionListener {
 		private ArrayList<String> participants = new ArrayList<String>();
