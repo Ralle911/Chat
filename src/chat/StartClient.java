@@ -39,7 +39,7 @@ import javax.swing.text.StyledDocument;
  * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 
-public class ClientUI extends JPanel {
+public class StartClient extends JPanel {
 	private JPanel southPanel = new JPanel();
 	private JPanel eastPanel = new JPanel();
 	private JPanel eastPanelCenter = new JPanel(new BorderLayout());
@@ -79,7 +79,7 @@ public class ClientUI extends JPanel {
 	private Font fontButtons = new Font("Sans-Serif", Font.BOLD,15);
 	private SimpleAttributeSet chatFont = new SimpleAttributeSet();
 	
-	public ClientUI(ClientController clientController) { 
+	public StartClient(ClientController clientController) {
 		this.clientController = clientController;
 		arrayListChatWindows.add(cwLobby);
 		groupPanel = new GroupPanel();
