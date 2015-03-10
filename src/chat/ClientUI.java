@@ -476,7 +476,7 @@ public class ClientUI extends JPanel {
 					groupPanel.getFrame().dispose();
 					createdGroup = true;
 				} else {
-					JOptionPane.showMessageDialog(null, "Du måste välja minst en person!");
+					JOptionPane.showMessageDialog(null, "You have to choose atleast one person!");
 				}
 			}
 		}
