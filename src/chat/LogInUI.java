@@ -63,11 +63,14 @@ public class LogInUI extends Thread{
 	
 	public void initListeners() {
 		LogInMenuListener log = new LogInMenuListener();
+		CreateServerListener createServerListener = new CreateServerListener();
 		btnCreateServer.addActionListener(log);
 		btnLogIn.addActionListener(log);
 		txtUserName.addActionListener(new EnterListener());
 		serverPanel.txtServerPort.addActionListener(new EnterListenerServer());
-		serverPanel.btnServerCreateServer.addActionListener(new CreateServerListener());
+		serverPanel.btnServerCreateServer.addActionListener(createServerListener);
+		btnCancel.addActionListener(log);
+		serverPanel.btnServerCancel.addActionListener(createServerListener);
 	}
 	
 	public void initPanels(){
@@ -221,6 +224,9 @@ public class LogInUI extends Thread{
 				new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
 				frame.setVisible(false);
 			}
+			if (btnCancel==e.getSource()) {
+				System.exit(0);
+			}
 		}
 	}
 	
@@ -242,6 +248,9 @@ public class LogInUI extends Thread{
 		public void actionPerformed(ActionEvent e) {
 			if (serverPanel.btnServerCreateServer==e.getSource()) {
 				new Server(serverPanel.getPort());
+				serverPanel.frame.dispose();
+			}
+			if (serverPanel.btnServerCancel==e.getSource()) {
 				serverPanel.frame.dispose();
 			}
 		}
