@@ -218,17 +218,27 @@ public class LogInUI extends Thread{
 				serverPanel.frame.setVisible(true);
 			}
 			if (btnLogIn==e.getSource()) {
-				new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-				frame.setVisible(false);
+					if(txtUserName.getText().length() <= 10) {
+						new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+						frame.setVisible(false);
+					} else {
+					JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
+					txtUserName.setText("");
+				}
 			}
 		}
 	}
 	
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-			frame.setVisible(false);
-		}
+				if(txtUserName.getText().length() <= 10) {
+					new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+					frame.setVisible(false);
+				} else {
+				JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
+				txtUserName.setText("");
+				}
+			}
 	}
 	
 	private class EnterListenerServer implements ActionListener {
