@@ -213,11 +213,11 @@ public class ClientUI extends JPanel {
      */
     public void eastPanel() {
     	eastPanel.setLayout(new BorderLayout());
-    	eastPanel.add(lblUser,BorderLayout.NORTH);
-    	eastPanel.add(eastPanelCenter,BorderLayout.CENTER);
+    	eastPanel.add(lblUser, BorderLayout.NORTH);
+    	eastPanel.add(eastPanelCenter, BorderLayout.CENTER);
     	eastPanelCenterNorth.add(pnlGroupSend);
-    	eastPanelCenter.add(scrollGroupRooms,BorderLayout.NORTH);
-    	eastPanelCenter.add(scrollConnectedUsers,BorderLayout.CENTER);
+    	eastPanelCenter.add(scrollGroupRooms, BorderLayout.NORTH);
+    	eastPanelCenter.add(scrollConnectedUsers, BorderLayout.CENTER);
     	
     	pnlGroupSend.add(btnNewGroupChat);
     	
@@ -232,16 +232,15 @@ public class ClientUI extends JPanel {
      */
     public void appendContent(Message message) {
         getChatWindow(message.getConversationID()).append(message);
-        /*
-         * Inlagt 2015-03-10
-         */
         if(activeChatWindow != message.getConversationID()) {
         	highlightGroup(message.getConversationID());
         }
     }
     
-    /*
-     * Inlagt 2015-03-10
+    /**
+     * The method handles notice.
+     * 
+     * @param ID The ID of the group.
      */
     public void highlightGroup(int ID) {
     	if(ID != -1)
@@ -432,11 +431,13 @@ public class ClientUI extends JPanel {
 	 */
 	private class EnterListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
-			}
-		}
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
+            }
+        }
 
 		public void keyReleased(KeyEvent e) {}
 
@@ -476,7 +477,7 @@ public class ClientUI extends JPanel {
 					groupPanel.getFrame().dispose();
 					createdGroup = true;
 				} else {
-					JOptionPane.showMessageDialog(null, "Du måste välja minst en person!");
+					JOptionPane.showMessageDialog(null, "You have to choose atleast one person!");
 				}
 			}
 		}
@@ -552,8 +553,10 @@ public class ClientUI extends JPanel {
 	private class SendListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnSend==e.getSource()) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
 			}
 		}
 	}
