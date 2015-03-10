@@ -101,11 +101,11 @@ public class ClientUI extends JPanel {
     }
     
     public void initButtons() {
-    	btnNewGroupChat.setIcon(new ImageIcon("src/resources/newGroup.png"));
+    	btnNewGroupChat.setIcon(new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/newGroup.png"));
         btnNewGroupChat.setBorder(null);
         btnNewGroupChat.setPreferredSize(new Dimension(64,64));
 
-        btnFileChooser.setIcon(new ImageIcon("src/resources/newImage.png"));
+        btnFileChooser.setIcon(new ImageIcon("M:/Gruppuppgift/Chat2/Chat/src/resources/newImage.png"));
         btnFileChooser.setBorder(null);
         btnFileChooser.setPreferredSize(new Dimension(64, 64));
         
