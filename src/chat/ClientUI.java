@@ -232,16 +232,15 @@ public class ClientUI extends JPanel {
      */
     public void appendContent(Message message) {
         getChatWindow(message.getConversationID()).append(message);
-        /*
-         * Inlagt 2015-03-10
-         */
         if(activeChatWindow != message.getConversationID()) {
         	highlightGroup(message.getConversationID());
         }
     }
     
-    /*
-     * Inlagt 2015-03-10
+    /**
+     * The method handles notice.
+     * 
+     * @param ID The ID of the group.
      */
     public void highlightGroup(int ID) {
     	if(ID != -1)
