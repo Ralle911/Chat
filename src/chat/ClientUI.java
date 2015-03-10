@@ -413,7 +413,7 @@ public class ClientUI extends JPanel {
 	    }
 	    
 	    /**
-	     * Initiates the scrollpanels and the panels.
+	     * Initiates the scrollpanels and the panels of the groupPanel.
 	     */
 	    public void panelBuilder() {
 	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
