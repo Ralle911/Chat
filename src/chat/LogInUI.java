@@ -19,9 +19,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
 /**
+ * Log in UI and start-class for the chat.
  *
- * @author Emil Sandgren
+ * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
+ * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson.
  */
 public class LogInUI extends Thread{
 	private JLabel lblIp = new JLabel("IP:");
@@ -61,6 +64,9 @@ public class LogInUI extends Thread{
 		initListeners();
 	}
 	
+	/**
+	 * Initiates the listeners.
+	 */
 	public void initListeners() {
 		LogInMenuListener log = new LogInMenuListener();
 		CreateServerListener createServerListener = new CreateServerListener();
@@ -73,6 +79,9 @@ public class LogInUI extends Thread{
 		serverPanel.btnServerCancel.addActionListener(createServerListener);
 	}
 	
+	/**
+	 * Initiates the panels.
+	 */
 	public void initPanels(){
 		pnlOuterBorderLayout.setPreferredSize(new Dimension(430,190));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
@@ -94,6 +103,9 @@ public class LogInUI extends Thread{
 		lblPort.setFont(fontIpPort);
 	}
 	
+	/**
+	 * Initiates the buttons.
+	 */
 	public void initButtons() {
 		btnCreateServer.setForeground(new Color(1,48,69));
 		btnCreateServer.setFont(fontButtons);
@@ -108,6 +120,9 @@ public class LogInUI extends Thread{
 		pnlCenterGrid.add(btnCancel);
 	}
 	
+	/**
+	 * Initiates the graphics and some design.
+	 */
 	public void initGraphics() {
 		pnlCenterGrid.setOpaque(false);
 		pnlCenterFlow.setOpaque(false);
@@ -118,6 +133,9 @@ public class LogInUI extends Thread{
 		lblUserName.setOpaque(false);
 	}
 	
+	/**
+	 * Sets the "Look and Feel" of the JComponents.
+	 */
 	public void lookAndFeel() {
    	 try {
    	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -132,6 +150,9 @@ public class LogInUI extends Thread{
    	    }
    }
 	
+	/**
+	 * Run method for the login-frame.
+	 */
 	public void run() {
 		this.frame = new JFrame("bIRC Login");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -142,6 +163,9 @@ public class LogInUI extends Thread{
 		frame.setResizable(false);
 	}
 	
+	/**
+	 * Create an server-panel class.
+	 */
 	private class ServerPanel extends Thread {
 		private JPanel pnlServerOuterBorderLayout = new JPanel(new BorderLayout());
 		private JPanel pnlServerCenterFlow = new JPanel(new FlowLayout());
@@ -162,6 +186,9 @@ public class LogInUI extends Thread{
 			setlblServerShowServerIp();
 		}
 		
+		/**
+		 * Initiate Server-Panels.
+		 */
 		public void initPanels() {
 			pnlServerOuterBorderLayout.setPreferredSize(new Dimension(350,110));
 			pnlServerOuterBorderLayout.add(pnlServerCenterFlow,BorderLayout.CENTER);
@@ -180,6 +207,9 @@ public class LogInUI extends Thread{
 			pnlServerCenterGrid.add(btnServerCancel);
 		}
 		
+		/**
+		 * Initiate Server-Labels.
+		 */
 		public void initLabels() {
 			lblServerWelcomeMessage.setFont(fontWelcome);
 			lblServerShowServerIp.setFont(fontInfo);
@@ -191,6 +221,9 @@ public class LogInUI extends Thread{
 			lblServerPort.setBackground(Color.WHITE);
 		}
 		
+		/**
+		 * Sets the ip-label to the local ip of your own computer.
+		 */
 		public void setlblServerShowServerIp() {
 			try {
 				String message = ""+InetAddress.getLocalHost();
@@ -201,6 +234,9 @@ public class LogInUI extends Thread{
 			}
 		}
 		
+		/**
+		 * Run method for the server-frame.
+		 */
 		public void run() {
 			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			frame.add(pnlServerOuterBorderLayout);
@@ -210,18 +246,27 @@ public class LogInUI extends Thread{
 			frame.setResizable(false);
 		}
 		
+		/**
+		 * Returns the port from the textfield.
+		 * 
+		 * @return Port for creating a server.
+		 */
 		public int getPort() {
 			return Integer.parseInt(this.txtServerPort.getText());
 		}
 	}
 	
+	/**
+	 * Listener for login-button, create server-button and for the cancel-button.
+	 * Also limits the username to a 10 char max.
+	 */
 	private class LogInMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnCreateServer==e.getSource()) {
 				serverPanel.frame.setVisible(true);
 			}
 			if (btnLogIn==e.getSource()) {
-					if(txtUserName.getText().length() <= 10) {
+					if (txtUserName.getText().length() <= 10) {
 						new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
 						frame.setVisible(false);
 					} else {
@@ -235,6 +280,10 @@ public class LogInUI extends Thread{
 		}
 	}
 	
+	/**
+	 * Listener for the textField. Enables you to press enter instead of login.
+	 * Also limits the username to 10 chars.
+	 */
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 				if(txtUserName.getText().length() <= 10) {
@@ -247,6 +296,10 @@ public class LogInUI extends Thread{
 			}
 	}
 	
+	/**
+	 * Listener for textfield in create a server. Enables you to press enter to create server.
+	 * Disposes the serverpanel on create.
+	 */
 	private class EnterListenerServer implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new Server(serverPanel.getPort());
@@ -254,6 +307,10 @@ public class LogInUI extends Thread{
 		}
 	}
 	
+	/**
+	 * Listener for the create server button and for the cancel button.
+	 * Disposes the frames on click.
+	 */
 	private class CreateServerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (serverPanel.btnServerCreateServer==e.getSource()) {
@@ -266,6 +323,11 @@ public class LogInUI extends Thread{
 		}
 	}
 	
+	/**
+	 * MAIN
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) { 
 		new LogInUI().start();
 	}

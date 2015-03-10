@@ -334,27 +334,21 @@ public class Server implements Runnable {
          */
         public void validateIncomingUser() {
             Object object;
-            User tempUser;
             try {
                 object = ois.readObject();
-                tempUser = (User) object;
-                user = tempUser;
-                while (isUserOnline(tempUser.getId())) {
-                    LOGGER.info("Trying to connect user " + tempUser.getId());
-                    sendObject("Client named " + tempUser.getId()
-                            + " already connected, try again!");
+                user = (User) object;
+                LOGGER.info("Checking online status for user: " + user.getId());
+                while (isUserOnline(user.getId())) {
+                    LOGGER.info("User " + user.getId() + " already connected. Asking for new name.");
+                    sendObject("Client named " + user.getId()+ " already connected, try again!");
+                    // Wait for new user
                     object = ois.readObject();
-                    tempUser = (User) object;
-                    if (isUserOnline(tempUser.getId())) {
-                        LOGGER.info("User " + tempUser.getId() + " already connected. Asking for new name.");
-                    }
+                    user = (User) object;
+                    LOGGER.info("Checking online status for user: " + user.getId());
                 }
-                if (!isUserInDatabase(tempUser)) {
-                    registeredUsers.add(tempUser);
-                } else {
-                    tempUser = server.getUser(tempUser.getId());
+                if (!isUserInDatabase(user)) {
+                    registeredUsers.add(user);
                 }
-                user = tempUser;
                 oos.writeObject(user);
                 server.sendObjectToAll("Client connected: " + user.getId());
                 LOGGER.info("Client connected: " + user.getId());
@@ -380,6 +374,7 @@ public class Server implements Runnable {
                         Conversation con = (Conversation) object;
                         oos.writeObject(con);
                     } else if (object instanceof HashSet) {
+                        @SuppressWarnings("unchecked")
                         HashSet<String> participants = (HashSet<String>) object;
                         updateConversation(participants);
                     } else {
