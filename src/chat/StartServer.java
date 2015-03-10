@@ -1,46 +1,50 @@
 package chat;
 
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
  * Create an server-panel class.
  */
-public class StartServer {
+public class StartServer extends JPanel{
     private JPanel pnlServerCenterFlow = new JPanel(new FlowLayout());
     private JPanel pnlServerCenterGrid = new JPanel(new GridLayout(2,2,5,5));
-    private JLabel lblWelcomeText = new JLabel("IRC Create Server");
 
     private JTextField txtServerPort = new JTextField("3450");
-    private JLabel lblServerWelcomeMessage = new JLabel("Create Server");
     private JLabel lblServerPort = new JLabel("Port:");
     private JLabel lblServerShowServerIp = new JLabel();
 
-    private JButton btnServerCreateServer = new JButton("Create");
-    private JButton btnServerCancel = new JButton("Cancel");
+    private JButton btnServerCreateServer = new JButton("Create Server");
+    private JButton btnServerStop = new JButton("Stop Server");
 
     private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
     private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
     private Font fontButtons = new Font("Sans-Serif", Font.BOLD, 15);
     private Font fontInfo = new Font("Sans-Serif",Font.BOLD|Font.ITALIC,17);
-
+    
+    private Server server;
+    
     public StartServer() {
         initPanels();
         initLabels();
         setlblServerShowServerIp();
+        initListeners();
     }
 
     /**
      * Initiate Server-Panels.
      */
     public void initPanels() {
-        pnlServerOuterBorderLayout.setPreferredSize(new Dimension(350,110));
-        pnlServerOuterBorderLayout.add(pnlServerCenterFlow,BorderLayout.CENTER);
+        setPreferredSize(new Dimension(350,110));
+        add(pnlServerCenterFlow,BorderLayout.CENTER);
         pnlServerCenterFlow.add(pnlServerCenterGrid);
-        pnlServerOuterBorderLayout.add(lblServerWelcomeMessage,BorderLayout.NORTH);
-        pnlServerOuterBorderLayout.add(lblServerShowServerIp,BorderLayout.SOUTH);
+        add(lblServerShowServerIp,BorderLayout.SOUTH);
 
         pnlServerCenterFlow.setOpaque(true);
         pnlServerCenterFlow.setBackground(Color.WHITE);
@@ -50,21 +54,24 @@ public class StartServer {
         pnlServerCenterGrid.add(lblServerPort);
         pnlServerCenterGrid.add(txtServerPort);
         pnlServerCenterGrid.add(btnServerCreateServer);
-        pnlServerCenterGrid.add(btnServerCancel);
+        pnlServerCenterGrid.add(btnServerStop);
     }
 
     /**
      * Initiate Server-Labels.
      */
     public void initLabels() {
-        lblServerWelcomeMessage.setFont(fontWelcome);
         lblServerShowServerIp.setFont(fontInfo);
-        lblServerWelcomeMessage.setHorizontalAlignment(JLabel.CENTER);
         lblServerShowServerIp.setHorizontalAlignment(JLabel.CENTER);
         lblServerPort.setFont(fontIpPort);
-        lblWelcomeText.setOpaque(true);
         lblServerPort.setOpaque(true);
         lblServerPort.setBackground(Color.WHITE);
+    }
+    
+    public void initListeners() {
+    	CreateStopServerListener create = new CreateStopServerListener();
+    	btnServerCreateServer.addActionListener(create);
+    	btnServerStop.addActionListener(create);
     }
 
     /**
@@ -81,12 +88,12 @@ public class StartServer {
     }
 
     public static void main(String[] args) {
+        StartServer server = new StartServer();
         JFrame frame = new JFrame("bIRC Create Server");
-        JPanel pnlServerOuterBorderLayout = new JPanel(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.add(pnlServerOuterBorderLayout);
+        frame.add(server);
         frame.pack();
-        frame.setVisible(false);
+        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
     }
@@ -99,4 +106,20 @@ public class StartServer {
     public int getPort() {
         return Integer.parseInt(this.txtServerPort.getText());
     }
+    
+    private class CreateStopServerListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (btnServerCreateServer==e.getSource()) {
+				server = new Server(getPort());
+			}
+			if (btnServerStop==e.getSource()) {
+				try {
+					server.closeServer();
+				} catch (IOException e1) {
+					System.err.println("Något gick fel med stängning av servern");
+					e1.printStackTrace();
+				}
+			}
+		}
+	}
 }
