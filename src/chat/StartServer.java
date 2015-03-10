@@ -21,7 +21,6 @@ public class StartServer extends JPanel{
     private JLabel lblServerShowServerIp = new JLabel();
 
     private JButton btnServerCreateServer = new JButton("Create Server");
-    private JButton btnServerStop = new JButton("Stop Server");
 
     private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
     private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
@@ -54,7 +53,6 @@ public class StartServer extends JPanel{
         pnlServerCenterGrid.add(lblServerPort);
         pnlServerCenterGrid.add(txtServerPort);
         pnlServerCenterGrid.add(btnServerCreateServer);
-        pnlServerCenterGrid.add(btnServerStop);
     }
 
     /**
@@ -71,7 +69,6 @@ public class StartServer extends JPanel{
     public void initListeners() {
     	CreateStopServerListener create = new CreateStopServerListener();
     	btnServerCreateServer.addActionListener(create);
-    	btnServerStop.addActionListener(create);
     }
 
     /**
@@ -90,7 +87,7 @@ public class StartServer extends JPanel{
     public static void main(String[] args) {
         StartServer server = new StartServer();
         JFrame frame = new JFrame("bIRC Create Server");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(server);
         frame.pack();
         frame.setVisible(true);
@@ -111,14 +108,6 @@ public class StartServer extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if (btnServerCreateServer==e.getSource()) {
 				server = new Server(getPort());
-			}
-			if (btnServerStop==e.getSource()) {
-				try {
-					server.closeServer();
-				} catch (IOException e1) {
-					System.err.println("Något gick fel med stängning av servern");
-					e1.printStackTrace();
-				}
 			}
 		}
 	}

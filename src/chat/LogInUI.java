@@ -24,7 +24,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Emil Sandgren, Kalle Bornemark, Erik Sandgren,
  * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson.
  */
-public class LogInUI extends Thread{
+public class LogInUI extends JPanel {
 	private JLabel lblIp = new JLabel("IP:");
 	private JLabel lblPort = new JLabel("Port:"); 
 	private JLabel lblWelcomeText = new JLabel("Log in to bIRC");
@@ -44,17 +44,14 @@ public class LogInUI extends Thread{
 	private Font fontInfo = new Font("Sans-Serif",Font.BOLD|Font.ITALIC,17);
 	
 	private BorderLayout borderLayout = new BorderLayout();
-	private JPanel pnlOuterBorderLayout = new JPanel(borderLayout);
 	private JPanel pnlCenterGrid = new JPanel(new GridLayout(3,2,5,5));
 	private JPanel pnlCenterFlow = new JPanel(new FlowLayout());
 	private JPanel pnlNorthGrid = new JPanel(new GridLayout(2,1,5,5));
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
-	private StartServer serverPanel;
 	private JFrame frame;
 	
 	public LogInUI() {
-		serverPanel = new StartServer();
-		serverPanel.start();
+		setLayout(new BorderLayout());
 		initPanels();
 		lookAndFeel();
 		initGraphics();
@@ -67,27 +64,23 @@ public class LogInUI extends Thread{
 	 */
 	public void initListeners() {
 		LogInMenuListener log = new LogInMenuListener();
-		CreateServerListener createServerListener = new CreateServerListener();
 		btnCreateServer.addActionListener(log);
 		btnLogIn.addActionListener(log);
 		txtUserName.addActionListener(new EnterListener());
-		serverPanel.txtServerPort.addActionListener(new EnterListenerServer());
-		serverPanel.btnServerCreateServer.addActionListener(createServerListener);
 		btnCancel.addActionListener(log);
-		serverPanel.btnServerCancel.addActionListener(createServerListener);
 	}
 	
 	/**
 	 * Initiates the panels.
 	 */
 	public void initPanels(){
-		pnlOuterBorderLayout.setPreferredSize(new Dimension(430,190));
+		setPreferredSize(new Dimension(430,190));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
-		pnlOuterBorderLayout.add(btnCreateServer,BorderLayout.SOUTH);
-		pnlOuterBorderLayout.add(pnlCenterFlow,BorderLayout.CENTER);
+		add(btnCreateServer,BorderLayout.SOUTH);
+		add(pnlCenterFlow,BorderLayout.CENTER);
 		pnlCenterFlow.add(pnlCenterGrid);
 		
-		pnlOuterBorderLayout.add(pnlNorthGrid,BorderLayout.NORTH);
+		add(pnlNorthGrid,BorderLayout.NORTH);
 		pnlNorthGrid.add(lblWelcomeText);
 		pnlNorthGrid.add(pnlNorthGridGrid);
 		pnlNorthGridGrid.add(lblUserName);
@@ -126,7 +119,7 @@ public class LogInUI extends Thread{
 		pnlCenterFlow.setOpaque(false);
 		pnlNorthGridGrid.setOpaque(false);
 		pnlNorthGrid.setOpaque(false);
-		pnlOuterBorderLayout.setBackground(Color.WHITE);
+		setBackground(Color.WHITE);
 		lblUserName.setBackground(Color.WHITE);
 		lblUserName.setOpaque(false);
 	}
@@ -151,10 +144,11 @@ public class LogInUI extends Thread{
 	/**
 	 * Run method for the login-frame.
 	 */
-	public void run() {
-		this.frame = new JFrame("bIRC Login");
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("bIRC Login");
+		LogInUI ui = new LogInUI();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.add(pnlOuterBorderLayout);
+		frame.add(ui);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
@@ -169,9 +163,6 @@ public class LogInUI extends Thread{
 	 */
 	private class LogInMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (btnCreateServer==e.getSource()) {
-				serverPanel.frame.setVisible(true);
-			}
 			if (btnLogIn==e.getSource()) {
 					if (txtUserName.getText().length() <= 10) {
 						new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
@@ -207,35 +198,14 @@ public class LogInUI extends Thread{
 	 * Listener for textfield in create a server. Enables you to press enter to create server.
 	 * Disposes the serverpanel on create.
 	 */
-	private class EnterListenerServer implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			new Server(serverPanel.getPort());
-			serverPanel.frame.dispose();
-		}
-	}
 	
 	/**
 	 * Listener for the create server button and for the cancel button.
 	 * Disposes the frames on click.
 	 */
-	private class CreateServerListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			if (serverPanel.btnServerCreateServer==e.getSource()) {
-				new Server(serverPanel.getPort());
-				serverPanel.frame.dispose();
-			}
-			if (serverPanel.btnServerCancel==e.getSource()) {
-				serverPanel.frame.dispose();
-			}
-		}
-	}
-	
 	/**
 	 * MAIN
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) { 
-		new LogInUI().start();
-	}
 }
