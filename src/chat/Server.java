@@ -35,6 +35,7 @@ public class Server implements Runnable {
 
     public void closeServer() throws IOException {
         for (ConnectedClient client : connectedClients) {
+            client.interruptThread();
             client.socket.close();
         }
         serverSocket.close();
@@ -197,6 +198,10 @@ public class Server implements Runnable {
                 e.printStackTrace();
             }
             client.start();
+        }
+
+        public void interruptThread() {
+            Thread.currentThread().interrupt();
         }
 
         /**
