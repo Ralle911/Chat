@@ -9,14 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 /**
  * Log in UI and start-class for the chat.
@@ -36,7 +29,6 @@ public class LogInUI extends JPanel {
 	
 	private JButton btnLogIn = new JButton("Login");
 	private JButton btnCancel = new JButton("Cancel");
-	private JButton btnCreateServer = new JButton("Create Server");
 	
 	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
 	private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
@@ -64,7 +56,6 @@ public class LogInUI extends JPanel {
 	 */
 	public void initListeners() {
 		LogInMenuListener log = new LogInMenuListener();
-		btnCreateServer.addActionListener(log);
 		btnLogIn.addActionListener(log);
 		txtUserName.addActionListener(new EnterListener());
 		btnCancel.addActionListener(log);
@@ -74,9 +65,8 @@ public class LogInUI extends JPanel {
 	 * Initiates the panels.
 	 */
 	public void initPanels(){
-		setPreferredSize(new Dimension(430,190));
+		setPreferredSize(new Dimension(430, 190));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
-		add(btnCreateServer,BorderLayout.SOUTH);
 		add(pnlCenterFlow,BorderLayout.CENTER);
 		pnlCenterFlow.add(pnlCenterGrid);
 		
@@ -98,8 +88,6 @@ public class LogInUI extends JPanel {
 	 * Initiates the buttons.
 	 */
 	public void initButtons() {
-		btnCreateServer.setForeground(new Color(1,48,69));
-		btnCreateServer.setFont(fontButtons);
 		btnCancel.setFont(fontButtons);
 		btnLogIn.setFont(fontButtons);
 		
@@ -145,14 +133,20 @@ public class LogInUI extends JPanel {
 	 * Run method for the login-frame.
 	 */
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("bIRC Login");
-		LogInUI ui = new LogInUI();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.add(ui);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("bIRC Login");
+                LogInUI ui = new LogInUI();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.add(ui);
+                frame.pack();
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+            }
+        });
+
 	}
 	
 
@@ -166,7 +160,6 @@ public class LogInUI extends JPanel {
 			if (btnLogIn==e.getSource()) {
 					if (txtUserName.getText().length() <= 10) {
 						new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-						frame.setVisible(false);
 					} else {
 					JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 					txtUserName.setText("");
@@ -186,7 +179,6 @@ public class LogInUI extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 				if(txtUserName.getText().length() <= 10) {
 					new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-					frame.setVisible(false);
 				} else {
 				JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 				txtUserName.setText("");

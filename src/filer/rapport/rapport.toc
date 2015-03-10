@@ -1,0 +1,32 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Arbetsbeskrivning}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Rasmus Andersson}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Emil Sandgren}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Erik Sandgren}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Jimmy Maksymiw}{3}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Lorenz Puskas}{3}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Kalle Bornemark}{3}{subsection.1.6}
+\contentsline {section}{\numberline {2}Instruktioner f\IeC {\"o}r programstart}{3}{section.2}
+\contentsline {section}{\numberline {3}Systembeskrivning}{3}{section.3}
+\contentsline {section}{\numberline {4}Klassdiagram}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Klassdiagram 1}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Klassdiagram 2}{4}{subsection.4.2}
+\contentsline {section}{\numberline {5}Kommunikationsdiagram}{4}{section.5}
+\contentsline {subsection}{\numberline {5.1}Kommunikationsdiagram 1}{4}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Kommunikationsdiagram 2}{4}{subsection.5.2}
+\contentsline {section}{\numberline {6}Sekvensdiagram}{4}{section.6}
+\contentsline {subsection}{\numberline {6.1}Sekvensdiagram 1}{4}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Sekvensdiagram 2}{4}{subsection.6.2}
+\contentsline {section}{\numberline {7}Kod}{4}{section.7}
+\contentsline {subsection}{\numberline {7.1}ChatLog}{4}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}ChatWindow}{5}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Client}{7}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}ClientController}{11}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}ClientUI}{13}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}Conversation}{26}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.7}ImageScaleHandler}{27}{subsection.7.7}
+\contentsline {subsection}{\numberline {7.8}LogInUI}{28}{subsection.7.8}
+\contentsline {subsection}{\numberline {7.9}Message}{33}{subsection.7.9}
+\contentsline {subsection}{\numberline {7.10}Server}{34}{subsection.7.10}
+\contentsline {subsection}{\numberline {7.11}Startserver}{43}{subsection.7.11}
+\contentsline {subsection}{\numberline {7.12}User}{45}{subsection.7.12}

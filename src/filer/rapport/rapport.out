@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.1}{Arbetsbeskrivning}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Rasmus Andersson}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Emil Sandgren}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Erik Sandgren}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Jimmy Maksymiw}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Lorenz Puskas}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.6}{Kalle Bornemark}{section.1}% 7
+\BOOKMARK [1][-]{section.2}{Instruktioner f\366r programstart}{}% 8
+\BOOKMARK [1][-]{section.3}{Systembeskrivning}{}% 9
+\BOOKMARK [1][-]{section.4}{Klassdiagram}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Klassdiagram 1}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Klassdiagram 2}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Kommunikationsdiagram}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Kommunikationsdiagram 1}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Kommunikationsdiagram 2}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Sekvensdiagram}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{Sekvensdiagram 1}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{Sekvensdiagram 2}{section.6}% 18
+\BOOKMARK [1][-]{section.7}{Kod}{}% 19
+\BOOKMARK [2][-]{subsection.7.1}{ChatLog}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.2}{ChatWindow}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.3}{Client}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.4}{ClientController}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.5}{ClientUI}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.6}{Conversation}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.7}{ImageScaleHandler}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.8}{LogInUI}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.9}{Message}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.10}{Server}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.11}{Startserver}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.12}{User}{section.7}% 31

@@ -33,16 +33,6 @@ public class Server implements Runnable {
         }
     }
 
-    public void closeServer() throws IOException {
-        for (ConnectedClient client : connectedClients) {
-            client.interruptThread();
-            client.socket.close();
-        }
-        serverSocket.close();
-        Thread.currentThread().interrupt();
-        LOGGER.info("Server closed.");
-    }
-
     /**
      * Initiates the Logger
      */
@@ -200,10 +190,6 @@ public class Server implements Runnable {
             client.start();
         }
 
-        public void interruptThread() {
-            Thread.currentThread().interrupt();
-        }
-
         /**
          * Returns the connected clients current User.
          *
@@ -268,6 +254,15 @@ public class Server implements Runnable {
                 }
             }
             return false;
+        }
+
+        public User getUser(String ID) {
+            for (User user : registeredUsers) {
+                if (user.getId().equals(ID)) {
+                    return user;
+                }
+            }
+            return null;
         }
 
         /**
@@ -362,6 +357,8 @@ public class Server implements Runnable {
                 }
                 if (!isUserInDatabase(user)) {
                     registeredUsers.add(user);
+                } else {
+                    user = getUser(user.getId());
                 }
                 oos.writeObject(user);
                 server.sendObjectToAll("Client connected: " + user.getId());
