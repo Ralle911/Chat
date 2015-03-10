@@ -36,7 +36,6 @@ public class Client {
     	this.name = name;
         try {
             socket = new Socket(ip, port);
-            socket.setSoTimeout(5000);
             ois = new ObjectInputStream(socket.getInputStream());
             oos = new ObjectOutputStream(socket.getOutputStream());
             controller = new ClientController(this);

@@ -9,14 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 /**
  * Log in UI and start-class for the chat.
@@ -72,7 +65,7 @@ public class LogInUI extends JPanel {
 	 * Initiates the panels.
 	 */
 	public void initPanels(){
-		setPreferredSize(new Dimension(430,190));
+		setPreferredSize(new Dimension(430, 190));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
 		add(pnlCenterFlow,BorderLayout.CENTER);
 		pnlCenterFlow.add(pnlCenterGrid);
@@ -140,14 +133,20 @@ public class LogInUI extends JPanel {
 	 * Run method for the login-frame.
 	 */
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("bIRC Login");
-		LogInUI ui = new LogInUI();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.add(ui);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("bIRC Login");
+                LogInUI ui = new LogInUI();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.add(ui);
+                frame.pack();
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+            }
+        });
+
 	}
 	
 
