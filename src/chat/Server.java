@@ -38,8 +38,8 @@ public class Server implements Runnable {
             client.interruptThread();
             client.socket.close();
         }
+        Thread.currentThread().interrupt(); 
         serverSocket.close();
-        Thread.currentThread().interrupt();
         LOGGER.info("Server closed.");
     }
 
