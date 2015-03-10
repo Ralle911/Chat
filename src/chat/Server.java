@@ -190,6 +190,10 @@ public class Server implements Runnable {
             client.start();
         }
 
+        public void interruptThread() {
+            Thread.currentThread().interrupt();
+        }
+
         /**
          * Returns the connected clients current User.
          *

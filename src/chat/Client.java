@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -41,6 +42,9 @@ public class Client {
             new Listener().start();
         } catch (IOException e) {
             System.err.println(e);
+            if (e.getCause() instanceof SocketTimeoutException) {
+
+            }
         }
     }
 

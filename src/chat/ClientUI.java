@@ -89,6 +89,10 @@ public class ClientUI extends JPanel {
 		initListeners();
 	}
 	
+	/**
+	 * Initiates graphics and design.
+	 * Also initiates the panels and buttons.
+	 */
     public void initGraphics() {
         setLayout(bL);
         setPreferredSize(new Dimension(900,600));
@@ -100,6 +104,10 @@ public class ClientUI extends JPanel {
         eastPanel();
     }
     
+    /**
+     * Initiates the butons. 
+     * Also sets the icons and the design of the buttons.
+     */
     public void initButtons() {
     	btnNewGroupChat.setIcon(new ImageIcon("src/resources/newGroup.png"));
         btnNewGroupChat.setBorder(null);
@@ -119,6 +127,9 @@ public class ClientUI extends JPanel {
     	btnCreateGroup.setForeground(new Color(1,48,69));
     }
     
+    /**
+     * Initiates the scrollpanes and styleconstants.
+     */
     public void initScroll() {
     	scrollChatWindow.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollChatWindow.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -132,11 +143,17 @@ public class ClientUI extends JPanel {
         StyleConstants.setForeground(chatFont, Color.BLACK);
         StyleConstants.setBold(chatFont, true);
     }
-
+    
+    /**
+     * Requests that tfMessageWindow gets focus.
+     */
     public void focusTextField() {
         tfMessageWindow.requestFocusInWindow();
     }
     
+    /**
+     * Initialises listeners.
+     */
     public void initListeners() { 
     	tfMessageWindow.addKeyListener(new EnterListener());
     	GroupListener groupListener = new GroupListener();
@@ -149,6 +166,12 @@ public class ClientUI extends JPanel {
         btnSend.addActionListener(sendListener);
     }
     
+    /**
+     * The method takes a ArrayList of the connected users and sets the user-checkboxes and
+     * the connected user textpane based on the users in the ArrayList.
+     * 
+     * @param connectedUsers The ArrayList of the connected users.
+     */
     public void setConnectedUsers(ArrayList<String> connectedUsers) {
     	setUserText();
         tpConnectedUsers.setText("");
@@ -158,11 +181,17 @@ public class ClientUI extends JPanel {
     	}
     }
     
+    /**
+     * Sets the usertext in the labels to the connected user.
+     */
     public void setUserText() {
     	lblUser.setText(clientController.getUserID());  
     	lblUser.setFont(txtFont);
     }
     
+    /**
+     * The south panel in the ClientUI BorderLayout.SOUTH.
+     */
     public void southPanel() {
     	southPanel.setLayout(new BorderLayout());
     	southPanel.add(tfMessageWindow,BorderLayout.CENTER);
@@ -179,13 +208,16 @@ public class ClientUI extends JPanel {
     	add(southPanel, BorderLayout.SOUTH);
     }
     
+    /**
+     * The east panel in ClientUI BorderLayout.EAST.
+     */
     public void eastPanel() {
     	eastPanel.setLayout(new BorderLayout());
-    	eastPanel.add(lblUser,BorderLayout.NORTH);
-    	eastPanel.add(eastPanelCenter,BorderLayout.CENTER);
+    	eastPanel.add(lblUser, BorderLayout.NORTH);
+    	eastPanel.add(eastPanelCenter, BorderLayout.CENTER);
     	eastPanelCenterNorth.add(pnlGroupSend);
-    	eastPanelCenter.add(scrollGroupRooms,BorderLayout.NORTH);
-    	eastPanelCenter.add(scrollConnectedUsers,BorderLayout.CENTER);
+    	eastPanelCenter.add(scrollGroupRooms, BorderLayout.NORTH);
+    	eastPanelCenter.add(scrollConnectedUsers, BorderLayout.CENTER);
     	
     	pnlGroupSend.add(btnNewGroupChat);
     	
@@ -193,28 +225,44 @@ public class ClientUI extends JPanel {
     	add(eastPanel, BorderLayout.EAST);
     }
     
+    /**
+     * Appends the message to the chatwindow object with the ID of the message object.
+     * 
+     * @param message The message object with an ID and a message.
+     */
     public void appendContent(Message message) {
         getChatWindow(message.getConversationID()).append(message);
-        /*
-         * Inlagt 2015-03-10
-         */
         if(activeChatWindow != message.getConversationID()) {
         	highlightGroup(message.getConversationID());
         }
     }
     
-    /*
-     * Inlagt 2015-03-10
+    /**
+     * The method handles notice.
+     * 
+     * @param ID The ID of the group.
      */
     public void highlightGroup(int ID) {
     	if(ID != -1)
     		groupChatList[ID].setBackground(Color.PINK);
     }
-
+    
+    /**
+     * Appends the string content in the chatwindow-lobby.
+     * 
+     * @param content Is a server message
+     */
     public void appendServerMessage(String content) {
         cwLobby.append(content.toString());
     }
     
+    /**
+     * The method updates the ArrayList of checkboxes and add the checkboxes to the panel.
+     * Also checks if the ID is your own ID and doesn't add a checkbox of yourself.
+     * Updates the UI.
+     * 
+     * @param checkBoxUserIDs ArrayList of UserID's.
+     */
     public void updateCheckBoxes(ArrayList<String> checkBoxUserIDs) {
     	arrayListCheckBox.clear();
     	groupPanel.pnlNewGroup.removeAll();
@@ -229,6 +277,11 @@ public class ClientUI extends JPanel {
     	groupPanel.pnlOuterBorderLayout.revalidate();
     }
     
+    /**
+     * The method appends the text in the textpane of the connected users. 
+     * 
+     * @param message Is a username.
+     */
     public void appendConnectedUsers(String message){
     	StyledDocument doc = tpConnectedUsers.getStyledDocument();
     	try {
@@ -238,6 +291,15 @@ public class ClientUI extends JPanel {
 		}
     }
     
+    /**
+     * Sets the text on the groupbuttons to the users you check in the checkbox.
+     * Adds the new group chat connected with a button and a ChatWindow.
+     * Enables you to change rooms.
+     * Updates UI.
+     * 
+     * @param participants String-Array of the participants of the new groupchat.
+     * @param ID The ID of the participants of the new groupchat.
+     */
     public void createConversation(String[] participants, int ID) {
     	GroupButtonListener gbListener = new GroupButtonListener();
     	for (int i = 0; i < participants.length; i++) {
@@ -285,6 +347,9 @@ public class ClientUI extends JPanel {
     	this.userString = "";
     }
     
+    /**
+     * Sets the "Look and Feel" of the panels.
+     */
     public void lookAndFeel() {
     	 try {
     	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -299,6 +364,13 @@ public class ClientUI extends JPanel {
     	    }
     }
     
+    /**
+     * The method goes through the ArrayList of chatwindow object and 
+     * returns the correct one based on the ID.
+     * 
+     * @param ID The ID of the user.
+     * @return ChatWindow A ChatWindow object with the correct ID.
+     */
 	public ChatWindow getChatWindow(int ID) {
 		for(ChatWindow cw : arrayListChatWindows) {
 			if(cw.getID() == ID) {
@@ -308,16 +380,27 @@ public class ClientUI extends JPanel {
 		return null;
 	}
 	
+	/**
+	 * The class extends Thread and handles the Create a group panel.
+	 */
 	private class GroupPanel extends Thread {
 		private JFrame groupFrame;
     	private JPanel pnlOuterBorderLayout = new JPanel(new BorderLayout());
     	private JPanel pnlNewGroup = new JPanel();
     	private JScrollPane scrollCheckConnectedUsers = new JScrollPane(pnlNewGroup);
     	
+    	/**
+    	 * The metod returns the JFrame groupFrame.
+    	 * 
+    	 * @return groupFrame
+    	 */
     	public JFrame getFrame() {
     		return groupFrame;
     	}
     	
+    	/**
+    	 * Runs the frames of the groupPanes.
+    	 */
 	    public void run() {
 	    	panelBuilder();
 	    	groupFrame = new JFrame();
@@ -328,6 +411,9 @@ public class ClientUI extends JPanel {
 			groupFrame.setLocationRelativeTo(null);
 	    }
 	    
+	    /**
+	     * Initiates the scrollpanels and the panels of the groupPanel.
+	     */
 	    public void panelBuilder() {
 	    	scrollCheckConnectedUsers.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 	        scrollCheckConnectedUsers.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -338,20 +424,33 @@ public class ClientUI extends JPanel {
 		   	pnlNewGroup.setLayout(new GridLayout(100,1,5,5));
 	    }
     }
-	 
+	
+	/**
+	 * KeyListener for the messagewindow.
+	 * Enables you to send a message with enter.
+	 */
 	private class EnterListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
-			}
-		}
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
+            }
+        }
 
 		public void keyReleased(KeyEvent e) {}
 
 		public void keyTyped(KeyEvent e) {}
 	}
 	
+	/**
+	 * Listener that listens to New Group Chat-button and the Create Group Chat-button.
+	 * If create group is pressed, a new button will be created with the right name,
+	 * the right participants. 
+	 * The method use alot of ArrayLists of checkboxes, participants and strings.
+	 * Also some error-handling with empty buttons. 
+	 */
 	private class GroupListener implements ActionListener {
 		private ArrayList<String> participants = new ArrayList<String>();
 		private String[] temp;
@@ -373,17 +472,22 @@ public class ClientUI extends JPanel {
 				for (int i = 1; i <= participants.size(); i++) {
 					temp[i] = participants.get(i-1);
 				}
-				if (temp.length > 1) {  // inga tomma rutor
+				if (temp.length > 1) { 
 					clientController.sendParticipants(temp);
 					groupPanel.getFrame().dispose();
 					createdGroup = true;
 				} else {
-					JOptionPane.showMessageDialog(null, "Du måste välja minst en person!");
+					JOptionPane.showMessageDialog(null, "You have to choose atleast one person!");
 				}
 			}
 		}
 	}
 	
+	/**
+	 * Listener that connects the right GroupChatButton in an ArrayList to the right
+	 * active chat window. 
+	 * Updates the UI.
+	 */
 	private class GroupButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			for(int i = 0; i < groupChatList.length; i++) {
@@ -405,6 +509,10 @@ public class ClientUI extends JPanel {
 		}
 	}
 	
+	/**
+	 * Listener that connects the user with the lobby chatWindow through the Lobby button.
+	 * Updates UI.
+	 */
 	private class LobbyListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLobby==e.getSource()) { 
@@ -420,6 +528,10 @@ public class ClientUI extends JPanel {
 		}
 	}
 	
+	/**
+	 * Listener that creates a JFileChooser when the button btnFileChooser is pressed.
+	 * The JFileChooser is for images in the chat and it calls the method sendImage in the controller.
+	 */
 	private class FileChooserListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnFileChooser==e.getSource()) {
@@ -434,11 +546,17 @@ public class ClientUI extends JPanel {
 		}
 	}
 	
+	/**
+	 * Listener for the send message button. 
+	 * Resets the message textfield text.
+	 */
 	private class SendListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnSend==e.getSource()) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
 			}
 		}
 	}
