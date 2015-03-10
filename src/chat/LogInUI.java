@@ -8,8 +8,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +27,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class LogInUI extends Thread{
 	private JLabel lblIp = new JLabel("IP:");
 	private JLabel lblPort = new JLabel("Port:"); 
-	private JLabel lblWelcomeText = new JLabel("Log in to bIRC or create a server");
+	private JLabel lblWelcomeText = new JLabel("Log in to bIRC");
 	private JLabel lblUserName = new JLabel("Username:");
 	
 	private JTextField txtIp = new JTextField("localhost");
@@ -51,11 +49,11 @@ public class LogInUI extends Thread{
 	private JPanel pnlCenterFlow = new JPanel(new FlowLayout());
 	private JPanel pnlNorthGrid = new JPanel(new GridLayout(2,1,5,5));
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
-	private ServerPanel serverPanel;
+	private StartServer serverPanel;
 	private JFrame frame;
 	
 	public LogInUI() {
-		serverPanel = new ServerPanel();
+		serverPanel = new StartServer();
 		serverPanel.start();
 		initPanels();
 		lookAndFeel();
@@ -163,98 +161,7 @@ public class LogInUI extends Thread{
 		frame.setResizable(false);
 	}
 	
-	/**
-	 * Create an server-panel class.
-	 */
-	private class ServerPanel extends Thread {
-		private JPanel pnlServerOuterBorderLayout = new JPanel(new BorderLayout());
-		private JPanel pnlServerCenterFlow = new JPanel(new FlowLayout());
-		private JPanel pnlServerCenterGrid = new JPanel(new GridLayout(2,2,5,5));
-		private JFrame frame = new JFrame("bIRC Create Server");
-		
-		private JTextField txtServerPort = new JTextField("3450");
-		private JLabel lblServerWelcomeMessage = new JLabel("Create Server");
-		private JLabel lblServerPort = new JLabel("Port:");
-		private JLabel lblServerShowServerIp = new JLabel();
-		
-		private JButton btnServerCreateServer = new JButton("Create");
-		private JButton btnServerCancel = new JButton("Cancel");
-	
-		public ServerPanel() {
-			initPanels();
-			initLabels();
-			setlblServerShowServerIp();
-		}
-		
-		/**
-		 * Initiate Server-Panels.
-		 */
-		public void initPanels() {
-			pnlServerOuterBorderLayout.setPreferredSize(new Dimension(350,110));
-			pnlServerOuterBorderLayout.add(pnlServerCenterFlow,BorderLayout.CENTER);
-			pnlServerCenterFlow.add(pnlServerCenterGrid);
-			pnlServerOuterBorderLayout.add(lblServerWelcomeMessage,BorderLayout.NORTH);
-			pnlServerOuterBorderLayout.add(lblServerShowServerIp,BorderLayout.SOUTH);	
-			
-			pnlServerCenterFlow.setOpaque(true);
-			pnlServerCenterFlow.setBackground(Color.WHITE);
-			pnlServerCenterGrid.setOpaque(true);
-			pnlServerCenterGrid.setBackground(Color.WHITE);
-			
-			pnlServerCenterGrid.add(lblServerPort);
-			pnlServerCenterGrid.add(txtServerPort);
-			pnlServerCenterGrid.add(btnServerCreateServer);
-			pnlServerCenterGrid.add(btnServerCancel);
-		}
-		
-		/**
-		 * Initiate Server-Labels.
-		 */
-		public void initLabels() {
-			lblServerWelcomeMessage.setFont(fontWelcome);
-			lblServerShowServerIp.setFont(fontInfo);
-			lblServerWelcomeMessage.setHorizontalAlignment(JLabel.CENTER);
-			lblServerShowServerIp.setHorizontalAlignment(JLabel.CENTER);
-			lblServerPort.setFont(fontIpPort);
-			lblWelcomeText.setOpaque(true);
-			lblServerPort.setOpaque(true);
-			lblServerPort.setBackground(Color.WHITE);
-		}
-		
-		/**
-		 * Sets the ip-label to the local ip of your own computer.
-		 */
-		public void setlblServerShowServerIp() {
-			try {
-				String message = ""+InetAddress.getLocalHost();
-				String realmessage[] = message.split("/");
-				lblServerShowServerIp.setText("Server ip is: " + realmessage[1]);
-			} catch (UnknownHostException e) {
-				JOptionPane.showMessageDialog(null, "An error occurred.");
-			}
-		}
-		
-		/**
-		 * Run method for the server-frame.
-		 */
-		public void run() {
-			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			frame.add(pnlServerOuterBorderLayout);
-			frame.pack();
-			frame.setVisible(false);
-			frame.setLocationRelativeTo(null);
-			frame.setResizable(false);
-		}
-		
-		/**
-		 * Returns the port from the textfield.
-		 * 
-		 * @return Port for creating a server.
-		 */
-		public int getPort() {
-			return Integer.parseInt(this.txtServerPort.getText());
-		}
-	}
+
 	
 	/**
 	 * Listener for login-button, create server-button and for the cancel-button.
