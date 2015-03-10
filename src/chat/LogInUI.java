@@ -36,7 +36,6 @@ public class LogInUI extends JPanel {
 	
 	private JButton btnLogIn = new JButton("Login");
 	private JButton btnCancel = new JButton("Cancel");
-	private JButton btnCreateServer = new JButton("Create Server");
 	
 	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
 	private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
@@ -64,7 +63,6 @@ public class LogInUI extends JPanel {
 	 */
 	public void initListeners() {
 		LogInMenuListener log = new LogInMenuListener();
-		btnCreateServer.addActionListener(log);
 		btnLogIn.addActionListener(log);
 		txtUserName.addActionListener(new EnterListener());
 		btnCancel.addActionListener(log);
@@ -76,7 +74,6 @@ public class LogInUI extends JPanel {
 	public void initPanels(){
 		setPreferredSize(new Dimension(430,190));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
-		add(btnCreateServer,BorderLayout.SOUTH);
 		add(pnlCenterFlow,BorderLayout.CENTER);
 		pnlCenterFlow.add(pnlCenterGrid);
 		
@@ -98,8 +95,6 @@ public class LogInUI extends JPanel {
 	 * Initiates the buttons.
 	 */
 	public void initButtons() {
-		btnCreateServer.setForeground(new Color(1,48,69));
-		btnCreateServer.setFont(fontButtons);
 		btnCancel.setFont(fontButtons);
 		btnLogIn.setFont(fontButtons);
 		
@@ -166,7 +161,6 @@ public class LogInUI extends JPanel {
 			if (btnLogIn==e.getSource()) {
 					if (txtUserName.getText().length() <= 10) {
 						new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-						frame.setVisible(false);
 					} else {
 					JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 					txtUserName.setText("");
@@ -186,7 +180,6 @@ public class LogInUI extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 				if(txtUserName.getText().length() <= 10) {
 					new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-					frame.setVisible(false);
 				} else {
 				JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 				txtUserName.setText("");
