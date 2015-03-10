@@ -181,11 +181,11 @@ public class ClientUI extends JPanel {
     
     public void eastPanel() {
     	eastPanel.setLayout(new BorderLayout());
-    	eastPanel.add(lblUser,BorderLayout.NORTH);
-    	eastPanel.add(eastPanelCenter,BorderLayout.CENTER);
+    	eastPanel.add(lblUser, BorderLayout.NORTH);
+    	eastPanel.add(eastPanelCenter, BorderLayout.CENTER);
     	eastPanelCenterNorth.add(pnlGroupSend);
-    	eastPanelCenter.add(scrollGroupRooms,BorderLayout.NORTH);
-    	eastPanelCenter.add(scrollConnectedUsers,BorderLayout.CENTER);
+    	eastPanelCenter.add(scrollGroupRooms, BorderLayout.NORTH);
+    	eastPanelCenter.add(scrollConnectedUsers, BorderLayout.CENTER);
     	
     	pnlGroupSend.add(btnNewGroupChat);
     	
@@ -341,11 +341,13 @@ public class ClientUI extends JPanel {
 	 
 	private class EnterListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
-			}
-		}
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
+            }
+        }
 
 		public void keyReleased(KeyEvent e) {}
 
@@ -437,8 +439,10 @@ public class ClientUI extends JPanel {
 	private class SendListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnSend==e.getSource()) {
-				clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
-				tfMessageWindow.setText("");
+                if (!(tfMessageWindow.getText().isEmpty())) {
+                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                    tfMessageWindow.setText("");
+                }
 			}
 		}
 	}
