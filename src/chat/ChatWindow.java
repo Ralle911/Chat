@@ -42,8 +42,6 @@ public class ChatWindow extends JPanel {
         StyleConstants.setBold(nameFont, true);
         
         add(scrollPane, BorderLayout.CENTER);
-        DefaultCaret caret = (DefaultCaret)textPane.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         textPane.setEditable(false);
 	}
 
@@ -72,6 +70,8 @@ public class ChatWindow extends JPanel {
                         doc.insertString(doc.getLength(), "Ignored", labelStyle);
                     }
                     doc.insertString(doc.getLength(), "\n", chatFont);
+                    textPane.setCaretPosition(textPane.getDocument().getLength());
+
                 } catch (BadLocationException e) {
                     e.printStackTrace();
                 }
