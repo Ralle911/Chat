@@ -1,22 +1,22 @@
 \documentclass[a4paper,11pt]{article}
-\usepackage[swedish]{babel}
+\usepackage[swedish]{babel} % Ändrar Table of contents till innehållsförteckning etc
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{nopageno}
-\usepackage{lastpage}
-\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx} %Behövs för att importera bilder
+\usepackage{float} %Gör så att man kan använda ´H´ attributet för bilder(funkar bättre än h!) så att bilden hamnar där man säger åt den att vara
+\usepackage[space]{grffile} % Fixar så att man kan använda space i filvägar utan någon escape characters
+\usepackage{nopageno} % Tar bort defalt sidnummret i botten av sidan, behövs för försättsbladet eftersom den har plain som pagestyle och inte den som jag definerat nedan
+\usepackage{lastpage} % Lägger till en referens för att få fram den sista sidnummret i dokumentet
+\usepackage[hidelinks]{hyperref} %Lägger till hyperlänkar vid alla refrenser och vid innehållsförtäckningen
 
+
+% Hela blocket nedan är paket som behövs för att importera lister med kod
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{listings}
-
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-
 \lstset{ %
   language=Java,                  % the language of the code
   basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -43,26 +43,25 @@
   escapeinside={\%*}{*)},            % if you want to add a comment within your code
   morekeywords={*,...}               % if you want to add more keywords to the set
 }
-
 \lstset{
-  literate={�}{{\"o}}1
-           {�}{{\"a}}1
-           {�}{{\aa}}1
-}
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {å}{{\aa}}1
+}%Översätter inputlistings output till utf8
 
 
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} % Användsa för att göra egna sidhuvuden/sidfötter
 \fancyhf{}
-\setlength{\headheight}{27mm}
-\fancyhead[L]{\includegraphics[height=25mm]{MAH.png}}
-\fancyhead[R]{Objektorienterad programutveckling,\\ tr�dar och datakommunikation \\Projekt Chatapplikation}
+\setlength{\headheight}{27mm} % Om du använder en bild så se till att den får plats i sidhuvudet. Latex skapar altid mer plats till text däremot.
+\fancyhead[L]{\includegraphics[height=25mm]{C:/Users/Ralle/Documents/ChatProjectReport/MAH.png}}
+\fancyhead[R]{Objektorienterad programutveckling,\\ trådar och datakommunikation \\Projekt Chatapplikation}
 
 \fancyfoot[L]{\today}
 \fancyfoot[R]{Sida \thepage\ av \pageref{LastPage}}
 
 \title{Projektrapport\\
 \large{Chattapplikation}\\
-\large{f�r Objektorienterad programutveckling, tr�dar och datakommunikation} }
+\large{för Objektorienterad programutveckling, trådar och datakommunikation} }
 \author{Rasmus Andersson\\Emil Sandgren\\Erik Sandgren\\Jimmy Maksymiw\\Lorenz Puskas\\Kalle Bornemark}
 
 \begin{document}
@@ -80,7 +79,7 @@ Arbetade med kommunikation mellan servern och klienten med Kalle Bornemark, och 
 % Skriv här
 \subsection{Erik Sandgren} 
 
-Arbetat med generell grundl�ggande kommunikation mellan server och klient i b�rjan. Jobbat sedan med UI och hoppat in lite d�refter p� det som beh�vdes. Har ritat upp strukturen mycket och buggfixat.
+Arbetat med generell grundläggande kommunikation mellan server och klient i början. Jobbat sedan med UI och hoppat in lite därefter på det som behövdes. Har ritat upp strukturen mycket och buggfixat.
 
 \subsection{Jimmy Maksymiw} 
 % Skriv här
@@ -89,13 +88,50 @@ Arbetat med generell grundl�ggande kommunikation mellan server och klient i b�rj
 \subsection{Kalle Bornemark} 
 % Skriv här
 
+\section{Instruktioner för programstart}
+För att köra programmet så krävs det att man startar en server och minst en klient. Main-metoden för att starta servern finns i StartServer.java och main-metoden för att starta Klienter finns i StartClient.java. Alla filvägar är relativa till det workspace som används och behöver inte ändras.
+
+\section{Systembeskrivning}
+
+Vårt system förser en Chatt-tjänst. I systemet finns det klienter och en server. Klienterna har ett grafiskt användargränssnitt för som han eller hon kan använda för att skicka meddelanden till alla andra anslutna klienter, enskilda klienter, eller till en grupp av klienter. Meddelanden består av text eller av bilder. Alla dessa meddelanden går via en server som ser till att meddelanden kommer fram till rätt personer och med rätt kontext, exempelvis som ett lobbymeddelande eller som ett meddelande i en viss gruppchat.
+
+Servern lagrar alla textmeddelande som användarna skickar och loggar även namnet på de bilder som skickas. Det loggas även när användare ansluter eller stänger ner anslutningen mot servern.
+
+\section{Klassdiagram}
+\subsection{Klassdiagram 1}
+\subsection{Klassdiagram 2}
+\section{Kommunikationsdiagram}
+\subsection{Kommunikationsdiagram 1}
+\subsection{Kommunikationsdiagram 2}
+\section{Sekvensdiagram}
+\subsection{Sekvensdiagram 1}
+\subsection{Sekvensdiagram 2}
+
+\section{Kod}
+\subsection{ChatLog}
+\lstinputlisting[language=java,caption=ChatLog]{../chat/ChatLog.java}
+\subsection{ChatWindow}
+\lstinputlisting[language=java,caption=ChatWindow]{../chat/ChatWindow.java}
+\subsection{Client}
+\lstinputlisting[language=java,caption=Client]{../chat/Client.java}
+\subsection{ClientController}
+\lstinputlisting[language=java,caption=ClientController]{../chat/ClientController.java}
+\subsection{ClientUI}
+\lstinputlisting[language=java,caption=ClientUI]{../chat/ClientUI.java}
+\subsection{Conversation}
+\lstinputlisting[language=java,caption=Conversation]{../chat/Conversation.java}
+\subsection{ImageScaleHandler}
+\lstinputlisting[language=java,caption=ImageScaleHandler]{../chat/ImageScaleHandler.java}
+\subsection{LogInUI}
+\lstinputlisting[language=java,caption=LoginUI]{../chat/LogInUI.java}
+\subsection{Message}
+\lstinputlisting[language=java,caption=Message]{../chat/Message.java}
+\subsection{Server}
+\lstinputlisting[language=java,caption=Server]{../chat/Server.java}
+\subsection{Startserver}
+\lstinputlisting[language=java,caption=StartServer]{../chat/Startserver.java}
+\subsection{User}
+\lstinputlisting[language=java,caption=User]{../chat/User.java}
 
 	
-\section{Kod}
-\lstinputlisting[language=java]{ImageScaleHandler.java}
-\lstinputlisting[language=java]{ImageScaleHandler.java}
-\lstinputlisting[language=java]{ImageScaleHandler.java}
-\lstinputlisting[language=java]{ImageScaleHandler.java}
-\lstinputlisting[language=java]{ImageScaleHandler.java}
-
 \end{document}
