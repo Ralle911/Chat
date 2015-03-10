@@ -42,8 +42,6 @@ public class ChatWindow extends JPanel {
         StyleConstants.setBold(nameFont, true);
         
         add(scrollPane, BorderLayout.CENTER);
-        DefaultCaret caret = (DefaultCaret)textPane.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         textPane.setEditable(false);
 	}
 
@@ -53,21 +51,32 @@ public class ChatWindow extends JPanel {
      *
      * @param message The message object which content will be displayed.
      */
-	public void append(Message message) {
-        StyledDocument doc = textPane.getStyledDocument();
-        try {
-        	doc.insertString(doc.getLength(), message.getTimestamp() + " - ", chatFont);
-            doc.insertString(doc.getLength(), message.getFromUserID() + ": ", nameFont);
-            if (message.getContent() instanceof String) {
-                doc.insertString(doc.getLength(), message.getContent() + "\n", chatFont);
-            } else {
-                ImageIcon icon = (ImageIcon)message.getContent();
-                textPane.insertIcon(icon);
-                doc.insertString(doc.getLength(), "\n", chatFont);
+	public void append(final Message message) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                StyledDocument doc = textPane.getStyledDocument();
+                try {
+                    doc.insertString(doc.getLength(), message.getTimestamp() + " - ", chatFont);
+                    doc.insertString(doc.getLength(), message.getFromUserID() + ": ", nameFont);
+                    if (message.getContent() instanceof String) {
+                        doc.insertString(doc.getLength(), (String)message.getContent(), chatFont);
+                    } else {
+                        ImageIcon icon = (ImageIcon)message.getContent();
+                        StyleContext context = new StyleContext();
+                        Style labelStyle = context.getStyle(StyleContext.DEFAULT_STYLE);
+                        JLabel label = new JLabel(icon);
+                        StyleConstants.setComponent(labelStyle, label);
+                        doc.insertString(doc.getLength(), "Ignored", labelStyle);
+                    }
+                    doc.insertString(doc.getLength(), "\n", chatFont);
+                    textPane.setCaretPosition(textPane.getDocument().getLength());
+
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
+                }
             }
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
+        });
 	}
 
     /**
