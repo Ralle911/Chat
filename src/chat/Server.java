@@ -33,6 +33,7 @@ public class Server implements Runnable {
         }
     }
 
+<<<<<<< HEAD
     public void closeServer() throws IOException {
         for (ConnectedClient client : connectedClients) {
             client.interruptThread();
@@ -43,6 +44,8 @@ public class Server implements Runnable {
         LOGGER.info("Server closed.");
     }
 
+=======
+>>>>>>> f9faca61ad219ee95fc38b35d001722bc64de5bc
     /**
      * Initiates the Logger
      */
