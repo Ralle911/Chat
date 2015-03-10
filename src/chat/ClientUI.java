@@ -431,11 +431,9 @@ public class ClientUI extends JPanel {
 	 */
 	private class EnterListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                if (!(tfMessageWindow.getText().isEmpty())) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER && !(tfMessageWindow.getText().isEmpty())) {
                     clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
                     tfMessageWindow.setText("");
-                }
             }
         }
 
@@ -552,11 +550,9 @@ public class ClientUI extends JPanel {
 	 */
 	private class SendListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (btnSend==e.getSource()) {
-                if (!(tfMessageWindow.getText().isEmpty())) {
+			if (btnSend==e.getSource()  && !(tfMessageWindow.getText().isEmpty())) {
                     clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
                     tfMessageWindow.setText("");
-                }
 			}
 		}
 	}
