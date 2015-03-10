@@ -33,16 +33,6 @@ public class Server implements Runnable {
         }
     }
 
-    public void closeServer() throws IOException {
-        for (ConnectedClient client : connectedClients) {
-            client.interruptThread();
-            client.socket.close();
-        }
-        serverSocket.close();
-        Thread.currentThread().interrupt();
-        LOGGER.info("Server closed.");
-    }
-
     /**
      * Initiates the Logger
      */
