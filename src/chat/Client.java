@@ -38,7 +38,7 @@ public class Client {
             ois = new ObjectInputStream(socket.getInputStream());
             oos = new ObjectOutputStream(socket.getOutputStream());
             controller = new ClientController(this);
-            new Listener().start();
+            new ClientListener().start();
         } catch (IOException e) {
             System.err.println(e);
             if (e.getCause() instanceof SocketTimeoutException) {
@@ -157,7 +157,7 @@ public class Client {
     /**
      * Class to handle communication between client and server.
      */
-    private class Listener extends Thread {
+    private class ClientListener extends Thread {
 		public void run() {
             setUser();
             startCommunication();
