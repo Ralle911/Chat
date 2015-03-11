@@ -13,7 +13,7 @@ import java.util.HashSet;
  * Jimmy Maksymiw, Lorenz Puskas & Rasmus Andersson
  */
 public class ClientController {
-	private ClientUi ui = new ClientUi(this);
+	private ClientUl ui = new ClientUl(this);
     private Client client;
 
     /**
