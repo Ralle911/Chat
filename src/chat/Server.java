@@ -79,7 +79,7 @@ public class Server implements Runnable {
      *
      * @param message The message to be sent.
      */
-    public synchronized void sendMessage(Message message) {
+    public void sendMessage(Message message) {
         Conversation conversation = null;
         String to = "";
 
@@ -126,7 +126,7 @@ public class Server implements Runnable {
      *
      * @param conversation The Conversation object to be sent.
      */
-    public synchronized void sendConversation(Conversation conversation) {
+    public void sendConversation(Conversation conversation) {
         HashSet<String> users = conversation.getInvolvedUsers();
         for (String s : users) {
             for (ConnectedClient c : connectedClients) {
@@ -140,7 +140,7 @@ public class Server implements Runnable {
     /**
      * Sends an ArrayList with all connected user's IDs.
      */
-    public synchronized void sendConnectedClients() {
+    public void sendConnectedClients() {
         ArrayList<String> connectedUsers = new ArrayList<>();
         for (ConnectedClient client : connectedClients) {
             connectedUsers.add(client.getUser().getId());
