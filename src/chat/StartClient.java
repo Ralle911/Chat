@@ -40,10 +40,9 @@ public class StartClient extends JPanel {
 	private JPanel pnlNorthGrid = new JPanel(new GridLayout(2,1,5,5));
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
 	
-	JFrame frame;
+	private JFrame frame;
 	
 	public StartClient() {
-	
 		setLayout(new BorderLayout());
 		initPanels();
 		lookAndFeel();
