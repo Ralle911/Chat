@@ -103,9 +103,9 @@ public class Client {
      */
     public synchronized void setUser() {
         Object object = null;
+        setName(this.name);
         while (!(object instanceof User)) {
             try {
-                setName(this.name);
                 sendObject(user);
                 object = ois.readObject();
                 if (object instanceof User) {
@@ -115,6 +115,7 @@ public class Client {
                 } else {
                     controller.newMessage(object);
                     this.name = JOptionPane.showInputDialog("Pick a name: ");
+                    setName(this.name);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
