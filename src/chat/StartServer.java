@@ -29,11 +29,13 @@ public class StartServer extends JPanel{
     private JPanel pnlServerCenterFlow = new JPanel(new FlowLayout());
     private JPanel pnlServerCenterGrid = new JPanel(new GridLayout(1,2,5,5));
     private JPanel pnlServerGrid = new JPanel(new GridLayout(2,1,5,5));
+    private JPanel pnlServerRunning = new JPanel(new BorderLayout());
 
     private JTextField txtServerPort = new JTextField("3450");
     private JLabel lblServerPort = new JLabel("Port:");
     private JLabel lblServerShowServerIp = new JLabel();
     private JLabel lblWelcome = new JLabel("Create a bIRC server");
+    private JLabel lblServerRunning = new JLabel("Server is running...");
     private JButton btnServerCreateServer = new JButton("Create Server");
 
     private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
@@ -41,6 +43,8 @@ public class StartServer extends JPanel{
     private Font fontWelcome = new Font("Sans-Serif", Font.BOLD,25);
     private Font fontButton = new Font("Sans-Serif", Font.BOLD,18);
     private Server server;
+    
+    private BorderLayout br = new BorderLayout();
     
     public StartServer() {
     	lookAndFeel();
@@ -56,7 +60,7 @@ public class StartServer extends JPanel{
     public void initPanels() {
         setPreferredSize(new Dimension(350,150));
         setOpaque(true);
-        setLayout(new BorderLayout());
+        setLayout(br);
         setBackground(Color.WHITE);
         add(pnlServerGrid,BorderLayout.CENTER);
         pnlServerGrid.add(pnlServerCenterGrid);
@@ -73,6 +77,7 @@ public class StartServer extends JPanel{
         pnlServerCenterGrid.add(txtServerPort);
         btnServerCreateServer.setFont(fontButton);
         pnlServerGrid.add(btnServerCreateServer);
+        pnlServerRunning.add(lblServerRunning,BorderLayout.CENTER);
     }
 
     /**
@@ -90,8 +95,23 @@ public class StartServer extends JPanel{
         lblWelcome.setFont(fontWelcome);
         add(lblWelcome,BorderLayout.NORTH);
         txtServerPort.setFont(fontIpPort);
+        lblServerRunning.setFont(fontInfo);
     }
     
+    /**
+     * Method that shows the user that the server is running.
+     */
+    public void setServerRunning() {
+    	remove(br.getLayoutComponent(BorderLayout.CENTER));
+    	add(lblServerRunning,BorderLayout.CENTER);
+    	lblServerRunning.setHorizontalAlignment(JLabel.CENTER);
+    	validate();
+		repaint();
+    }
+    
+    /**
+     * Initiate Listeners.
+     */
     public void initListeners() {
     	CreateStopServerListener create = new CreateStopServerListener();
     	EnterListener enter = new EnterListener();
@@ -118,8 +138,8 @@ public class StartServer extends JPanel{
      */
     public static void main(String[] args) {
         StartServer server = new StartServer();
-        JFrame frame = new JFrame("bIRC Create Server");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frame = new JFrame("bIRC Server");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(server);
         frame.pack();
         frame.setVisible(true);
@@ -160,6 +180,7 @@ public class StartServer extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if (btnServerCreateServer==e.getSource()) {
 				server = new Server(getPort());
+				setServerRunning();
 			}
 		}
 	}
@@ -171,6 +192,7 @@ public class StartServer extends JPanel{
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				server = new Server(getPort());
+				setServerRunning();
 			}
 		}
 
