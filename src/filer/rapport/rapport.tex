@@ -2,10 +2,6 @@
 \usepackage[swedish]{babel} % Ändrar Table of contents till innehållsförteckning etc
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{makeidx} 
-\makeindex
-% Används för att kunna köra \makeindex make index ser till att alla sidnummer blir korrekta i innehållsförtäckning vid första % kompilering. Annars måste man kompilera två gånger när sidnummer ändras för att få det rätt sidnummer i 
-% innehållsförtäckning.
 
 \usepackage{graphicx} %Behövs för att importera bilder
 \usepackage{float} %Gör så att man kan använda ´H´ attributet för bilder(funkar bättre än h!) så att bilden hamnar där man säger åt den att vara
@@ -56,7 +52,7 @@
 
 
 \usepackage{fancyhdr} % Användsa för att göra egna sidhuvuden/sidfötter
-\fancyhf{}
+\fancyhf{} %  Tömmer standardinnehållet i header footer
 \setlength{\headheight}{27mm} % Om du använder en bild så se till att den får plats i sidhuvudet. Latex skapar altid mer plats till text däremot.
 \fancyhead[L]{\includegraphics[height=25mm]{C:/Users/Ralle/Documents/ChatProjectReport/MAH.png}}
 \fancyhead[R]{Objektorienterad programutveckling,\\ trådar och datakommunikation \\Projekt Chatapplikation}
@@ -76,6 +72,7 @@
 \newpage
 \tableofcontents
 \newpage
+
 \section{Arbetsbeskrivning}
 
 \subsection{Rasmus Andersson} 
@@ -93,7 +90,6 @@ Arbetat med generell grundläggande kommunikation mellan server och klient i bö
 % Skriv här
 \subsection{Kalle Bornemark} 
 % Skriv här
-\newpage
 
 \section{Instruktioner för programstart}
 För att köra programmet så krävs det att man startar en server och minst en klient. Main-metoden för att starta servern finns i StartServer.java och main-metoden för att starta Klienter finns i StartClient.java. Alla filvägar är relativa till det workspace som används och behöver inte ändras.
@@ -110,18 +106,27 @@ Servern lagrar alla textmeddelande som användarna skickar och loggar även namn
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{diagram/Client.png}
+		\caption{Server}
 
 	\end{figure}
 \subsection{Klient}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{diagram/Server.png}
+		\caption{Klient}
 	\end{figure}
 \section{Kommunikationsdiagram}
 \subsection{Kommunikationsdiagram 1}
 \subsection{Kommunikationsdiagram 2}
 \section{Sekvensdiagram}
-\subsection{Sekvensdiagram 1}
+\subsection{Connect and login}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{diagram/Server_ConnectAndLogin.png}
+		\caption{Connect and login}
+	\end{figure}
+
+
 \subsection{Sekvensdiagram 2}
 
 \section{Källkod}
