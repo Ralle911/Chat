@@ -101,7 +101,7 @@ public class Client {
      * If successful, sets the received User object as current user and announces login in chat.
      * If not, notifies in chat and requests a new name.
      */
-    public void setUser() {
+    public synchronized void setUser() {
         Object object = null;
         while (!(object instanceof User)) {
             try {
