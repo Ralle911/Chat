@@ -33,14 +33,11 @@ public class StartClient extends JPanel {
 	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
 	private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
 	private Font fontButtons = new Font("Sans-Serif", Font.BOLD, 15);
-	private Font fontInfo = new Font("Sans-Serif",Font.BOLD|Font.ITALIC,17);
 	
-	private BorderLayout borderLayout = new BorderLayout();
 	private JPanel pnlCenterGrid = new JPanel(new GridLayout(3,2,5,5));
 	private JPanel pnlCenterFlow = new JPanel(new FlowLayout());
 	private JPanel pnlNorthGrid = new JPanel(new GridLayout(2,1,5,5));
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
-	private JFrame frame;
 	
 	public StartClient() {
 		setLayout(new BorderLayout());
@@ -130,7 +127,7 @@ public class StartClient extends JPanel {
    }
 
 	/**
-	 * Run method for the login-frame.
+	 * Main method for the login-frame.
 	 */
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -148,8 +145,6 @@ public class StartClient extends JPanel {
         });
 
 	}
-	
-
 	
 	/**
 	 * Listener for login-button, create server-button and for the cancel-button.
@@ -177,27 +172,12 @@ public class StartClient extends JPanel {
 	 */
 	private class EnterListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-				if(txtUserName.getText().length() <= 10) {
-					new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
-				} else {
+			if(txtUserName.getText().length() <= 10) {
+				new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+			} else {
 				JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 				txtUserName.setText("");
-				}
 			}
+		}
 	}
-	
-	/**
-	 * Listener for textfield in create a server. Enables you to press enter to create server.
-	 * Disposes the serverpanel on create.
-	 */
-	
-	/**
-	 * Listener for the create server button and for the cancel button.
-	 * Disposes the frames on click.
-	 */
-	/**
-	 * MAIN
-	 * 
-	 * @param args
-	 */
 }
