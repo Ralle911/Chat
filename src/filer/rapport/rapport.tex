@@ -2,6 +2,11 @@
 \usepackage[swedish]{babel} % Ändrar Table of contents till innehållsförteckning etc
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{makeidx} 
+\makeindex
+% Används för att kunna köra \makeindex make index ser till att alla sidnummer blir korrekta i innehållsförtäckning vid första % kompilering. Annars måste man kompilera två gånger när sidnummer ändras för att få det rätt sidnummer i 
+% innehållsförtäckning.
+
 \usepackage{graphicx} %Behövs för att importera bilder
 \usepackage{float} %Gör så att man kan använda ´H´ attributet för bilder(funkar bättre än h!) så att bilden hamnar där man säger åt den att vara
 \usepackage[space]{grffile} % Fixar så att man kan använda space i filvägar utan någon escape characters
@@ -63,8 +68,9 @@
 \large{Chattapplikation}\\
 \large{för Objektorienterad programutveckling, trådar och datakommunikation} }
 \author{Rasmus Andersson\\Emil Sandgren\\Erik Sandgren\\Jimmy Maksymiw\\Lorenz Puskas\\Kalle Bornemark}
-
+\makeindex
 \begin{document}
+
 \pagestyle{fancy}
 \maketitle
 \newpage
@@ -87,6 +93,7 @@ Arbetat med generell grundläggande kommunikation mellan server och klient i bö
 % Skriv här
 \subsection{Kalle Bornemark} 
 % Skriv här
+\newpage
 
 \section{Instruktioner för programstart}
 För att köra programmet så krävs det att man startar en server och minst en klient. Main-metoden för att starta servern finns i StartServer.java och main-metoden för att starta Klienter finns i StartClient.java. Alla filvägar är relativa till det workspace som används och behöver inte ändras.
@@ -95,12 +102,21 @@ För att köra programmet så krävs det att man startar en server och minst en 
 
 Vårt system förser en Chatt-tjänst. I systemet finns det klienter och en server. Klienterna har ett grafiskt användargränssnitt för som han eller hon kan använda för att skicka meddelanden till alla andra anslutna klienter, enskilda klienter, eller till en grupp av klienter. Meddelanden består av text eller av bilder. Alla dessa meddelanden går via en server som ser till att meddelanden kommer fram till rätt personer och med rätt kontext, exempelvis som ett lobbymeddelande eller som ett meddelande i en viss gruppchatt.
 \\
-\newline
+\\
 Servern lagrar alla textmeddelande som användarna skickar och loggar även namnet på de bilder som skickas. Det loggas även när användare ansluter eller stänger ner anslutningen mot servern.
 
 \section{Klassdiagram}
-\subsection{Klassdiagram 1}
-\subsection{Klassdiagram 2}
+\subsection{Server}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{diagram/Client.png}
+
+	\end{figure}
+\subsection{Klient}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{diagram/Server.png}
+	\end{figure}
 \section{Kommunikationsdiagram}
 \subsection{Kommunikationsdiagram 1}
 \subsection{Kommunikationsdiagram 2}
@@ -108,31 +124,44 @@ Servern lagrar alla textmeddelande som användarna skickar och loggar även namn
 \subsection{Sekvensdiagram 1}
 \subsection{Sekvensdiagram 2}
 
-\section{Kod}
-\subsection{ChatLog}
-\lstinputlisting[language=java,caption=ChatLog]{../chat/ChatLog.java}
-\subsection{ChatWindow}
-\lstinputlisting[language=java,caption=ChatWindow]{../chat/ChatWindow.java}
-\subsection{Client}
-\lstinputlisting[language=java,caption=Client]{../chat/Client.java}
-\subsection{ClientController}
-\lstinputlisting[language=java,caption=ClientController]{../chat/ClientController.java}
-\subsection{ClientUI}
-\lstinputlisting[language=java,caption=ClientUI]{../chat/ClientUI.java}
-\subsection{Conversation}
-\lstinputlisting[language=java,caption=Conversation]{../chat/Conversation.java}
-\subsection{ImageScaleHandler}
-\lstinputlisting[language=java,caption=ImageScaleHandler]{../chat/ImageScaleHandler.java}
-\subsection{LogInUI}
-\lstinputlisting[language=java,caption=LoginUI]{../chat/LogInUI.java}
-\subsection{Message}
-\lstinputlisting[language=java,caption=Message]{../chat/Message.java}
-\subsection{Server}
-\lstinputlisting[language=java,caption=Server]{../chat/Server.java}
-\subsection{Startserver}
-\lstinputlisting[language=java,caption=StartServer]{../chat/Startserver.java}
-\subsection{User}
-\lstinputlisting[language=java,caption=User]{../chat/User.java}
+\section{Källkod}
+
+	\subsection{Server}
+		\subsubsection{Server.java, Server.ConnectedClient.java}
+		\lstinputlisting[language=java,caption=Server]{../../chat/Server.java}
+		\subsubsection{Startserver.java}
+		\lstinputlisting[language=java,caption=StartServer]{../../chat/Startserver.java}
+		
+	\subsection{Klient}
+		\subsubsection{ChatWindow.java}
+		\lstinputlisting[language=java,caption=ChatWindow]{../../chat/ChatWindow.java}
+		\subsubsection{Client.java}
+		\lstinputlisting[language=java,caption=Client]{../../chat/Client.java}
+		\subsubsection{ClientController.java}
+		\lstinputlisting[language=java,caption=ClientController]{../../chat/ClientController.java}
+		\subsubsection{ClientUI.java}
+		\lstinputlisting[language=java,caption=ClientUI]{../../chat/ClientUI.java}
+		\subsubsection{ImageScaleHandler.java}
+		\lstinputlisting[language=java,caption=ImageScaleHandler]{../../chat/ImageScaleHandler.java}
+		\subsubsection{StartClient.java}
+		\lstinputlisting[language=java,caption=LoginUI]{../../chat/StartClient.java}
+
+	\subsection{Delade klasser}
+		\subsubsection{ChatLog}
+			\lstinputlisting[language=java,caption=ChatLog]{../../chat/ChatLog.java}
+			\subsubsection{Message}
+			\lstinputlisting[language=java,caption=Message]{../../chat/Message.java}
+			\subsubsection{User}
+			\lstinputlisting[language=java,caption=User]{../../chat/User.java}
+			\subsubsection{Conversation}
+			\lstinputlisting[language=java,caption=Conversation]{../..//chat/Conversation.java}
+
+
+
+
+
+
+
 
 	
 \end{document}
