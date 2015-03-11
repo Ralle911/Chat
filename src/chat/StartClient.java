@@ -30,9 +30,10 @@ public class StartClient extends JPanel {
 	private JButton btnLogIn = new JButton("Login");
 	private JButton btnCancel = new JButton("Cancel");
 	
-	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,20);
+	private Font fontWelcome = new Font("Sans-Serif",Font.BOLD,25);
 	private Font fontIpPort = new Font("Sans-Serif",Font.PLAIN,17);
-	private Font fontButtons = new Font("Sans-Serif", Font.BOLD, 15);
+	private Font fontButtons = new Font("Sans-Serif",Font.BOLD,15);
+	private Font fontUserName = new Font("Sans-Serif",Font.BOLD,17);
 	
 	private JPanel pnlCenterGrid = new JPanel(new GridLayout(3,2,5,5));
 	private JPanel pnlCenterFlow = new JPanel(new FlowLayout());
@@ -62,7 +63,7 @@ public class StartClient extends JPanel {
 	 * Initiates the panels.
 	 */
 	public void initPanels(){
-		setPreferredSize(new Dimension(430, 190));
+		setPreferredSize(new Dimension(400, 180));
 		pnlCenterGrid.setBounds(100, 200, 200, 50);
 		add(pnlCenterFlow,BorderLayout.CENTER);
 		pnlCenterFlow.add(pnlCenterGrid);
@@ -107,6 +108,13 @@ public class StartClient extends JPanel {
 		setBackground(Color.WHITE);
 		lblUserName.setBackground(Color.WHITE);
 		lblUserName.setOpaque(false);
+		
+		btnLogIn.setForeground(new Color(41,1,129));
+		btnCancel.setForeground(new Color(41,1,129));
+		
+		txtIp.setFont(fontIpPort);
+		txtPort.setFont(fontIpPort);
+		txtUserName.setFont(fontUserName);
 	}
 	
 	/**
