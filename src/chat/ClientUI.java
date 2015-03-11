@@ -46,6 +46,7 @@ public class ClientUI extends JPanel {
 	private JPanel eastPanelCenterNorth = new JPanel(new FlowLayout());
 	private JPanel pnlGroupSend = new JPanel(new GridLayout(1,2,8,8));
 	private JPanel pnlFileSend = new JPanel(new BorderLayout(5,5));
+	private long delay = 0;
 	
 	private String userString = "";
 	private int activeChatWindow = -1;
@@ -231,6 +232,9 @@ public class ClientUI extends JPanel {
      * @param message The message object with an ID and a message.
      */
     public void appendContent(Message message) {
+       
+    	System.out.println(System.currentTimeMillis() - delay);
+    	
         getChatWindow(message.getConversationID()).append(message);
         if(activeChatWindow != message.getConversationID()) {
         	highlightGroup(message.getConversationID());
@@ -551,7 +555,8 @@ public class ClientUI extends JPanel {
 	private class SendListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (btnSend==e.getSource()  && !(tfMessageWindow.getText().isEmpty())) {
-                    clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
+                   	delay = System.currentTimeMillis();
+					clientController.sendMessage(activeChatWindow, tfMessageWindow.getText());
                     tfMessageWindow.setText("");
 			}
 		}

@@ -23,6 +23,8 @@ public class Client {
     private ObjectOutputStream oos;
     private User user;
     private String name;
+    private static long delay = System.currentTimeMillis();
+
 
     /**
      * Constructor that creates a new Client with given ip, port and user name.
@@ -54,6 +56,7 @@ public class Client {
      */
     public void sendObject(Object object) {
         try {
+        	delay = System.currentTimeMillis() - delay;
             oos.writeObject(object);
             oos.flush();
         } catch (IOException e) {}
@@ -112,6 +115,7 @@ public class Client {
                     user = (User)object;
                     controller.newMessage("You logged in as " + user.getId());
                     initConversations();
+                    
                 } else {
                     controller.newMessage(object);
                     this.name = JOptionPane.showInputDialog("Pick a name: ");
@@ -135,6 +139,7 @@ public class Client {
             while (!Thread.interrupted()) {
                 object = ois.readObject();
                 if (object instanceof Message) {
+         
                     controller.newMessage(object);
                 } else if (object instanceof ArrayList) {
                     ArrayList<String> userList = (ArrayList<String>) object;
