@@ -21,7 +21,6 @@ public class Client {
     private ClientController controller;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
-    private ArrayList<String> userList;
     private User user;
     private String name;
 
@@ -137,7 +136,7 @@ public class Client {
                 if (object instanceof Message) {
                     controller.newMessage(object);
                 } else if (object instanceof ArrayList) {
-                    userList = (ArrayList<String>)object;
+                    ArrayList<String> userList = (ArrayList<String>) object;
                     controller.setConnectedUsers(userList);
                 } else if (object instanceof Conversation) {
                     Conversation con = (Conversation)object;

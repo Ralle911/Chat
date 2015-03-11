@@ -79,7 +79,6 @@ public class ClientController {
      * @param url A string containing the URl to the image to be sent.
      */
     public void sendImage(int conID, String url) {
-        System.out.println(url);
         ImageIcon icon = new ImageIcon(url);
         Image img = icon.getImage();
         BufferedImage scaledImage = ImageScaleHandler.createScaledImage(img, 250);
