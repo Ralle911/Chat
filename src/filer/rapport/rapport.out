@@ -11,23 +11,24 @@
 \BOOKMARK [2][-]{subsection.4.1}{Server}{section.4}% 11
 \BOOKMARK [2][-]{subsection.4.2}{Klient}{section.4}% 12
 \BOOKMARK [1][-]{section.5}{Kommunikationsdiagram}{}% 13
-\BOOKMARK [2][-]{subsection.5.1}{Client send Message}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Sekvensdiagram}{}% 15
-\BOOKMARK [2][-]{subsection.6.1}{Connect and login}{section.6}% 16
-\BOOKMARK [2][-]{subsection.6.2}{Send message}{section.6}% 17
-\BOOKMARK [1][-]{section.7}{K\344llkod}{}% 18
-\BOOKMARK [2][-]{subsection.7.1}{Server}{section.7}% 19
-\BOOKMARK [3][-]{subsubsection.7.1.1}{Server.java, Server.ConnectedClient.java}{subsection.7.1}% 20
-\BOOKMARK [3][-]{subsubsection.7.1.2}{Startserver.java}{subsection.7.1}% 21
-\BOOKMARK [2][-]{subsection.7.2}{Klient}{section.7}% 22
-\BOOKMARK [3][-]{subsubsection.7.2.1}{ChatWindow.java}{subsection.7.2}% 23
-\BOOKMARK [3][-]{subsubsection.7.2.2}{Client.java}{subsection.7.2}% 24
-\BOOKMARK [3][-]{subsubsection.7.2.3}{ClientController.java}{subsection.7.2}% 25
-\BOOKMARK [3][-]{subsubsection.7.2.4}{ClientUI.java}{subsection.7.2}% 26
-\BOOKMARK [3][-]{subsubsection.7.2.5}{ImageScaleHandler.java}{subsection.7.2}% 27
-\BOOKMARK [3][-]{subsubsection.7.2.6}{StartClient.java}{subsection.7.2}% 28
-\BOOKMARK [2][-]{subsection.7.3}{Delade klasser}{section.7}% 29
-\BOOKMARK [3][-]{subsubsection.7.3.1}{ChatLog}{subsection.7.3}% 30
-\BOOKMARK [3][-]{subsubsection.7.3.2}{Message}{subsection.7.3}% 31
-\BOOKMARK [3][-]{subsubsection.7.3.3}{User}{subsection.7.3}% 32
-\BOOKMARK [3][-]{subsubsection.7.3.4}{Conversation}{subsection.7.3}% 33
+\BOOKMARK [2][-]{subsection.5.1}{Connect and login}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Client send Message}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Sekvensdiagram}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{Connect and login}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{Send message}{section.6}% 18
+\BOOKMARK [1][-]{section.7}{K\344llkod}{}% 19
+\BOOKMARK [2][-]{subsection.7.1}{Server}{section.7}% 20
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Server.java, Server.ConnectedClient.java}{subsection.7.1}% 21
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Startserver.java}{subsection.7.1}% 22
+\BOOKMARK [2][-]{subsection.7.2}{Klient}{section.7}% 23
+\BOOKMARK [3][-]{subsubsection.7.2.1}{ChatWindow.java}{subsection.7.2}% 24
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Client.java}{subsection.7.2}% 25
+\BOOKMARK [3][-]{subsubsection.7.2.3}{ClientController.java}{subsection.7.2}% 26
+\BOOKMARK [3][-]{subsubsection.7.2.4}{ClientUI.java}{subsection.7.2}% 27
+\BOOKMARK [3][-]{subsubsection.7.2.5}{ImageScaleHandler.java}{subsection.7.2}% 28
+\BOOKMARK [3][-]{subsubsection.7.2.6}{StartClient.java}{subsection.7.2}% 29
+\BOOKMARK [2][-]{subsection.7.3}{Delade klasser}{section.7}% 30
+\BOOKMARK [3][-]{subsubsection.7.3.1}{ChatLog}{subsection.7.3}% 31
+\BOOKMARK [3][-]{subsubsection.7.3.2}{Message}{subsection.7.3}% 32
+\BOOKMARK [3][-]{subsubsection.7.3.3}{User}{subsection.7.3}% 33
+\BOOKMARK [3][-]{subsubsection.7.3.4}{Conversation}{subsection.7.3}% 34
