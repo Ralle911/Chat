@@ -40,13 +40,23 @@ public class StartClient extends JPanel {
 	private JPanel pnlNorthGrid = new JPanel(new GridLayout(2,1,5,5));
 	private JPanel pnlNorthGridGrid = new JPanel(new GridLayout(1,2,5,5));
 	
+	JFrame frame;
+	
 	public StartClient() {
+	
 		setLayout(new BorderLayout());
 		initPanels();
 		lookAndFeel();
 		initGraphics();
 		initButtons();
-		initListeners();
+		initListeners();	
+		frame = new JFrame("bIRC Login");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.add(this);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 	}
 	
 	/**
@@ -141,14 +151,7 @@ public class StartClient extends JPanel {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame frame = new JFrame("bIRC Login");
-                StartClient ui = new StartClient();
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.add(ui);
-                frame.pack();
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                frame.setResizable(false);
+            	StartClient ui = new StartClient();
             }
         });
 
@@ -182,6 +185,7 @@ public class StartClient extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			if(txtUserName.getText().length() <= 10) {
 				new Client(txtIp.getText(), Integer.parseInt(txtPort.getText()),txtUserName.getText());
+				frame.dispose();
 			} else {
 				JOptionPane.showMessageDialog(null, "Namnet får max vara 10 karaktärer!");
 				txtUserName.setText("");
