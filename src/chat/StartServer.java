@@ -138,7 +138,7 @@ public class StartServer extends JPanel{
      */
     public static void main(String[] args) {
         StartServer server = new StartServer();
-        JFrame frame = new JFrame("bIRC Create Server");
+        JFrame frame = new JFrame("bIRC Server");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(server);
         frame.pack();
