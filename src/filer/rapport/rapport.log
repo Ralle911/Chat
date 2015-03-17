@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 13:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 15:15
 entering extended mode
 **rapport.tex
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.tex
@@ -612,26 +612,27 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 102.
+d on input line 103.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [3]
-<diagram/Client.png, id=199, 380.1402pt x 336.7782pt>
+<diagram/Client.png, id=199, 1187.93813pt x 1052.43187pt>
 File: diagram/Client.png Graphic file (type png)
- <use diagram/Client.png>
-Package pdftex.def Info: diagram/Client.png used on input line 107.
-(pdftex.def)             Requested size: 360.0pt x 318.94568pt.
 
-<diagram/Server.png, id=200, 372.9132pt x 235.6002pt>
+<use diagram/Client.png>
+Package pdftex.def Info: diagram/Client.png used on input line 108.
+(pdftex.def)             Requested size: 360.0pt x 318.9277pt.
+ <diagram/Server.png, id=200, 372.9132pt x 235.6002pt>
 File: diagram/Server.png Graphic file (type png)
- <use diagram/Server.png>
-Package pdftex.def Info: diagram/Server.png used on input line 114.
+
+<use diagram/Server.png>
+Package pdftex.def Info: diagram/Server.png used on input line 115.
 (pdftex.def)             Requested size: 360.0pt x 227.44263pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 117.
+d on input line 118.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [4 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client.png>]
 <diagram/Server_ConnectAndLogin2.png, id=208, 352.6776pt x 211.7511pt>
@@ -639,21 +640,21 @@ File: diagram/Server_ConnectAndLogin2.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin2.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin2.png used on input line
- 122.
+ 123.
 (pdftex.def)             Requested size: 360.0pt x 216.15771pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 125.
+d on input line 126.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [5 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server.png>]
 <diagram/Client_sendMessage2.png, id=216, 568.0422pt x 163.3302pt>
 File: diagram/Client_sendMessage2.png Graphic file (type png)
 
 <use diagram/Client_sendMessage2.png>
-Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 130
+Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 131
 .
 (pdftex.def)             Requested size: 360.0pt x 103.51164pt.
 
@@ -662,14 +663,14 @@ File: diagram/Server_ConnectAndLogin.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin.png used on input line 
-137.
+138.
 (pdftex.def)             Requested size: 360.0pt x 396.10571pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 140.
+d on input line 141.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [6 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin2.png> <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client_send
@@ -678,7 +679,7 @@ Message2.png>]
 File: diagram/Client_sendMessage.png Graphic file (type png)
 
 <use diagram/Client_sendMessage.png>
-Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 145.
+Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 146.
 
 (pdftex.def)             Requested size: 360.0pt x 221.98422pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -686,12 +687,12 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 148.
+d on input line 149.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [7 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 154.
+nput line 155.
 
 (C:\Users\Ralle\Workspace\Chat\src\chat\Server.java
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
@@ -883,7 +884,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 165.
+d on input line 166.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [29]
 (C:\Users\Ralle\Workspace\Chat\src\chat\ClientUI.java
@@ -1075,18 +1076,18 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 181.
+d on input line 182.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [52]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 182.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 182.
 
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 182.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 182.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: B5B9D85A76B175264DF638DEC03053F5;2242.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 182.
  ) 
 Here is how much of TeX's memory you used:
  10865 strings out of 493921
@@ -1095,7 +1096,7 @@ Here is how much of TeX's memory you used:
  11843 multiletter control sequences out of 15000+200000
  15138 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 38i,16n,43p,685b,2004s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,16n,43p,686b,2004s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Ralle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
 ecrm0900.pk> <C:\Users\Ralle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
 ec\dpi600\ecrm0600.pk> <C:\Users\Ralle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
@@ -1107,9 +1108,9 @@ AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Us
 ers\Ralle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.
 pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
 
-Output written on rapport.pdf (52 pages, 1093431 bytes).
+Output written on rapport.pdf (52 pages, 1094311 bytes).
 PDF statistics:
- 3343 PDF objects out of 3580 (max. 8388607)
+ 3344 PDF objects out of 3580 (max. 8388607)
  2165 named destinations out of 2487 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 

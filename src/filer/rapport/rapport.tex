@@ -81,24 +81,25 @@
 Arbetade med kommunikation mellan servern och klienten med Kalle Bornemark, och Jimmy Maksymiw. Formgav projektrapporten samt skrev ImageScaleHandler.java samt Chatlog.java. Jobbade inte med UI-klasserna.
 
 \subsection{Emil Sandgren} 
-Arbetade med UI klasserna ClientUI, StartClient och StartServer och ChatWindow. Huvudansvarig för UI. Jobbat med att försöka koppla ihop UIt med vad som kommer in från servern. 
+Arbetade med UI klasserna ClientUI, StartClient och StartServer och ChatWindow. Huvudansvarig för UI. Jobbat med att koppla ihop UI:t med vad som kommer in från servern. 
+
 \subsection{Erik Sandgren} 
 
-Arbetade med generell grundläggande kommunikation mellan server och klient i början. Jobbade sedan med UI och hoppat in lite därefter på det som behövdes. Har ritat upp mycket av strukturen och fixat buggar.
+Arbetade först med generell grundläggande kommunikation mellan server och klient. Jobbade sedan med UI och har även hoppat in där det behövdes på andra delar av systemet. Har ritat upp mycket av strukturen och fixat buggar.
 
 \subsection{Jimmy Maksymiw} 
-Arbetade med planering och struktur av hur chatten ska fungera. Med programmeringen har jag arbetat mest med logiken som används i både klienten och servern. Hur kommunikationen sker och vad som ska göras på de olika sidorna. Har också varit med och gjort de olika diagrammen. 
+Arbetade med planering av och struktur på hur chatten ska fungera. Vid programmeringen har han arbetat med logiken som används i både klient och server. Hur kommunikationen skall ske och vad som ska göras på de olika sidorna. Har också varit med och gjort diagrammen. 
 \subsection{Lorenz Puskas} 
-Arbetade enbart med att designa ClientUI tillsammans med Emil.
+Arbetade främst med att designa ClientUI tillsammans med Emil.
 \subsection{Kalle Bornemark} 
-Arbetade med server/klient-kommunikation, projektplanering och klasstrukturen. Skapade även diagrammen och fungerat som projektledare till och från.
+Arbetade med server/klient-kommunikation, projektplanering och klasstrukturen. Skapade även diagrammen och har fungerat som projektledare till och från.
 
 \section{Instruktioner för programstart}
-För att köra programmet så krävs det att man startar en server och minst en klient. Main-metoden för att starta servern finns i StartServer.java och main-metoden för att starta klienter finns i StartClient.java. Alla filvägar är relativa till det workspace som används och behöver inte ändras.
+För att köra programmet krävs att man startar en server och minst en klient. Main-metoden för att starta servern finns i StartServer.java och main-metoden för att starta klienter finns i StartClient.java. Alla filvägar som används är relativa projektets workspace och behöver inte ändras.
 
 \section{Systembeskrivning}
 
-Vårt system förser en Chatt-tjänst. I systemet finns det klienter och en server. Klienterna har ett grafiskt användargränssnitt som han eller hon kan använda för att skicka meddelanden till alla andra anslutna klienter, enskilda klienter, eller till en grupp av klienter. Meddelanden består av text eller av bilder. Alla dessa meddelanden går via en server som ser till att meddelanden kommer fram till rätt gruppchat eller till lobbyn. Servern lagrar alla textmeddelande som användarna skickar och loggar även namnet på de bilder som skickas via bildmeddelanden. Det loggas även när användare ansluter eller stänger ner anslutningen mot servern.
+Systemet förser en Chatt-tjänst. I systemet finns det flera klienter och en server. Klienterna har ett grafiskt användargränssnitt för att skicka meddelanden till alla andra anslutna klienter, enskilda klienter, eller till en grupp av klienter. Meddelanden består av text eller av bilder. Alla dessa meddelanden går via en server som ser till att meddelanden kommer fram till rätt gruppchat eller till lobbyn. Servern lagrar alla textmeddelande som användarna skickar och loggar även namn på de bilder som skickas via bildmeddelanden. Servern loggar även användarnamn för de klienter som ansluter och när dessa stänger ner anslutningen mot servern.
 
 \section{Klassdiagram}
 \subsection{Klient}
