@@ -23,7 +23,6 @@ public class Client {
     private ObjectOutputStream oos;
     private User user;
     private String name;
-    private static long delay = System.currentTimeMillis();
 
 
     /**
@@ -56,7 +55,6 @@ public class Client {
      */
     public void sendObject(Object object) {
         try {
-        	delay = System.currentTimeMillis() - delay;
             oos.writeObject(object);
             oos.flush();
         } catch (IOException e) {}
