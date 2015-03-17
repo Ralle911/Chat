@@ -8,8 +8,8 @@
 \BOOKMARK [1][-]{section.2}{Instruktioner f\366r programstart}{}% 8
 \BOOKMARK [1][-]{section.3}{Systembeskrivning}{}% 9
 \BOOKMARK [1][-]{section.4}{Klassdiagram}{}% 10
-\BOOKMARK [2][-]{subsection.4.1}{Server}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.2}{Klient}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Klient}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Server}{section.4}% 12
 \BOOKMARK [1][-]{section.5}{Kommunikationsdiagram}{}% 13
 \BOOKMARK [2][-]{subsection.5.1}{Connect and login}{section.5}% 14
 \BOOKMARK [2][-]{subsection.5.2}{Client send Message}{section.5}% 15
