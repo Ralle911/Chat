@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 16:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 16:10
 entering extended mode
 **rapport.tex
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.tex
@@ -564,21 +564,21 @@ File: lstlang1.sty 2014/03/04 1.5c listings language file
 
 Writing index file rapport.idx
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 72.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -603,9 +603,9 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 69.
+(lastpage)             ! on input line 72.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 69.
+Package hyperref Info: Link coloring OFF on input line 72.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -614,42 +614,42 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count114
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 72.
+LaTeX Info: Redefining \pageref on input line 72.
+LaTeX Info: Redefining \nameref on input line 72.
 
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.out)
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.out)
 \@outlinefile=\write4
 \c@lstlisting=\count115
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 76.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 73.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 76.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 76.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 73.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 76.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 73.
+(Font)              <12> on input line 76.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 73.
+(Font)              <8> on input line 76.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 73.
+(Font)              <6> on input line 76.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
@@ -665,39 +665,35 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
  <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 75.
+d on input line 78.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [2 <C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>]
-Overfull \hbox (0.19443pt too wide) in paragraph at lines 94--95
-\T1/lmr/m/n/10.95 Arbetade med server/klient-kommunikation, pro-jekt-pla-ne-rin
-g och klas-struk-
- []
-
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
+
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 102.
+d on input line 105.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [3]
 <diagram/Client.png, id=198, 1187.93813pt x 1052.43187pt>
 File: diagram/Client.png Graphic file (type png)
 
 <use diagram/Client.png>
-Package pdftex.def Info: diagram/Client.png used on input line 107.
-(pdftex.def)             Requested size: 360.0pt x 318.9277pt.
+Package pdftex.def Info: diagram/Client.png used on input line 110.
+(pdftex.def)             Requested size: 461.17755pt x 408.5679pt.
  <diagram/Server.png, id=199, 372.9132pt x 235.6002pt>
 File: diagram/Server.png Graphic file (type png)
 
 <use diagram/Server.png>
-Package pdftex.def Info: diagram/Server.png used on input line 114.
-(pdftex.def)             Requested size: 360.0pt x 227.44263pt.
+Package pdftex.def Info: diagram/Server.png used on input line 117.
+(pdftex.def)             Requested size: 461.17755pt x 291.36829pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 117.
+d on input line 120.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [4 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client.png>]
 <diagram/Server_ConnectAndLogin2.png, id=207, 352.6776pt x 211.7511pt>
@@ -705,37 +701,37 @@ File: diagram/Server_ConnectAndLogin2.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin2.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin2.png used on input line
- 122.
-(pdftex.def)             Requested size: 360.0pt x 216.15771pt.
+ 125.
+(pdftex.def)             Requested size: 461.17755pt x 276.91129pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 125.
+d on input line 128.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [5 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server.png>]
 <diagram/Client_sendMessage2.png, id=215, 568.0422pt x 163.3302pt>
 File: diagram/Client_sendMessage2.png Graphic file (type png)
 
 <use diagram/Client_sendMessage2.png>
-Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 130
+Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 133
 .
-(pdftex.def)             Requested size: 360.0pt x 103.51164pt.
+(pdftex.def)             Requested size: 461.17755pt x 132.60327pt.
 
 <diagram/Server_ConnectAndLogin.png, id=216, 475.5366pt x 523.2348pt>
 File: diagram/Server_ConnectAndLogin.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin.png used on input line 
-137.
-(pdftex.def)             Requested size: 360.0pt x 396.10571pt.
+140.
+(pdftex.def)             Requested size: 461.17755pt x 507.43335pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 140.
+d on input line 143.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [6 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin2.png> <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client_send
@@ -744,20 +740,20 @@ Message2.png>]
 File: diagram/Client_sendMessage.png Graphic file (type png)
 
 <use diagram/Client_sendMessage.png>
-Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 145.
+Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 148.
 
-(pdftex.def)             Requested size: 360.0pt x 221.98422pt.
+(pdftex.def)             Requested size: 461.17755pt x 284.37274pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 148.
+d on input line 151.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [7 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 154.
+nput line 157.
 
 (C:\Users\Ralle\Workspace\Chat\src\chat\Server.java
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 10.
@@ -772,7 +768,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 22.
+d on input line 17.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [8 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client_sendMessage
 .png>]
@@ -781,7 +777,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 75.
+d on input line 71.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [9]
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -793,7 +789,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 119.
+d on input line 124.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [10]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -801,7 +797,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 171.
+d on input line 177.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [11]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -809,7 +805,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 221.
+d on input line 230.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [12]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -817,7 +813,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 269.
+d on input line 284.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [13]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -825,7 +821,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 314.
+d on input line 336.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [14]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -833,24 +829,24 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 358.
+d on input line 386.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [15]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 407.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [16])
+ [15])
 (C:\Users\Ralle\Workspace\Chat\src\chat\Startserver.java
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 41.
+d on input line 26.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [16]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 79.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [17]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -858,7 +854,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 88.
+d on input line 133.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [18]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -866,249 +862,18 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 138.
+d on input line 185.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [19]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 189.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [20])
+ [19])
 (C:\Users\Ralle\Workspace\Chat\src\chat\ChatWindow.java
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 29.
+d on input line 27.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [21]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 70.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [22])
-(C:\Users\Ralle\Workspace\Chat\src\chat\Client.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 10.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [23]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 57.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [24]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 107.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [25]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 157.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [26])
-(C:\Users\Ralle\Workspace\Chat\src\chat\ClientController.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 34.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [27]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 82.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [28])
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 165.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [29]
-(C:\Users\Ralle\Workspace\Chat\src\chat\ClientUI.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 50.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [30]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 95.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [31]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 140.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [32]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 188.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [33]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 238.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [34]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 287.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [35]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 330.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [36]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 378.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [37]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 424.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [38]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 466.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [39]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 513.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [40]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 555.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [41])
-(C:\Users\Ralle\Workspace\Chat\src\chat\ImageScaleHandler.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 35.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [42])
-(C:\Users\Ralle\Workspace\Chat\src\chat\StartClient.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 19.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [43]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 64.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [44]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 118.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [45]
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 168.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [46])
-(C:\Users\Ralle\Workspace\Chat\src\chat\ChatLog.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 15.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [47])
-(C:\Users\Ralle\Workspace\Chat\src\chat\Message.java
-File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
-)
-
-<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
-Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 24.
-(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [48]
+ [20]
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
@@ -1116,48 +881,255 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
 d on input line 75.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [49])
+ [21])
+(C:\Users\Ralle\Workspace\Chat\src\chat\Client.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 19.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [22]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 72.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [23]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 123.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [24])
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 167.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [25]
+(C:\Users\Ralle\Workspace\Chat\src\chat\ClientController.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 55.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [26]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 104.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [27])
+(C:\Users\Ralle\Workspace\Chat\src\chat\ClientUI.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 26.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [28]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 78.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [29]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 132.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [30]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 181.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [31]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 237.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [32]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 287.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [33]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 341.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [34]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 395.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [35]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 443.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [36]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 492.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [37]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 543.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [38])
+(C:\Users\Ralle\Workspace\Chat\src\chat\ImageScaleHandler.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 26.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [39])
+(C:\Users\Ralle\Workspace\Chat\src\chat\StartClient.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 12.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [40]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 65.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [41]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 119.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [42]
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 171.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [43])
+(C:\Users\Ralle\Workspace\Chat\src\chat\ChatLog.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 21.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [44])
+(C:\Users\Ralle\Workspace\Chat\src\chat\Message.java
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 34.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [45])
 (C:\Users\Ralle\Workspace\Chat\src\chat\User.java
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 45.
+d on input line 3.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [50])
+ [46])
+File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
+)
+
+<use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
+Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
+d on input line 181.
+(pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
+ [47]
 (C:\Users\Ralle\Workspace\Chat\src\chat\Conversation.java
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 38.
+d on input line 49.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [51])
+ [48])
 
 AED: lastpage setting LastPage
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 181.
+d on input line 184.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
- [52]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
+ [49]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
 
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: B5B9D85A76B175264DF638DEC03053F5;2242.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
  ) 
 Here is how much of TeX's memory you used:
- 10974 strings out of 493921
- 158304 string characters out of 3144876
- 396562 words of memory out of 3000000
+ 10971 strings out of 493921
+ 158283 string characters out of 3144876
+ 427562 words of memory out of 3000000
  11927 multiletter control sequences out of 15000+200000
  53505 words of font info for 44 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -1171,9 +1143,9 @@ mr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/lm/lmsy9.pfb>
-Output written on rapport.pdf (52 pages, 1183280 bytes).
+Output written on rapport.pdf (49 pages, 1168094 bytes).
 PDF statistics:
- 3010 PDF objects out of 3580 (max. 8388607)
- 2165 named destinations out of 2487 (max. 500000)
+ 2995 PDF objects out of 3580 (max. 8388607)
+ 2162 named destinations out of 2487 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 
