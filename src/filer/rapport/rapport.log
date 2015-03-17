@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  13 MAR 2015 18:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 12:50
 entering extended mode
 **rapport.tex
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.tex
@@ -607,19 +607,20 @@ Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
 d on input line 74.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [2 <C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>]
-<diagram/Client.png, id=193, 380.1402pt x 336.7782pt>
-File: diagram/Client.png Graphic file (type png)
- <use diagram/Client.png>
-Package pdftex.def Info: diagram/Client.png used on input line 105.
-(pdftex.def)             Requested size: 360.0pt x 318.94568pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 109.
+d on input line 100.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [3]
+<diagram/Client.png, id=199, 380.1402pt x 336.7782pt>
+File: diagram/Client.png Graphic file (type png)
+ <use diagram/Client.png>
+Package pdftex.def Info: diagram/Client.png used on input line 105.
+(pdftex.def)             Requested size: 360.0pt x 318.94568pt.
+
 <diagram/Server.png, id=200, 372.9132pt x 235.6002pt>
 File: diagram/Server.png Graphic file (type png)
  <use diagram/Server.png>
@@ -1106,9 +1107,9 @@ AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Us
 ers\Ralle\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.
 pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
 
-Output written on rapport.pdf (52 pages, 1093023 bytes).
+Output written on rapport.pdf (52 pages, 1093774 bytes).
 PDF statistics:
- 3346 PDF objects out of 3580 (max. 8388607)
+ 3347 PDF objects out of 3580 (max. 8388607)
  2168 named destinations out of 2487 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 

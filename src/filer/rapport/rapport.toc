@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {1.5}Lorenz Puskas}{3}{subsection.1.5}
 \contentsline {subsection}{\numberline {1.6}Kalle Bornemark}{3}{subsection.1.6}
 \contentsline {section}{\numberline {2}Instruktioner f\IeC {\"o}r programstart}{3}{section.2}
-\contentsline {section}{\numberline {3}Systembeskrivning}{3}{section.3}
+\contentsline {section}{\numberline {3}Systembeskrivning}{4}{section.3}
 \contentsline {section}{\numberline {4}Klassdiagram}{4}{section.4}
 \contentsline {subsection}{\numberline {4.1}Server}{4}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Klient}{5}{subsection.4.2}
