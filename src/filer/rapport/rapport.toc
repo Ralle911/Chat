@@ -20,16 +20,16 @@
 \contentsline {section}{\numberline {7}K\IeC {\"a}llkod}{8}{section.7}
 \contentsline {subsection}{\numberline {7.1}Server}{8}{subsection.7.1}
 \contentsline {subsubsection}{\numberline {7.1.1}Server.java, Server.ConnectedClient.java}{8}{subsubsection.7.1.1}
-\contentsline {subsubsection}{\numberline {7.1.2}Startserver.java}{16}{subsubsection.7.1.2}
-\contentsline {subsection}{\numberline {7.2}Klient}{20}{subsection.7.2}
-\contentsline {subsubsection}{\numberline {7.2.1}ChatWindow.java}{20}{subsubsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.2}Client.java}{22}{subsubsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.3}ClientController.java}{26}{subsubsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.4}ClientUI.java}{28}{subsubsection.7.2.4}
-\contentsline {subsubsection}{\numberline {7.2.5}ImageScaleHandler.java}{39}{subsubsection.7.2.5}
-\contentsline {subsubsection}{\numberline {7.2.6}StartClient.java}{40}{subsubsection.7.2.6}
-\contentsline {subsection}{\numberline {7.3}Delade klasser}{44}{subsection.7.3}
-\contentsline {subsubsection}{\numberline {7.3.1}ChatLog}{44}{subsubsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.2}Message}{45}{subsubsection.7.3.2}
-\contentsline {subsubsection}{\numberline {7.3.3}User}{46}{subsubsection.7.3.3}
-\contentsline {subsubsection}{\numberline {7.3.4}Conversation}{48}{subsubsection.7.3.4}
+\contentsline {subsubsection}{\numberline {7.1.2}Startserver.java}{15}{subsubsection.7.1.2}
+\contentsline {subsection}{\numberline {7.2}Klient}{19}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}ChatWindow.java}{19}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Client.java}{21}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}ClientController.java}{24}{subsubsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.4}ClientUI.java}{26}{subsubsection.7.2.4}
+\contentsline {subsubsection}{\numberline {7.2.5}ImageScaleHandler.java}{36}{subsubsection.7.2.5}
+\contentsline {subsubsection}{\numberline {7.2.6}StartClient.java}{37}{subsubsection.7.2.6}
+\contentsline {subsection}{\numberline {7.3}Delade klasser}{41}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}ChatLog}{41}{subsubsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.2}Message}{42}{subsubsection.7.3.2}
+\contentsline {subsubsection}{\numberline {7.3.3}User}{43}{subsubsection.7.3.3}
+\contentsline {subsubsection}{\numberline {7.3.4}Conversation}{44}{subsubsection.7.3.4}
