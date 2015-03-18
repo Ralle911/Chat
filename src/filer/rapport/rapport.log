@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  17 MAR 2015 18:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.28)  18 MAR 2015 13:44
 entering extended mode
 **rapport.tex
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.tex
@@ -564,21 +564,21 @@ File: lstlang1.sty 2014/09/06 1.5e listings language file
 
 Writing index file rapport.idx
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 75.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -603,9 +603,9 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 74.
+(lastpage)             ! on input line 75.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 74.
+Package hyperref Info: Link coloring OFF on input line 75.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -614,42 +614,42 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count114
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
 
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.out)
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.out)
 \@outlinefile=\write4
 \c@lstlisting=\count115
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 78.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 79.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 78.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 79.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 78.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 79.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 78.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 79.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 78.
+(Font)              <12> on input line 79.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 78.
+(Font)              <8> on input line 79.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 78.
+(Font)              <6> on input line 79.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
@@ -665,34 +665,34 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
  <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 80.
+d on input line 81.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [2 <C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>]
 <diagram/Client.png, id=193, 1187.93813pt x 1052.43187pt>
 File: diagram/Client.png Graphic file (type png)
 
 <use diagram/Client.png>
-Package pdftex.def Info: diagram/Client.png used on input line 112.
+Package pdftex.def Info: diagram/Client.png used on input line 113.
 (pdftex.def)             Requested size: 461.17755pt x 408.5679pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 116.
+d on input line 117.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [3]
 <diagram/Server.png, id=199, 372.9132pt x 235.6002pt>
 File: diagram/Server.png Graphic file (type png)
  <use diagram/Server.png>
-Package pdftex.def Info: diagram/Server.png used on input line 119.
+Package pdftex.def Info: diagram/Server.png used on input line 120.
 (pdftex.def)             Requested size: 461.17755pt x 291.36829pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 122.
+d on input line 123.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [4 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client.png>]
 <diagram/Server_ConnectAndLogin2.png, id=207, 352.6776pt x 211.7511pt>
@@ -700,21 +700,21 @@ File: diagram/Server_ConnectAndLogin2.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin2.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin2.png used on input line
- 127.
+ 128.
 (pdftex.def)             Requested size: 461.17755pt x 276.91129pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 130.
+d on input line 131.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [5 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server.png>]
 <diagram/Client_sendMessage2.png, id=215, 568.0422pt x 163.3302pt>
 File: diagram/Client_sendMessage2.png Graphic file (type png)
 
 <use diagram/Client_sendMessage2.png>
-Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 135
+Package pdftex.def Info: diagram/Client_sendMessage2.png used on input line 136
 .
 (pdftex.def)             Requested size: 461.17755pt x 132.60327pt.
 
@@ -723,14 +723,14 @@ File: diagram/Server_ConnectAndLogin.png Graphic file (type png)
 
 <use diagram/Server_ConnectAndLogin.png>
 Package pdftex.def Info: diagram/Server_ConnectAndLogin.png used on input line 
-142.
+143.
 (pdftex.def)             Requested size: 461.17755pt x 507.43335pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 145.
+d on input line 146.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [6 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin2.png> <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Client_send
@@ -739,7 +739,7 @@ Message2.png>]
 File: diagram/Client_sendMessage.png Graphic file (type png)
 
 <use diagram/Client_sendMessage.png>
-Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 150.
+Package pdftex.def Info: diagram/Client_sendMessage.png used on input line 151.
 
 (pdftex.def)             Requested size: 461.17755pt x 284.37274pt.
 File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
@@ -747,12 +747,12 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 153.
+d on input line 154.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [7 <C:/Users/Ralle/Workspace/Chat/src/filer/rapport/diagram/Server_ConnectAndL
 ogin.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 159.
+nput line 160.
 
 (C:\Users\Ralle\Workspace\Chat\src\chat\Server.java
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 10.
@@ -1044,7 +1044,7 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 179.
+d on input line 180.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [41]
 (C:\Users\Ralle\Workspace\Chat\src\chat\Message.java
@@ -1080,18 +1080,18 @@ File: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png Graphic file (type png
 )
 <use C:/Users/Ralle/Documents/ChatProjectReport/MAH.png>
 Package pdftex.def Info: C:/Users/Ralle/Documents/ChatProjectReport/MAH.png use
-d on input line 186.
+d on input line 187.
 (pdftex.def)             Requested size: 59.75214pt x 71.13188pt.
  [45]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
 
 (C:\Users\Ralle\Workspace\Chat\src\filer\rapport\rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
 (rerunfilecheck)             Checksum: B5B9D85A76B175264DF638DEC03053F5;2242.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
  ) 
 Here is how much of TeX's memory you used:
  10967 strings out of 493921
@@ -1110,7 +1110,7 @@ mr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/lm/lmsy9.pfb>
-Output written on rapport.pdf (45 pages, 1161850 bytes).
+Output written on rapport.pdf (45 pages, 1162444 bytes).
 PDF statistics:
  2971 PDF objects out of 2984 (max. 8388607)
  2158 named destinations out of 2487 (max. 500000)
