@@ -34,7 +34,7 @@ public class ImageScaleHandler {
 
 	public static BufferedImage createScaledImage(Image img, int height) {
 		BufferedImage bimage = toBufferedImage(img);
-		bimage = Scalr.resize(bimage, Method.ULTRA_QUALITY,
+		bimage = Scalr.resize(bimage, Method.SPEED,
 				Scalr.Mode.FIT_TO_HEIGHT, 0, height);
 		return bimage;
 	}
