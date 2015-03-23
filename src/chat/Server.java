@@ -96,7 +96,7 @@ public class Server implements Runnable {
                     senderUser = cClient.getUser();
 
                     // Finds the conversation the message shall be sent to
-                    for (Conversation con : senderUser.getConversations()) {
+                    for (Conversation con : senderUser.getConversations()) { 
                         if (con.getId() == message.getConversationID()) {
                             conversation = con;
                             to += conversation.getInvolvedUsers().toString();
