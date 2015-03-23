@@ -1,6 +1,15 @@
 # other
 .settings
 
+# tex
+rapport.aux
+rapport.dvi
+rapport.idx
+rapport.log
+rapport.out
+rapport.syntex.gz
+rapport.toc
+
 # built application files
 *.apk
 *.ap_
